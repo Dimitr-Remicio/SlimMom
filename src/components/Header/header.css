@@ -1,0 +1,39 @@
+.header{
+    width: 100%;
+    height: auto;
+    border: 1px solid red;
+    padding-top: 80px;
+    padding-left: 80px;
+}
+.nav__wrapper{
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+}
+.navigation {
+    margin-left: 70px;
+    position: relative;
+  }
+  
+  .menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -32px;
+    height: 2px;
+    width: 32px;
+    background-color: rgb(224, 224, 224);
+    transform: translateY(-50%);
+    transform: rotate(90deg);
+  }
+  
+  .nav__item {
+    vertical-align: middle;
+  }

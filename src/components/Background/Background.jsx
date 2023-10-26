@@ -7,7 +7,7 @@ const Background = () => {
     <>
       <div>
         <img
-          src={PUBLIC_DIR + '/assets/images/image.jpg'}
+          src="assets/images/bgPatternBanana.png"
           className="bg__banana"
           alt=""
         />
@@ -17,12 +17,12 @@ const Background = () => {
           alt=""
         />
         <img
-          src="public/assets/images/bgPatternStrawberry.png"
+          src="assets/images/bgPatternStrawberry.png"
           className="bg__berry"
           alt=""
         />
         <img
-          src="src/assets/images/bgFrameStain.png"
+          src="assets/images/bgFrameStain.png"
           className="bg__stain"
           alt=""
         />

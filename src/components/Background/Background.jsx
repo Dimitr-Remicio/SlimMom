@@ -12,17 +12,17 @@ const Background = () => {
           alt=""
         />
         <img
-          src="./src/assets/images/bgPatternLeaf.png"
+          src="/assets/images/bgPatternLeaf.png"
           className="bg__leaf"
           alt=""
         />
         <img
-          src="./public/assets/images/bgPatternStrawberry.png"
+          src="/public/assets/images/bgPatternStrawberry.png"
           className="bg__berry"
           alt=""
         />
         <img
-          src="/assets/images/bgFrameStain.png"
+          src="/src/assets/images/bgFrameStain.png"
           className="bg__stain"
           alt=""
         />

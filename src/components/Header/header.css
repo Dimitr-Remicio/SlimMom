@@ -1,10 +1,18 @@
 .header{
+  position: relative;
     width: 100%;
     height: auto;
-    border: 1px solid red;
     padding-top: 80px;
-    padding-left: 80px;
-}
+    /* padding-left: 80px; */
+    z-index: 9000;
+
+    & .img{
+      width: 200px;
+    }
+  }
+  .logo__cont{
+    width: 160px;
+  }
 .nav__wrapper{
     display: flex;
     align-items: baseline;
@@ -35,5 +43,10 @@
   }
   
   .nav__item {
+    font-family: 'Verdana Bold';
+    font-weight: normal;
+    /* font-weight: bold; */
+    letter-spacing: 2px;
+
     vertical-align: middle;
   }

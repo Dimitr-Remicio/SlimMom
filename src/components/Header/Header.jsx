@@ -3,9 +3,8 @@ import "./header.css";
 import { NavLink } from "react-router-dom";
 // import { Container, Row } from "reactstrap";
 import Container from "../Container/Container";
-import logo from "../../assets/logo.png";
 
-import sprite from "../../assets/sprite.svg";
+import sprite from "../../../public/assets/sprite.svg";
 
 const Header = () => {
   const nav__links = [

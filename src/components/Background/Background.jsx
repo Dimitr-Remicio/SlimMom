@@ -7,7 +7,7 @@ const Background = () => {
     <>
       <div>
         <img
-          src="/images/bgPatternBanana.png"}
+          src="/images/bgPatternBanana.png"
           className="bg__banana"
           alt=""
         />

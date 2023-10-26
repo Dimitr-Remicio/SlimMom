@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Container from "../components/Container/Container";
 
 const Diary = () => {
   return (
-    <div>Diary</div>
-  )
-}
+    <Container>
+      <div>Diary</div>
+    </Container>
+  );
+};
 
-export default Diary
+export default Diary;

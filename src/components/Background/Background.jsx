@@ -1,28 +1,28 @@
 import React from "react";
 import "./Background.css";
-import { ASSETS_DIR } from "../../enviroments/dev";
+import { PUBLIC_DIR } from "../../enviroments/dev";
 
 const Background = () => {
   return (
     <>
       <div>
         <img
-          src={ASSETS_DIR + "/assets/images/bgPattern-banana.png"}
+          src={PUBLIC_DIR + "/assets/images/bgPatternBanana.png"}
           className="bg__banana"
           alt=""
         />
         <img
-          src={ASSETS_DIR + "/assets/images/bgPattern-leaf.png"}
+          src={PUBLIC_DIR + "/assets/images/bgPatternLeaf.png"}
           className="bg__leaf"
           alt=""
         />
         <img
-          src={ASSETS_DIR + "/assets/images/bgPattern-strawberry.png"}
+          src={PUBLIC_DIR + "/assets/images/bgPatternStrawberry.png"}
           className="bg__berry"
           alt=""
         />
         <img
-          src={ASSETS_DIR + "/assets/images/bgFrameStain.png"}
+          src={"/assets/images/bgFrameStain.png"}
           className="bg__stain"
           alt=""
         />

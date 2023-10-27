@@ -22,8 +22,8 @@ const Layout = () => {
       <div className="Layout">
         <Container>
           <div className="blur"></div>
-          <BackAnimated />
-          {/* <Background /> */}
+          {/* <BackAnimated /> */}
+          <Background />
           <Routers />
         </Container>
       </div>

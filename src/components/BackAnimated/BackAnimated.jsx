@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import Lottie from "lottie-web";
 import banner2 from "../../assets/images/banner2.json";
+import "./BackAnimated.css";
+
 
 const BackAnimated = () => {
   const container = useRef(null); // Crea una referencia al contenedor
@@ -24,17 +26,7 @@ const BackAnimated = () => {
     };
   }, []);
 
-  return (
-    <div
-      ref={container}
-      style={{
-        // position: "relative",
-        width: "800px",
-        height: "auto",
-        float: "right"
-      }}
-    ></div>
-  );
+  return <div className="bg-animated" ref={container}></div>;
 };
 
 export default BackAnimated;

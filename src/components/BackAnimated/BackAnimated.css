@@ -1,0 +1,8 @@
+.bg-animated{
+    width: 980px;
+    height: auto;
+    float: right;
+
+    transform: translateY(-5rem) translateX(8rem);
+
+}

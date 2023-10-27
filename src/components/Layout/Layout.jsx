@@ -9,21 +9,11 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <div
-        className="prueba-container"
-        style={{
-          position: "fixed" /* Usar posición absoluta */,
-          top: "11rem",
-          right: "8rem",
-          zIndex: "2",
-        }}
-      ></div>
-
       <div className="Layout">
         <Container>
           <div className="blur"></div>
-          {/* <BackAnimated /> */}
-          <Background />
+          <BackAnimated />
+          {/* <Background /> */}
           <Routers />
         </Container>
       </div>

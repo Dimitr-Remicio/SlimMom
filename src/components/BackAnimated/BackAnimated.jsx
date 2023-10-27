@@ -1,15 +1,15 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import Lottie from "lottie-web";
-import banner2 from "../../assets/images/banner2.json"
+import banner2 from "../../assets/images/banner2.json";
 
-const Prueba = () => {
+const BackAnimated = () => {
   const container = useRef(null); // Crea una referencia al contenedor
 
   useEffect(() => {
     // Configuración de opciones de Lottie
     const lottieOptions = {
       container: container.current, // Especifica el contenedor
-      renderer: 'svg',
+      renderer: "svg",
       loop: true,
       autoplay: true,
       animationData: banner2,
@@ -26,15 +26,15 @@ const Prueba = () => {
 
   return (
     <div
-  ref={container}
-  style={{
-    width: '900px', 
-    height: 'auto', 
-    float: 'right',
-  }}
-></div>
-
+      ref={container}
+      style={{
+        // position: "relative",
+        width: "800px",
+        height: "auto",
+        float: "right"
+      }}
+    ></div>
   );
 };
 
-export default Prueba
+export default BackAnimated;

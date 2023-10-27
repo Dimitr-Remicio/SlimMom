@@ -12,6 +12,8 @@ import Buttons from "../components/Buttons/Buttons";
 import Stack from '@mui/material/Stack';
 import "../styles/login.css";
 
+// import Container from '../components/Container/Container';
+
 const Login = () => {
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -21,12 +23,10 @@ const Login = () => {
     event.preventDefault();
   };
 
-  return (
+  return <>
+
     <div
-      style={{
-        marginTop: "120px",
-        marginLeft: "10vw",
-      }}
+      className="Login"
     >
       <h1 style={{
         color: "#FC842D",
@@ -77,7 +77,10 @@ const Login = () => {
 
       </section>
     </div>
-  );
+
+    </>
+
+  
 };
 
 export default Login;

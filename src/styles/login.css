@@ -1,3 +1,10 @@
+.Login{
+    position: relative;
+    /* background-color: #fff; */
+    margin-top: 76px;
+    width: 100%;
+    z-index: 10;
+}
 .login__buttons:nth-child(1){
     border: none;
     background-color: #FC842D;

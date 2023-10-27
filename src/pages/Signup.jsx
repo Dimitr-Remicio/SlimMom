@@ -10,6 +10,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Buttons from "../components/Buttons/Buttons";
 import Stack from '@mui/material/Stack';
+import Container from "../components/Container/Container";
 
 
 const Signup = () => {
@@ -24,12 +25,12 @@ const Signup = () => {
   
 
   return (
-    <>
+    <Container>
     <div
-      style={{
-        marginTop: "120px",
-        marginLeft: "10vw",
-      }}
+         style={{
+          zIndex:"10",
+          position:"relative"
+        }}
     >
       <h1 style={{
         color: "#FC842D",
@@ -89,7 +90,7 @@ const Signup = () => {
       </Stack>
       </section>
     </div>
-    </>
+    </Container>
   );
   
 };

@@ -23,8 +23,8 @@ const Header = () => {
         <div className="logo">
           <div className="nav__wrapper">
             <div className="logo__cont">
-              <NavLink to="/SlimMom">
-                <svg className="" viewBox="0 0 20 20" width="50">
+              <NavLink style={{height:"10px"}} to="/SlimMom">
+                <svg className="" viewBox="0 0 20 20" width="55">
                   <use href={sprite + "#logo"}></use>
                 </svg>
                 <svg className="" viewBox="0 0 20 20" width="50">

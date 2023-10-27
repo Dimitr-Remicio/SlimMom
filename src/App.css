@@ -4,6 +4,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  letter-spacing: 1.5px;
+
 }
 
 body {
@@ -23,6 +25,9 @@ h6,
 p {
   padding: 0;
   margin: 0;
+
+  transition: all 500ms ease-in-out;
+
 }
 
 p {
@@ -42,11 +47,13 @@ ul {
 a {
   text-decoration: none;
   color: unset;
+  
 }
 
 section {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
 }
 
 .Layout {
@@ -61,6 +68,7 @@ section {
   margin: 0 auto;
 
   z-index: 10;
+
 }
 
 .blur {

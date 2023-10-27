@@ -8,13 +8,13 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import Buttons from "../components/Buttons/Buttons";
-import Stack from '@mui/material/Stack';
-import Container from "../components/Container/Container";
+import Stack from "@mui/material/Stack";
+import BackAnimated from "../components/BackAnimated/BackAnimated";
+
+import Button from "@mui/material/Button";
 
 
 const Signup = () => {
-
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -22,20 +22,25 @@ const Signup = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-  
 
   return (
-    <Container>
-    <div
-         style={{
-          zIndex:"10",
-          position:"relative"
+    <section>
+        {/* <BackAnimated />   */}
+
+      <div
+        style={{
+          zIndex: "10",
+          position: "relative",
         }}
-    >
-      <h1 style={{
-        color: "#FC842D",
-      }}>Sign In</h1>
-    
+      >
+        <h3
+          style={{
+            color: "#FC842D",
+          }}
+        >
+          Sign In
+        </h3>
+
         <div>
           <div style={{ marginBottom: "30px", marginTop: "30px" }}>
             <TextField
@@ -47,7 +52,7 @@ const Signup = () => {
             />
           </div>
           <div>
-          <TextField
+            <TextField
               color="warning"
               sx={{ width: "25ch" }}
               id="standard-basic"
@@ -56,7 +61,7 @@ const Signup = () => {
             />
           </div>
           <FormControl
-          style={{marginTop: "30px"}}
+            style={{ marginTop: "30px" }}
             color="warning"
             sx={{ width: "25ch" }}
             variant="standard"
@@ -83,16 +88,43 @@ const Signup = () => {
             />
           </FormControl>
         </div>
-      <section>
-      <Stack direction="row" spacing={2}>
-        <button className="login__buttons">Create <br /> An Acount</button>      
-        <button className="login__buttons">Login</button>
-      </Stack>
-      </section>
-    </div>
-    </Container>
+        <section>
+          <Stack direction="row" spacing={2}>
+          <Button
+                style={{
+                  backgroundColor: "#FC842D",
+                  padding: "15px 25px",
+                  width:"15rem",
+                  borderRadius: "20em",
+                  fontFamily: "Verdana bold",
+                  textTransform: "none",
+                }}
+                variant="contained"
+                href="#contained-buttons"
+              >
+                Create an account
+              </Button>
+              <Button
+                style={{
+                  border: "3px solid #FC842D",
+                  color: "#FC842D",
+                  padding: "15px 25px",
+                  width:"15rem",
+                  borderRadius: "20em",
+                  fontFamily: "Verdana bold",
+                  textTransform: "none",
+                  textAlign:"center"
+                }}
+                variant="outlined"
+                href="#contained-buttons"
+              >
+                Login
+              </Button>
+          </Stack>
+        </section>
+      </div>
+    </section>
   );
-  
 };
 
 export default Signup;

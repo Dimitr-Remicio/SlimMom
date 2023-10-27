@@ -1,8 +1,14 @@
 .bg-animated{
-    width: 980px;
+
+    position: absolute;
+    width: 900px;
     height: auto;
+    right: 0;
+    top: 0;
+    bottom: 0;
     float: right;
 
-    transform: translateY(-5rem) translateX(8rem);
+    transform: translateX(-5rem);
 
+    z-index: 2;
 }

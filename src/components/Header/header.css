@@ -15,11 +15,13 @@
   }
 .nav__wrapper{
     display: flex;
-    align-items: baseline;
+    align-items: flex-end;
     justify-content: flex-start;
 }
 .navigation {
-    margin-left: 70px;
+    margin-left: 50px;
+    padding-left: 10px;
+    padding-bottom: 5px;
     position: relative;
   }
   
@@ -46,7 +48,6 @@
     font-family: 'Verdana Bold';
     font-weight: normal;
     /* font-weight: bold; */
-    letter-spacing: 2px;
 
     vertical-align: middle;
   }

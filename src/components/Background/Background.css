@@ -1,35 +1,35 @@
 .bg__banana {
   width: 44rem;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
 
-  z-index: 8891;
+  z-index: 4;
 }
 .bg__leaf {
   width: 52rem;
-  position: absolute;
+  position: fixed;
   right: 20vw;
   top: 0;
 
 
-  z-index: 8890;
+  z-index: 5;
 }
 .bg__berry  {
   width: 25rem;
-  position: absolute;
+  position: fixed;
   right: 4vw;
   bottom: 0;
 
 
-  z-index: 8889;
+  z-index: 3;
 }
 .bg__stain{
   width: 70vh;
   position: fixed;
   right: 0;
   top: 7vw;
-  z-index: 8888;
+  z-index: 1;
 }
 
 

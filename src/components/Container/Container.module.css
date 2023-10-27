@@ -13,11 +13,17 @@
     margin: 0 auto;
   }
 }
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 89vw;
+    margin: 0 auto;
+  }
+}
 
 @media screen and (min-width: 1440px) {
   .container {
     /* width: 100vw; */
-    width: 75rem;
+    width: 85rem;
     margin: 0 auto;
   }
 }

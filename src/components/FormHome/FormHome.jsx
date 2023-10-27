@@ -53,7 +53,7 @@ const FormHome = () => {
           />
         </Grid>
       </Grid>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{mr:"-10px"}}>
         <Grid item xs={0}>
           <TextField
             id="standard-number-1"

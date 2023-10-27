@@ -10,16 +10,17 @@ import "../styles/Home.css";
 
 const Home = () => {
   return (
-      <section>
-        {/* <BackAnimated />   */}
-        <div className="Home">
-          <h1>Calculate your daily calorie intake right now</h1>
-          <FormHome />
+    <section>
+      {/* <BackAnimated />   */}
+      <div className="Home">
+        <h1>Calculate your daily calorie intake right now</h1>
+        <FormHome />
+        <div style={{translate:"-25px"}}>
           <Button
             style={{
               backgroundColor: "#FC842D",
               padding: "15px 20px",
-              width:"18rem",
+              width: "18rem",
               borderRadius: "20em",
               fontFamily: "Verdana bold",
               textTransform: "none",
@@ -30,7 +31,8 @@ const Home = () => {
             Start losing weight
           </Button>
         </div>
-      </section>
+      </div>
+    </section>
   );
 };
 

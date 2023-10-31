@@ -1,6 +1,6 @@
 // import React from "react";
 import Container from "../components/Container/Container";
-import FormHome from "../components/FormHome/FormHome";
+import FormHome from "../components/Forms/FormHome/FormHome";
 import Button from "@mui/material/Button";
 import RightSidebar from "../components/RightSidebar/RightSidebar"
 

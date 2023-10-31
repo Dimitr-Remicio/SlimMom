@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Lottie from "lottie-web";
 import banner2 from "../../assets/images/banner2.json";
 import "./BackAnimated.css";

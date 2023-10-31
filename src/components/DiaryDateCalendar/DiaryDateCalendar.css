@@ -1,0 +1,28 @@
+.diary-date-calendar {
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+
+}
+
+.calendar-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.calendar-input img {
+  width: 30px; /* Ajusta el tamaño de la imagen del icono */
+  height: 30px;
+  margin-right: 10px; /* Espacio entre la imagen y la fecha */
+  
+}
+
+.diary-date-calendar .react-datepicker-wrapper {
+  width: 100%;
+}
+
+.diary-date-calendar .react-datepicker__input-container {
+  display: block;
+}

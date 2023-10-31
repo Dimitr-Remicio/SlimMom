@@ -1,9 +1,10 @@
 import React from "react";
-import Box from "@mui/material/Box";
+import { NavLink } from 'react-router-dom';
+// import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
+import InputAdornment from "@mui/material/InputAdornment";  
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Visibility from "@mui/icons-material/Visibility";
@@ -93,22 +94,25 @@ const Login = () => {
               >
                 Login
               </Button>
-              <Button
+              <NavLink to="/SlimMom/signup">
+              <Button 
+                  variant="outlined"
                 style={{
                   border: "3px solid #FC842D",
+
                   color: "#FC842D",
                   padding: "15px 25px",
                   width:"15rem",
                   borderRadius: "20em",
                   fontFamily: "Verdana bold",
                   textTransform: "none",
-                  textAlign:"center"
+                  textAlign:"center",
+                  
                 }}
-                variant="outlined"
-                href="#contained-buttons"
-              >
+                >
                 Create an account
               </Button>
+              </NavLink>
             </Stack>
           </section>
         </div>

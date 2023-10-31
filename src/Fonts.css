@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Verdana";
   src: url("Verdana.ttf");
-  src: local("Verdana"), url("/assets/fonts/verdana.ttf") format("ttf");
+  src: local("Verdana"), url("../public/assets/fonts/verdana.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -9,7 +9,7 @@
   font-family: "Verdana Bold";
   src: url("Verdana-bold.ttf");
   src: local("Verdana-bold"),
-    url("/assets/fonts/verdana-bold.ttf") format("ttf");
+    url("../public/assets/fonts/verdana-bold.ttf") format("ttf");
   font-weight: bold;
   font-style: normal;
 }

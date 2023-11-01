@@ -27,7 +27,7 @@ const currencies = [
 const FormHome = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "row", mt: "50px" }} className="FormHome">
-      <Grid container spacing={3}> 
+      <Grid container spacing={3}>
         <Grid item xs={0}>
           <TextField
             id="standard-number-1"
@@ -63,16 +63,11 @@ const FormHome = () => {
           />
         </Grid>
         <Grid item xs={0}>
-          <TextField
-            id="standard-number-1"
-            label="Blood type ⥥ *"
-            type="number"
-            variant="standard"
-          />
+          <p id="standard-number-1" className="BloodTypeLabel">Blood type ⥥ *</p>
         </Grid>
         <Grid item xs={0}>
           <TextField
-            
+
             id="outlined-select-currency"
             select
             helperText=""

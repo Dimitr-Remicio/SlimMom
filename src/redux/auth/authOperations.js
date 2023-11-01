@@ -26,7 +26,6 @@ const register = createAsyncThunk(
       toast.success("Реєстрація пройшла успішно!", {
         position: toast.POSITION.TOP_CENTER,
       });
-
       token.set(data.token);
       return data;
     } catch (error) {
@@ -38,9 +37,9 @@ const register = createAsyncThunk(
   }
 );
 
-const logIn = createAsyncThunk("/auth/login", async (credential, thunkAPI) => {
+const logIn = createAsyncThunk(`${base}/auth/login`, async (credential, thunkAPI) => {
   try {
-    const { data } = await axios.post("/users/login", credential);
+    const { data } = await axios.post("/auth/login", credential);
     token.set(data.token);
     return data;
   } catch (error) {
@@ -48,9 +47,9 @@ const logIn = createAsyncThunk("/auth/login", async (credential, thunkAPI) => {
   }
 });
 
-const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
+const logOut = createAsyncThunk(`${base}/auth/logout`, async (_, thunkAPI) => {
   try {
-    await axios.get("/users/logout");
+    await axios.get("/auth/logout");
     token.unset();
   } catch (error) {
     return thunkAPI.rejectWithValue();
@@ -85,6 +84,9 @@ const refreshUser = createAsyncThunk("auth/current", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error);
   }
 });
+
+[]
+{}
 
 const authOperations = {
   register,

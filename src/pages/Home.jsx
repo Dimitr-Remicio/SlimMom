@@ -16,9 +16,9 @@ const Home = () => {
   const findProducts = () => {
     dispatch(fetchAll())
   };
-  
- 
-  
+
+
+
 
   return (
     <section>
@@ -42,8 +42,8 @@ const Home = () => {
             Start losing weight
           </Button>
 
-          {/* <button onClick={findProducts}>show in console prod</button>
-          {
+          {/* <button onClick={findProducts}>show in console prod</button> */}
+          {/* {
             fetchAll.map((e) => (<li key={id}>{e}</li>))
           } */}
         </div>

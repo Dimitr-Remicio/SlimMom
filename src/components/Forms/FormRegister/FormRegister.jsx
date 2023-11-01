@@ -170,7 +170,7 @@ export default function RegisterForm() {
                 <Error>{errors.password}</Error>
               )}
             </InputBlock>
-          
+
             <Stack direction="row" spacing={2}>
               <Button
                 style={{

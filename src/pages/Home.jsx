@@ -48,8 +48,8 @@ const Home = () => {
             Start losing weight
           </Button>
 
-          {/* <button onClick={findProducts}>show in console prod</button>
-          {
+          {/* <button onClick={findProducts}>show in console prod</button> */}
+          {/* {
             fetchAll.map((e) => (<li key={id}>{e}</li>))
           } */}
 

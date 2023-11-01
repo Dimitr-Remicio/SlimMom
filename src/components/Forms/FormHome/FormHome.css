@@ -1,3 +1,19 @@
 .FormHome{
     padding-bottom: 80px;
 }
+.BloodTypeLabel{
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.2px;
+  color: #7c7c7c;
+  margin-top: 25px;
+  padding-bottom: 7px;
+  padding-left: 0.1em;
+  width: 100%;
+
+  @media screen and (min-device-width: 768px) {
+    border-bottom: 1px solid #a7a7a7;
+  width: 181px;
+  }
+}

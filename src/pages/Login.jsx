@@ -1,18 +1,19 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
-// import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Input from "@mui/material/Input";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";  
-import FormControl from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import Button from "@mui/material/Button";
+// import { NavLink } from 'react-router-dom';
+// // import Box from "@mui/material/Box";
+// import IconButton from "@mui/material/IconButton";
+// import Input from "@mui/material/Input";
+// import InputLabel from "@mui/material/InputLabel";
+// import InputAdornment from "@mui/material/InputAdornment";
+// import FormControl from "@mui/material/FormControl";
+// import TextField from "@mui/material/TextField";
+// import Visibility from "@mui/icons-material/Visibility";
+// import VisibilityOff from "@mui/icons-material/VisibilityOff";
+// import Button from "@mui/material/Button";
 
-import Stack from "@mui/material/Stack";
+// import Stack from "@mui/material/Stack";
 import "../styles/login.css";
+import LoginForm from "../components/Forms/LoginForm/LoginForm";
 
 // import Container from '../components/Container/Container';
 
@@ -37,7 +38,7 @@ const Login = () => {
             Log In
           </h3>
 
-          <div>
+          {/* <div>
             <div style={{ marginBottom: "30px", marginTop: "30px" }}>
               <TextField
                 color="warning"
@@ -61,7 +62,7 @@ const Login = () => {
               </InputLabel>
               <Input
                 color="warning"
-                focused
+                focused="true"
                 id="standard-adornment-password"
                 type={showPassword ? "text" : "password"}
                 endAdornment={
@@ -90,12 +91,13 @@ const Login = () => {
                   textTransform: "none",
                 }}
                 variant="contained"
-                href="#contained-buttons"
+
+                type="submit"
               >
                 Login
               </Button>
               <NavLink to="/SlimMom/signup">
-              <Button 
+              <Button
                   variant="outlined"
                 style={{
                   border: "3px solid #FC842D",
@@ -107,14 +109,16 @@ const Login = () => {
                   fontFamily: "Verdana bold",
                   textTransform: "none",
                   textAlign:"center",
-                  
+
                 }}
                 >
                 Create an account
               </Button>
               </NavLink>
             </Stack>
-          </section>
+          </section> */}
+          <LoginForm/>
+
         </div>
       </section>
     </>

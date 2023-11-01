@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import authSelector from '../redux/auth/selectors';
 import "../styles/Home.css";
 
-import Diary from './Diary';
+import Diary from './DiaryPage';
 
 import FormHome from "../components/Forms/FormHome/FormHome";
 import { fetchAll } from '../redux/dairy/dairyOperations';

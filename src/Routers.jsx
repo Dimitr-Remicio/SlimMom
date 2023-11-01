@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Home from '../pages/Home';
-import Calculator from '../pages/Calculator';
-import Diary from '../pages/Diary';
-import Login from '../pages/Login';
-import Signup from '../pages/Signup';
+import Home from './pages/Home';
+import Calculator from './pages/Calculator';
+import Diary from './pages/DiaryPage';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 
 

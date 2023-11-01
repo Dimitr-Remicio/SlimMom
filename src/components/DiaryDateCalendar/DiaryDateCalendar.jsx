@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./DiaryDateCalendar.css"; // Importa tus estilos CSS aquí
-import CalendarIcon from "../../assets/calendar.svg"; // Importa tu imagen del icono
+import CalendarIcon from "./images/calendar.png"; 
 
 const DiaryDateCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -14,20 +14,27 @@ const DiaryDateCalendar = () => {
 
   return (
     <div className="diary-date-calendar">
-      <div className="calendar-display">
-        <div className="calendar-input">
-          {selectedDate.toDateString()}
+       <div className="date-display">
+        <div className="date-text">
+          {selectedDate.getDate()}.{selectedDate.getMonth() + 1}.{selectedDate.getFullYear()}
         </div>
-        <img src={CalendarIcon} alt="calendar icon" />
       </div>
       <DatePicker
         selected={selectedDate}
         onChange={handleDateChange}
         maxDate={today}
-        calendarClassName="custom-calendar"
+        customInput={
+                        
+            <div className="calendar-input">
+            <img src={CalendarIcon} alt="calendar icon" />
+           
+          </div>
+        }
       />
     </div>
   );
 };
 
 export default DiaryDateCalendar;
+
+

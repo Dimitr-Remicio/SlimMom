@@ -23,14 +23,14 @@ const register = createAsyncThunk(
   async (credential, thunkAPI) => {
     try {
       const { data } = await axios.post(`${base}/auth/register`, credential);
-      toast.success("Реєстрація пройшла успішно!", {
+      toast.success("Registration was successful!", {
         position: toast.POSITION.TOP_CENTER,
       });
 
       token.set(data.token);
       return data;
     } catch (error) {
-      toast.error("Ми не можемо успішно завершити вашу реєстрацію!", {
+      toast.error("We could not complete your registration successfully!!", {
         position: toast.POSITION.TOP_CENTER,
       });
       return thunkAPI.rejectWithValue(error);
@@ -40,7 +40,7 @@ const register = createAsyncThunk(
 
 const logIn = createAsyncThunk("/auth/login", async (credential, thunkAPI) => {
   try {
-    const { data } = await axios.post("/users/login", credential);
+    const { data } = await axios.post(`${base}/auth/login`, credential);
     token.set(data.token);
     return data;
   } catch (error) {

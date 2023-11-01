@@ -48,7 +48,7 @@ export default function RegisterForm() {
       .string()
       .matches(emailRules, "Invalid email address. Example: email@gmail.com")
       .min(3, "¡Must be 3 characters or more!")
-      .max(254, "¡Must be 50 characters or less!")
+      .max(254, "¡Must be 254 characters or less!")
       .required("Required field"),
     password: yup
       .string()

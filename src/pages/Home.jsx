@@ -4,26 +4,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import Button from "@mui/material/Button";
 // import { getAllProducts } from "../redux/dairy/dairySelector";
 // import BackAnimated from "../components/BackAnimated/BackAnimated";
-
+import authSelector from '../redux/auth/selectors';
 import "../styles/Home.css";
+
+import Diary from './Diary';
+
 import FormHome from "../components/Forms/FormHome/FormHome";
 import { fetchAll } from '../redux/dairy/dairyOperations';
 
 const Home = () => {
+
+  const userIsLoggedIn = useSelector(authSelector.getIsLoggedIn);
   // const products = useSelector(getAllProducts);
   const dispatch = useDispatch();
   // const state = useSelector((state) => state)
   const findProducts = () => {
     dispatch(fetchAll())
   };
-  
- 
-  
+
+
+
 
   return (
     <section>
       {/* <BackAnimated />   */}
-      <div className="Home">
+
+      {userIsLoggedIn ? <Diary/> : (<div className="Home">
         <h1>Calculate your daily calorie intake right now</h1>
         <FormHome />
         <div style={{ translate: "-25px" }}>
@@ -46,8 +52,10 @@ const Home = () => {
           {
             fetchAll.map((e) => (<li key={id}>{e}</li>))
           } */}
+
+
         </div>
-      </div>
+      </div>)}
     </section>
   );
 };

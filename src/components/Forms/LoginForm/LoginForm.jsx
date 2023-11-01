@@ -15,12 +15,13 @@ import {
   WrapperButtons,
   Button,
   Error,
-  WrapperImage,
-  Image,
+  // WrapperImage,
+  // Image,
 } from "./LoginForm.styled";
+import { NavLink } from "react-router-dom";
 
-import Input from "@mui/material/Input";
-import Button from "@mui/material/Button";
+// import Input from "@mui/material/Input";
+// import Button from "@mui/material/Button";
 
 const passwordRules =
   /^(?=.*[a-zà-ÿ])(?=.*[A-ZÀ-ß])(?=.*\d)[a-zà-ÿA-ZÀ-ß\d]{8,50}$/;
@@ -50,15 +51,15 @@ const SigninSchema = Yup.object().shape({
 
 export default function LoginForm() {
   const dispatch = useDispatch();
-  const [eyeOutlined, setEyeOutlined] = useState(true);
+  // const [eyeOutlined, setEyeOutlined] = useState(true);
 
-  const handleClick = () => {
-    setEyeOutlined(!eyeOutlined);
-  }
+  // const handleClick = () => {
+  //   setEyeOutlined(!eyeOutlined);
+  // }
 
   return (
     <Wrapper>
-      <Title>Exit</Title>
+      {/* <Title>Exit</Title> */}
       <Formik
         initialValues={{
           password: '',
@@ -94,7 +95,7 @@ export default function LoginForm() {
                 id="password"
                 name="password"
                 placeholder=" "
-                type={eyeOutlined ? 'password' : 'text'}
+                type={'text'}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
@@ -103,13 +104,13 @@ export default function LoginForm() {
               <Label htmlFor="password">
                 Password *
               </Label>
-              <WrapperImage onClick={handleClick}>
+              {/* <WrapperImage onClick={handleClick}>
                 {eyeOutlined ? (
                   <Image src={eyeCrossed} />
                 ) : (
                   <Image src={eye} />
                 )}
-              </WrapperImage>
+              </WrapperImage> */}
               {touched.password && errors.password && <Error>{errors.password}</Error>}
             </WrapperInputPassword>
           </WrapperInputs>
@@ -119,13 +120,13 @@ export default function LoginForm() {
               >
                 Sign in
             </Button>
-            <Link to="/diary">
+            <NavLink to="/SlimMom/signup">
               <Button
               type="submit"
               >
                 Sign up
               </Button>
-            </Link>
+            </NavLink>
             </WrapperButtons>
         </FormLogin>
         )}

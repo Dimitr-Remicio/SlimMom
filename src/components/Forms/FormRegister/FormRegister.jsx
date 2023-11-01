@@ -145,7 +145,7 @@ export default function RegisterForm() {
                 </InputLabel>
                 <Input
                   color="warning"
-                  focused
+                  focused="true"
                   id="standard-adornment-password"
                   label="Password *"
                   name="password"
@@ -170,7 +170,7 @@ export default function RegisterForm() {
                 <Error>{errors.password}</Error>
               )}
             </InputBlock>
-          
+
             <Stack direction="row" spacing={2}>
               <Button
                 style={{

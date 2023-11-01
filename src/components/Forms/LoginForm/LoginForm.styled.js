@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { layoutStyles } from '../../../stlyles/layoutStyles';
+import { layoutStyles } from '../../../styles/layoutStyles';
 import { Form } from "formik";
 
 export const Wrapper = styled.section`

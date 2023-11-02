@@ -65,11 +65,7 @@ export default function RegisterForm() {
   });
 
   const dispatch = useDispatch();
-  const [eyeOutlined, setEyeOutlined] = useState(true);
   const authUserParams = useSelector(calcSelectors.getUserInfo);
-  const handleClick = () => {
-    setEyeOutlined(!eyeOutlined);
-  };
 
   return (
     <section>
@@ -184,7 +180,7 @@ export default function RegisterForm() {
                 variant="contained"
                 type="submit"
               >
-                Register
+                Sign up
               </Button>
 
               <NavLink to="/SlimMom/login">
@@ -209,8 +205,9 @@ export default function RegisterForm() {
         )}
       </Formik>
       <ToastContainer
-        style={{ top: "35%" }}
+        style={{ top: "2%" }}
         toastStyle={{
+          width:"500px",
           border: "1px solid #FC842D",
           paddingTop: "20px",
           paddingBottom: "20px",

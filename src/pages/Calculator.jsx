@@ -7,6 +7,8 @@ import RightSidebar from "../components/RightSidebar/RightSidebar"
 const Calculator = () => {
   return (
     <Container>
+    <section>
+
        <div className="Home">
         <h1>Calculate your daily calorie intake right now</h1>
         <FormHome />
@@ -28,6 +30,7 @@ const Calculator = () => {
         </div>
         <RightSidebar />
       </div>
+    </section>
     </Container>
     
   );

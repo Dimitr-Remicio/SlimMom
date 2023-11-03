@@ -1,49 +1,58 @@
 /* Estilos para la barra lateral derecha */
 .right-sidebar {
+  width: 35%; /* Ancho de la barra lateral */
+  height: 100%; /* Altura de la barra lateral */
+  background-color: #e0e1e2b4;
+  color: rgb(117, 111, 111); /* Color del texto en la barra lateral */
+  padding: 40px 20px 84px 20px;
+  position: fixed; /* Barra lateral fija en la página */
+  top: 0;
+  right: 0;
+  font: Verdana;
+  line-height: 17.01px;
+  letter-spacing: 0.04em;
+  line-height: 17px;
 
-    width: 35%; /* Ancho de la barra lateral */
-    height: 100%; /* Altura de la barra lateral */
-    background-color: #e0e1e2b4;
-    color: rgb(117, 111, 111); /* Color del texto en la barra lateral */
-    padding: 40px 20px 84px 20px; 
-    position: fixed; /* Barra lateral fija en la página */
-    top: 0; 
-    right: 0; 
-    font:Verdana;
-    line-height: 17.01px;
-    letter-spacing: 0.04em;
-    line-height: 17px;
-    
-    
-  }
-  
-  /* Estilo para los enlaces en la barra lateral derecha (opcional) */
-  .right-sidebar a {
-    text-decoration: none;
-    letter-spacing: 0.04em;
-  }
-  
-  /* Estilo para los enlaces activos en la barra lateral derecha (opcional) */
-  .right-sidebar a.active {
-    font-weight: bold;
-  
-  }
-  
-  .box-sidebar{
-   margin-top: 30%;
-  }
-  
-.summary-sidebar{
-    width: 280px;
-    margin: 0 auto;
-  }
-
-.food-sidebar{
-    width: 280px;
-    margin: 0 auto;
-    margin-top: 20px;
+  display: flex;
+  align-items: center;
 }
-.title-sidebar{
+
+/* Estilo para los enlaces en la barra lateral derecha (opcional) */
+.right-sidebar a {
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+/* Estilo para los enlaces activos en la barra lateral derecha (opcional) */
+.right-sidebar a.active {
+  font-weight: bold;
+}
+
+.box-sidebar {
+  width: 100%;
+}
+
+.summary-sidebar {
+  width: 280px;
+  margin: 0 auto;
+  & ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  } 
+}
+
+.food-sidebar {
+  width: 280px;
+  margin: 0 auto;
+  margin-top: 20px;
+  & ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+.title-sidebar {
   color: rgb(99, 98, 98);
   font-size: 14px;
   font-weight: 700;
@@ -51,10 +60,10 @@
   letter-spacing: 0.04em;
   margin-bottom: 20px;
 }
-.li{
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    letter-spacing: 0.04em;
-    color: #9b9faa;
+.li {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
 }

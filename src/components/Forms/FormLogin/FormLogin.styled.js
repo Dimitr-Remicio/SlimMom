@@ -7,13 +7,9 @@ export const Wrapper = styled.section`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  margin: 0;
 
   @media screen and (min-width: ${layoutStyles.tablet}) {
     display: block;
-    padding: 16px;
-    margin: 0;
   }
 `;
 
@@ -32,6 +28,16 @@ export const Title = styled.h1`
   }
 `;
 
+export const InputBlock = styled.div`
+  position: relative;
+  margin-bottom: 35px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (min-device-width: 768px) {
+    margin-left: 0;
+  }
+`;
+
 export const FormLogin = styled(Form)`
   display: flex;
   justify-content: center;
@@ -44,25 +50,7 @@ export const FormLogin = styled(Form)`
   }
 `;
 
-export const WrapperInputs = styled.div`
-  width: 280px;
-  margin-bottom: 60px;
 
-  @media screen and (min-width: ${layoutStyles.tablet}) {
-    display: flex;
-    flex-direction: column;
-  }
-`;
-
-export const WrapperInputEmail = styled.div`
-  margin-bottom: 40px;
-  position: relative;
-`;
-
-export const WrapperInputPassword = styled.div`
-  margin-bottom: 0;
-  position: relative;
-`;
 
 export const Label = styled.label`
   font-family: ${layoutStyles.verdana};

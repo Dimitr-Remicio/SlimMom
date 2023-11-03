@@ -3,39 +3,38 @@ import "./RightSidebar.css"; // Asegúrate de importar tus estilos CSS
 
 function RightSidebar() {
   return (
-    <div className="right-sidebar">
-      <div className="box-sidebar">
-        <div className="summary-sidebar">
-          <h4 className="title-sidebar">Summary "date"</h4>
-          <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-          </ul>
-        </div>
-        <div className="food-sidebar">
-          <h4 className="title-sidebar">Food not recommended</h4>
-          <ul>
-          <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-          </ul>
-          </ul>
+    <>
+      <div className="right-sidebar">
+        <div className="box-sidebar">
+          <div className="summary-sidebar">
+            <h4 className="title-sidebar">Summary "date"</h4>
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+            </ul>
+          </div>
+          <div className="food-sidebar">
+            <h4 className="title-sidebar">Food not recommended</h4>
+            <ul>
+              <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+              </ul>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
 export default RightSidebar;
 
-
-
 // para side bar
-
 
 // import { useSelector } from "react-redux";
 // import { Wrapper, SummaryWrap, FoodWrap, Title, Item, Text, RedText } from './RightSideBar.styled';
@@ -60,7 +59,7 @@ export default RightSidebar;
 //                         <Text>Left</Text>
 //                         {leftCalories < 0 ?
 //                             <RedText>{leftCalories} kcal</RedText> :
-//                             <Text>{leftCalories ? leftCalories : '000'} kcal</Text> 
+//                             <Text>{leftCalories ? leftCalories : '000'} kcal</Text>
 //                         }
 //                     </Item>
 //                     <Item>
@@ -76,14 +75,14 @@ export default RightSidebar;
 //                         {/* <Text>{nOfNorm ? Math.round(nOfNorm) : '000'} %</Text> */}
 //                         {nOfNorm > 100 ?
 //                             <RedText>{nOfNorm ? Math.round(nOfNorm) : '0'} %</RedText> :
-//                             <Text>{nOfNorm ? Math.round(nOfNorm) : '0'} %</Text> 
+//                             <Text>{nOfNorm ? Math.round(nOfNorm) : '0'} %</Text>
 //                         }
 //                     </Item>
 //                 </ul>
 //             </SummaryWrap>
 //             <FoodWrap>
 //                 <Title>Food not recommended</Title>
-//                 {notAllowedProducts ? 
+//                 {notAllowedProducts ?
 //                     <ul>
 //                         {notAllowedProducts.map((prod, index) => (
 //                             <Text key={index}>

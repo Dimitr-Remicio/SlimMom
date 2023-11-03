@@ -1,31 +1,56 @@
 import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
-import * as yup from "yup";
-import { ToastContainer } from "react-toastify";
-import { NavLink } from "react-router-dom";
+import * as Yup from "yup";
 import authOperations from "../../../redux/auth/authOperations";
-import calcSelectors from "../../../redux/calculatorSlice/calculatorSelectors";
-import InputAdornment from "@mui/material/InputAdornment";
+// import authSelector from "../../../redux/auth/selectors";
+
+import { Wrapper, FormLogin, InputBlock, Error } from "./FormLogin.styled";
+import { NavLink, useNavigate } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+
 
 import Input from "@mui/material/Input";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import InputLabel from "@mui/material/InputLabel";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import IconButton from "@mui/material/IconButton";
 import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import authSelector from "../../../redux/auth/selectors";
 
-import {
-  Cut,
-  Form,
-  Error,
-  InputBlock,
-} from "./RegisterForm.styled";
 
-export default function RegisterForm() {
+
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[.-_@#$%^&+=!]).*$/;
+const emailRules = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{1,6}$/i;
+
+const SigninSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email address. Example myemail@gmail.com")
+    .min(3, "¡Must be 3 characters or more!")
+    .max(254, "¡Must be 254 characters or less!")
+    .matches(emailRules, {
+      message: "Invalid email address. Example myemail@gmail.com",
+    })
+    .required("Required field"),
+  password: Yup.string()
+    .min(
+      8,
+      "Minimum 8 characters: lowercase/uppercase Latin letters and numbers"
+    )
+    .max(50, "¡Must be 50 characters or less!")
+    .matches(passwordRules, {
+      message:
+        "Minimum of 8 characters: Latin letters in lower/upper case and numbers",
+    })
+    .required("Required field"),
+});
+
+export default function LoginForm() {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -33,58 +58,30 @@ export default function RegisterForm() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  const nav = useNavigate();
 
-  const passwordRules =
-  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).*$/;
-  const emailRules = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{1,6}$/i;
+  function handleLogout() {
+    setTimeout(()=>{
+      nav("/SlimMom/home");
+    },300);
+  }
 
-  const validationSchema = yup.object().shape({
-    name: yup
-      .string()
-      .min(3, "¡Must be 3 characters or more!")
-      .max(50, "¡Must be 50 characters or less!")
-      .required("Required field"),
-    email: yup
-      .string()
-      .matches(emailRules, "Invalid email address. Example: email@gmail.com")
-      .min(3, "¡Must be 3 characters or more!")
-      .max(254, "¡Must be 254 characters or less!")
-      .required("Required field"),
-    password: yup
-      .string()
-      .min(
-        8,
-        "Minimum 8 characters: lowercase/uppercase Latin letters and numbers"
-      )
-      .max(50, "¡Must be 50 characters or less!")
-      .matches(
-        passwordRules,
-        "Minimum 8 characters: lowercase/uppercase Latin letters and numbers"
-      )
-      .required("Required field"),
-  });
-
-  const dispatch = useDispatch();
-  const authUserParams = useSelector(calcSelectors.getUserInfo);
 
   return (
-    <section>
+    <Wrapper>
+      {/* <Title>Exit</Title> */}
       <Formik
         initialValues={{
-          name: "",
-          email: "",
           password: "",
+          email: "",
         }}
         validateOnBlur
-        onSubmit={(values, actions) => {
-          authUserParams.height === null || authUserParams.age === null
-            ? dispatch(authOperations.register(values))
-            : dispatch(
-                authOperations.register({ ...values, ...authUserParams })
-              );
-          actions.resetForm();
+        validationSchema={SigninSchema}
+        onSubmit={(values, { resetForm }) => {
+          dispatch(authOperations.logIn(values));
+          resetForm();
+          handleLogout();
         }}
-        validationSchema={validationSchema}
       >
         {({
           values,
@@ -94,26 +91,11 @@ export default function RegisterForm() {
           handleBlur,
           handleSubmit,
         }) => (
-          <Form onSubmit={handleSubmit}>
+          <FormLogin onSubmit={handleSubmit}>
             <InputBlock>
               <TextField
                 sx={{ width: "25ch", "& label": { letterSpacing: "1px" } }}
-                id="standard-basic"
-                label="Name*"
-                type="text"
-                name="name"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.name}
-                variant="standard"
-              />
-              <Cut></Cut>
-              {touched.name && errors.name && <Error>{errors.name}</Error>}
-            </InputBlock>
-            <InputBlock>
-              <TextField
-                sx={{ width: "25ch", "& label": { letterSpacing: "1px" } }}
-                id="standard-basic"
+                id="standard-basic email"
                 label="Email *"
                 type="email"
                 name="email"
@@ -122,7 +104,6 @@ export default function RegisterForm() {
                 value={values.email}
                 variant="standard"
               />
-
               {touched.email && errors.email && <Error>{errors.email}</Error>}
             </InputBlock>
 
@@ -133,7 +114,7 @@ export default function RegisterForm() {
                 variant="standard"
               >
                 <InputLabel
-                  className="input__register"
+                  className="input__login"
                   htmlFor="standard-adornment-password"
                   style={{ letterSpacing: "1px" }}
                 >
@@ -166,9 +147,9 @@ export default function RegisterForm() {
                 <Error>{errors.password}</Error>
               )}
             </InputBlock>
-
             <Stack direction="row" spacing={2}>
               <Button
+                id="loginButtonListener"
                 style={{
                   backgroundColor: "#FC842D",
                   padding: "15px 25px",
@@ -180,10 +161,11 @@ export default function RegisterForm() {
                 variant="contained"
                 type="submit"
               >
-                Sign up
+                Login
               </Button>
+              {/* </NavLink> */}
 
-              <NavLink to="/SlimMom/login">
+              <NavLink to="/SlimMom/signup">
                 <Button
                   style={{
                     border: "3px solid #FC842D",
@@ -197,25 +179,13 @@ export default function RegisterForm() {
                   }}
                   variant="outlined"
                 >
-                  Login
+                  Sign up
                 </Button>
               </NavLink>
             </Stack>
-          </Form>
+          </FormLogin>
         )}
       </Formik>
-      <ToastContainer
-        style={{ top: "2%" }}
-        toastStyle={{
-          width:"500px",
-          border: "1px solid #FC842D",
-          paddingTop: "20px",
-          paddingBottom: "20px",
-          paddingLeft: "10px",
-          paddingRight: "10px",
-          textAlign: "center",
-        }}
-      />
-    </section>
+    </Wrapper>
   );
 }

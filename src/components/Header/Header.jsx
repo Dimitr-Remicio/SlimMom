@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import { Container, Row } from "reactstrap";
 import Container from "../Container/Container";
-
 import sprite from "../../assets/sprite.svg";
 import authSelector from "../../redux/auth/selectors";
+import UserBar from "../UserMenu/UserMenu";
 
 const Header = () => {
 
@@ -24,7 +24,8 @@ const Header = () => {
       display: "Calculator",
     },
   ]
-  :  nav__links = [
+  :  
+  nav__links = [
     {
       path: "/SlimMom/login",
       display: "Login",
@@ -36,7 +37,7 @@ const Header = () => {
   ]
  }
  
- {userIsLoggedIn ? home = "/SlimMom/diary"
+ {userIsLoggedIn ? home = "/SlimMom/calculator"
 :  home = "/SlimMom"
 }
 
@@ -45,6 +46,8 @@ const Header = () => {
       <Container>
         <div className="logo">
           <div className="nav__wrapper">
+            <div className="nav">
+
             <div className="logo__cont">
               <NavLink style={{height:"10px"}} to={home}>
                 <svg className="" viewBox="0 0 20 20" width="55">
@@ -67,7 +70,10 @@ const Header = () => {
                 ))}
               </ul>
             </div>
+            </div>
+            <UserBar />
           </div>
+
         </div>
       </Container>
     </header>

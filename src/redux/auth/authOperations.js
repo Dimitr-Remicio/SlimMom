@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { toast } from "react-toastify";
+import Notiflix from "notiflix";
+
 
 const base = "http://localhost:3000/api";
 
@@ -22,35 +23,51 @@ const register = createAsyncThunk(
   "/auth/register",
   async (credential, thunkAPI) => {
     try {
-      const { data } = await axios.post(`${base}/auth/register`, credential);
-      toast.success("Registration was successful!", {
-        position: toast.POSITION.TOP_CENTER,
-      });
-      token.set(data.token);
+      const { data } = await axios.post(`${base}/auth/signup`, credential);
+      Notiflix.Notify.success(
+        'Registration was successful!',
+        {
+          timeout: 6000,
+        },
+      );
       return data;
     } catch (error) {
-      toast.error("We could not complete your registration successfully!!", {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      Notiflix.Notify.error(
+        'We could not complete your registration successfully!!',
+        {
+          timeout: 6000,
+        },
+      );
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
-const logIn = createAsyncThunk(`${base}/auth/login`, async (credential, thunkAPI) => {
+const logIn = createAsyncThunk("/auth/login", async (credential, thunkAPI) => {
   try {
     const { data } = await axios.post(`${base}/auth/login`, credential);
-
+    Notiflix.Notify.success(
+      'wellcome back, you logged successfully',
+      {
+        timeout: 6000,
+      },
+    );
     token.set(data.token);
     return data;
   } catch (error) {
+    Notiflix.Notify.error(
+      'Sorry, verify your email or password!!',
+      {
+        timeout: 6000,
+      },
+    );
     return thunkAPI.rejectWithValue(error);
   }
 });
 
-const logOut = createAsyncThunk(`${base}/auth/logout`, async (_, thunkAPI) => {
+const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.get("/auth/logout");
+    await axios.get(`${base}/auth/logout`);
     token.unset();
   } catch (error) {
     return thunkAPI.rejectWithValue();
@@ -86,8 +103,7 @@ const refreshUser = createAsyncThunk("auth/current", async (_, thunkAPI) => {
   }
 });
 
-[]
-{}
+
 
 const authOperations = {
   register,

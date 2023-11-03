@@ -1,25 +1,15 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import authOperations from "../../../redux/auth/authOperations";
-import {
-  Wrapper,
-  // Title,
-  FormLogin,
-  // WrapperInputs,
-  // Input,
-  InputBlock,
-  // Label,
-  // WrapperInputEmail,
-  // WrapperInputPassword,
-  // WrapperButtons,
-  Error,
-  // WrapperImage,
-  // Image,
-} from "./FormLogin.styled";
-import { NavLink } from "react-router-dom";
+// import authSelector from "../../../redux/auth/selectors";
+
+import { Wrapper, FormLogin, InputBlock, Error } from "./FormLogin.styled";
+import { NavLink, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
+
 
 import Input from "@mui/material/Input";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -30,13 +20,11 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import FormControl from "@mui/material/FormControl";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import authSelector from "../../../redux/auth/selectors";
 
 
-// import Input from "@mui/material/Input";
-// import Button from "@mui/material/Button";
 
-const passwordRules =
-  /^(?=.*[a-zà-ÿ])(?=.*[A-ZÀ-ß])(?=.*\d)[a-zà-ÿA-ZÀ-ß\d]{8,50}$/;
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[.-_@#$%^&+=!]).*$/;
 const emailRules = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{1,6}$/i;
 
 const SigninSchema = Yup.object().shape({
@@ -63,7 +51,6 @@ const SigninSchema = Yup.object().shape({
 
 export default function LoginForm() {
   const dispatch = useDispatch();
-  // const [eyeOutlined, setEyeOutlined] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -71,9 +58,14 @@ export default function LoginForm() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-  // const handleClick = () => {
-  //   setEyeOutlined(!eyeOutlined);
-  // }
+  const nav = useNavigate();
+
+  function handleLogout() {
+    setTimeout(()=>{
+      nav("/SlimMom/home");
+    },300);
+  }
+
 
   return (
     <Wrapper>
@@ -88,6 +80,7 @@ export default function LoginForm() {
         onSubmit={(values, { resetForm }) => {
           dispatch(authOperations.logIn(values));
           resetForm();
+          handleLogout();
         }}
       >
         {({
@@ -99,22 +92,22 @@ export default function LoginForm() {
           handleSubmit,
         }) => (
           <FormLogin onSubmit={handleSubmit}>
-          <InputBlock>
-                <TextField
-                  sx={{ width: "25ch", "& label": { letterSpacing: "1px" } }}
-                  id="standard-basic email"
-                  label="Email *"
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  variant="standard"
-                />
-                {touched.email && errors.email && <Error>{errors.email}</Error>}
-                </InputBlock>
+            <InputBlock>
+              <TextField
+                sx={{ width: "25ch", "& label": { letterSpacing: "1px" } }}
+                id="standard-basic email"
+                label="Email *"
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                variant="standard"
+              />
+              {touched.email && errors.email && <Error>{errors.email}</Error>}
+            </InputBlock>
 
-              <InputBlock>
+            <InputBlock>
               <FormControl
                 color="warning"
                 sx={{ width: "25ch" }}
@@ -144,7 +137,7 @@ export default function LoginForm() {
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
                       >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
                       </IconButton>
                     </InputAdornment>
                   }
@@ -156,6 +149,7 @@ export default function LoginForm() {
             </InputBlock>
             <Stack direction="row" spacing={2}>
               <Button
+                id="loginButtonListener"
                 style={{
                   backgroundColor: "#FC842D",
                   padding: "15px 25px",
@@ -169,6 +163,7 @@ export default function LoginForm() {
               >
                 Login
               </Button>
+              {/* </NavLink> */}
 
               <NavLink to="/SlimMom/signup">
                 <Button

@@ -7,27 +7,46 @@ import Signup from "../pages/Signup";
 import authSelector from "../redux/auth/selectors";
 import { useSelector } from "react-redux";
 
-
 const Routers = () => {
-  const userIsLoggedIn = useSelector(authSelector.getIsLoggedIn);
+  const isLoggedIn = useSelector(authSelector.getIsLoggedIn);
 
   return (
     <>
-      {userIsLoggedIn ? (
+      {/* {userIsLoggedIn ? (
         <Routes>
           <Route path="/SlimMom/calculator" element={<Calculator />} />
           <Route path="/SlimMom/diary" element={<Diary />} />
         </Routes>
-      ) : (
-        <Routes>
+      ) : ( */}
+      {/* <Routes>
           <Route path="SlimMom/" element={<Navigate to="home" />} />
           <Route path="/SlimMom/home" element={<Home />} />
           <Route path="/SlimMom/login" element={<Login />} />
           <Route path="/SlimMom/signup" element={<Signup />} />
-        </Routes>
-      )}
+        </Routes> */}
+      {/* )} */}
+
+      <Routes>
+        <Route path="SlimMom/" element={<Navigate to="home" />} />
+        <Route path="/SlimMom/home" element={<Home />} />
+        <Route path="/SlimMom/login" element={<Login />} />
+        <Route path="/SlimMom/signup" element={<Signup />} />
+        <Route
+          path="/SlimMom/calculator"
+          element={
+            isLoggedIn ? <Calculator /> : <Navigate to="/SlimMom/home" />
+          }
+        />
+        <Route
+          path="/SlimMom/diary"
+          element={isLoggedIn ? <Diary /> : <Navigate to="/SlimMom/home" />}
+        />
+      </Routes>
     </>
   );
 };
+
+// Asdfghjkl12345
+// asdsds@gmail.com
 
 export default Routers;

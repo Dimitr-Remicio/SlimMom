@@ -35,7 +35,7 @@ export default function RegisterForm() {
   };
 
   const passwordRules =
-    /^(?=.*[a-zà-ÿ])(?=.*[A-ZÀ-ß])(?=.*\d)[a-zà-ÿA-ZÀ-ß\d]{8,50}$/;
+  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).*$/;
   const emailRules = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{1,6}$/i;
 
   const validationSchema = yup.object().shape({
@@ -133,7 +133,7 @@ export default function RegisterForm() {
                 variant="standard"
               >
                 <InputLabel
-                  className="input__login"
+                  className="input__register"
                   htmlFor="standard-adornment-password"
                   style={{ letterSpacing: "1px" }}
                 >
@@ -156,7 +156,7 @@ export default function RegisterForm() {
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
                       >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
                       </IconButton>
                     </InputAdornment>
                   }

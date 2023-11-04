@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { ToastContainer } from "react-toastify";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import authOperations from "../../../redux/auth/authOperations";
 import calcSelectors from "../../../redux/calculatorSlice/calculatorSelectors";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -67,6 +67,14 @@ export default function RegisterForm() {
   const dispatch = useDispatch();
   const authUserParams = useSelector(calcSelectors.getUserInfo);
 
+  const nav = useNavigate();
+
+  function userRegister() {
+    setTimeout(()=>{
+      nav("/SlimMom/login");
+    },1000);
+  }
+
   return (
     <section>
       <Formik
@@ -83,6 +91,8 @@ export default function RegisterForm() {
                 authOperations.register({ ...values, ...authUserParams })
               );
           actions.resetForm();
+          userRegister();
+
         }}
         validationSchema={validationSchema}
       >
@@ -169,6 +179,7 @@ export default function RegisterForm() {
 
             <Stack direction="row" spacing={2}>
               <Button
+                id="signup"
                 style={{
                   backgroundColor: "#FC842D",
                   padding: "15px 25px",

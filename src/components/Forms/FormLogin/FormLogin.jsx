@@ -24,7 +24,7 @@ import authSelector from "../../../redux/auth/selectors";
 
 
 
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[.-_@#$%^&+=!]).*$/;
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[_@#$%^&+=!]).*$/;
 const emailRules = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{1,6}$/i;
 
 const SigninSchema = Yup.object().shape({
@@ -44,7 +44,7 @@ const SigninSchema = Yup.object().shape({
     .max(50, "¡Must be 50 characters or less!")
     .matches(passwordRules, {
       message:
-        "Minimum of 8 characters: Latin letters in lower/upper case and numbers",
+        "Minimum of 8 characters: lower/upper case, numbers and symbols(@#$%^&+=!)",
     })
     .required("Required field"),
 });
@@ -60,10 +60,10 @@ export default function LoginForm() {
   };
   const nav = useNavigate();
 
-  function handleLogout() {
+  function userLogin() {
     setTimeout(()=>{
       nav("/SlimMom/home");
-    },300);
+    },500);
   }
 
 
@@ -80,7 +80,7 @@ export default function LoginForm() {
         onSubmit={(values, { resetForm }) => {
           dispatch(authOperations.logIn(values));
           resetForm();
-          handleLogout();
+          userLogin();
         }}
       >
         {({
@@ -163,7 +163,6 @@ export default function LoginForm() {
               >
                 Login
               </Button>
-              {/* </NavLink> */}
 
               <NavLink to="/SlimMom/signup">
                 <Button

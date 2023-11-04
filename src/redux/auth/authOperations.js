@@ -2,11 +2,9 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import Notiflix from "notiflix";
 
-
 const base = "http://localhost:3000/api";
 
 axios.defaults.baseURL = `${base}`;
-
 
 const token = {
   set(token) {
@@ -20,23 +18,21 @@ const headers = {
   "Content-type": "application/json",
 };
 const register = createAsyncThunk(
-  "/auth/register",
+  "/auth/signup",
   async (credential, thunkAPI) => {
     try {
       const { data } = await axios.post(`${base}/auth/signup`, credential);
-      Notiflix.Notify.success(
-        'Registration was successful!',
-        {
-          timeout: 6000,
-        },
-      );
+      Notiflix.Notify.success("Registration was successful!", {
+        timeout: 6000,
+      });
+
       return data;
     } catch (error) {
       Notiflix.Notify.error(
-        'We could not complete your registration successfully!!',
+        "We could not complete your registration successfully!!",
         {
           timeout: 6000,
-        },
+        }
       );
       return thunkAPI.rejectWithValue(error);
     }
@@ -46,21 +42,15 @@ const register = createAsyncThunk(
 const logIn = createAsyncThunk("/auth/login", async (credential, thunkAPI) => {
   try {
     const { data } = await axios.post(`${base}/auth/login`, credential);
-    Notiflix.Notify.success(
-      'wellcome back, you logged successfully',
-      {
-        timeout: 6000,
-      },
-    );
+    Notiflix.Notify.success("wellcome back, you logged successfully", {
+      timeout: 6000,
+    });
     token.set(data.token);
     return data;
   } catch (error) {
-    Notiflix.Notify.error(
-      'Sorry, verify your email or password!!',
-      {
-        timeout: 6000,
-      },
-    );
+    Notiflix.Notify.error("Sorry, verify your email or password!!", {
+      timeout: 6000,
+    });
     return thunkAPI.rejectWithValue(error);
   }
 });
@@ -102,8 +92,6 @@ const refreshUser = createAsyncThunk("auth/current", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error);
   }
 });
-
-
 
 const authOperations = {
   register,

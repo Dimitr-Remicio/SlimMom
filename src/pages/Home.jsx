@@ -10,8 +10,7 @@ import "../styles/Home.css";
 import Diary from './DiaryPage';
 
 import FormHome from "../components/Forms/FormHome/FormHome";
-import { fetchAll } from '../redux/dairy/dairyOperations';
-
+import calcOperation from '../redux/calculatorSlice/calcOperation';
 const Home = () => {
 
   const userIsLoggedIn = useSelector(authSelector.getIsLoggedIn);
@@ -19,7 +18,7 @@ const Home = () => {
   const dispatch = useDispatch();
   // const state = useSelector((state) => state)
   const findProducts = () => {
-    dispatch(fetchAll())
+    dispatch(calcOperation.calc())
   };
 
 
@@ -43,7 +42,8 @@ const Home = () => {
               textTransform: "none",
             }}
             variant="contained"
-            href="#contained-buttons"
+            
+            onClick={findProducts}
           >
             Start losing weight
           </Button>

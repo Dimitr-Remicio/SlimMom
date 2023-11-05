@@ -2,9 +2,11 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import Notiflix from "notiflix";
 
-const base = "http://localhost:3000/api";
+// raiz
+// const base = "https://slimmomapi-dev-xdce.2.us-1.fl0.io/api";
+// dairodev
+const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
 
-axios.defaults.baseURL = `${base}`;
 
 const token = {
   set(token) {
@@ -21,7 +23,7 @@ const register = createAsyncThunk(
   "/auth/signup",
   async (credential, thunkAPI) => {
     try {
-      const { data } = await axios.post(`${base}/auth/signup`, credential);
+      const { data } = await axios.post(`${base}/users/signup`, credential);
       Notiflix.Notify.success("Registration was successful!", {
         timeout: 6000,
       });
@@ -41,7 +43,7 @@ const register = createAsyncThunk(
 
 const logIn = createAsyncThunk("/auth/login", async (credential, thunkAPI) => {
   try {
-    const { data } = await axios.post(`${base}/auth/login`, credential);
+    const { data } = await axios.post(`${base}/users/login`, credential);
     Notiflix.Notify.success("wellcome back, you logged successfully", {
       timeout: 6000,
     });
@@ -57,7 +59,7 @@ const logIn = createAsyncThunk("/auth/login", async (credential, thunkAPI) => {
 
 const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.get(`${base}/auth/logout`);
+    await axios.get(`${base}/users/logout`);
     token.unset();
   } catch (error) {
     return thunkAPI.rejectWithValue();

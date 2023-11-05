@@ -7,8 +7,8 @@ const initialState = {
     email: '',
     height: null,
     age: null,
-    currentWeight: null,
-    desiredWeight: null,
+    weightCurrent: null,
+    weightDesired: null,
     bloodType: null,
     createdAt: '',
   },
@@ -53,8 +53,8 @@ const authSlice = createSlice({
         email: '',
         height: null,
         age: null,
-        currentWeight: null,
-        desiredWeight: null,
+        weightCurrent: null,
+        weightDesired: null,
         bloodType: null,
       };
       state.token = null;

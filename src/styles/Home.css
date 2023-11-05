@@ -5,7 +5,9 @@
     align-items: center;
 
     transition: all 500ms ease-in-out;
-    
+
+    transform: translate(0%, -1em);
+
     & h1{
         font-family: "Verdana bold", sans-serif;
         font-size: 30px;

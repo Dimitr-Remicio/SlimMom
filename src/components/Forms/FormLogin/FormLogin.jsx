@@ -91,7 +91,7 @@ export default function LoginForm() {
           handleBlur,
           handleSubmit,
         }) => (
-          <FormLogin onSubmit={handleSubmit}>
+          <FormLogin id="FormLogin" onSubmit={handleSubmit}>
             <InputBlock>
               <TextField
                 sx={{ width: "25ch", "& label": { letterSpacing: "1px" } }}

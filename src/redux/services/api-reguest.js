@@ -2,9 +2,12 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { toastStyles } from '../../styles/toastStyled.js';
 
-axios.defaults.baseURL = `${process.env.REACT_APP_BASE_URL}`;
 
-const base = 'http://localhost:3000/api';
+// raiz
+// const base = "https://slimmomapi-dev-xdce.2.us-1.fl0.io/api";
+// dairodev
+const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
+axios.defaults.baseURL = `${base}`;
 
 export const searchProduct = async (search) => {
   try {

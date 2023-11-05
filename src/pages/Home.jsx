@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 // import BackAnimated from "../components/BackAnimated/BackAnimated";
 import authSelector from '../redux/auth/selectors';
 import "../styles/Home.css";
+import Modal from "../components/Modal/Modal"
 
 import Diary from './DiaryPage';
 
@@ -13,7 +14,22 @@ import FormHome from "../components/Forms/FormHome/FormHome";
 import { fetchAll } from '../redux/dairy/dairyOperations';
 
 const Home = () => {
+// OPNE Y CLOSE 
+const [isModalOpen, setModalOpen] = useState(false); // Estado para controlar la apertura y cierre del modal
+// ...
 
+const handleOpenModal = () => {
+  console.log("Opening modal");
+  setModalOpen(true);
+};
+
+const handleCloseModal = () => {
+  console.log("Closing modal");
+  setModalOpen(false);
+};
+
+
+ 
   const userIsLoggedIn = useSelector(authSelector.getIsLoggedIn);
   // const products = useSelector(getAllProducts);
   const dispatch = useDispatch();
@@ -33,21 +49,23 @@ const Home = () => {
         <h1>Calculate your daily calorie intake right now</h1>
         <FormHome />
         <div style={{ translate: "-25px" }}>
-          <Button
-            style={{
-              backgroundColor: "#FC842D",
-              padding: "15px 20px",
-              width: "18rem",
-              borderRadius: "20em",
-              fontFamily: "Verdana bold",
-              textTransform: "none",
-            }}
-            variant="contained"
-            href="#contained-buttons"
-          >
-            Start losing weight
-          </Button>
+        <Button
+  style={{
+    backgroundColor: "#FC842D",
+    padding: "15px 20px",
+    width: "18rem",
+    borderRadius: "20em",
+    fontFamily: "Verdana bold",
+    textTransform: "none",
+  }}
+  variant="contained"
+  onClick={handleOpenModal} // Abre el modal al hacer clic en el botón
+>
+  Start losing weight
+</Button>
 
+          <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+      
           {/* <button onClick={findProducts}>show in console prod</button> */}
           {/* {
             fetchAll.map((e) => (<li key={id}>{e}</li>))

@@ -1,13 +1,31 @@
 // import React from "react";
 import "./header.css";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 // import { Container, Row } from "reactstrap";
 import Container from "../Container/Container";
-
 import sprite from "../../assets/sprite.svg";
+import authSelector from "../../redux/auth/selectors";
+import UserBar from "../UserMenu/UserMenu";
 
 const Header = () => {
-  const nav__links = [
+
+  const userIsLoggedIn = useSelector(authSelector.getIsLoggedIn);
+  let nav__links = [];
+  let home = "";
+
+  {userIsLoggedIn ? nav__links = [
+    {
+      path: "/SlimMom/diary",
+      display: "Diary",
+    },
+    {
+      path: "/SlimMom/calculator",
+      display: "Calculator",
+    },
+  ]
+  :  
+  nav__links = [
     {
       path: "/SlimMom/login",
       display: "Login",
@@ -16,14 +34,22 @@ const Header = () => {
       path: "/SlimMom/signup",
       display: "Signup",
     },
-  ];
+  ]
+ }
+ 
+ {userIsLoggedIn ? home = "/SlimMom/calculator"
+:  home = "/SlimMom"
+}
+
   return (
     <header className="header">
       <Container>
         <div className="logo">
           <div className="nav__wrapper">
+            <div className="nav">
+
             <div className="logo__cont">
-              <NavLink style={{height:"10px"}} to="/SlimMom">
+              <NavLink style={{height:"10px"}} to={home}>
                 <svg className="" viewBox="0 0 20 20" width="55">
                   <use href={sprite + "#logo"}></use>
                 </svg>
@@ -44,7 +70,10 @@ const Header = () => {
                 ))}
               </ul>
             </div>
+            </div>
+            <UserBar />
           </div>
+
         </div>
       </Container>
     </header>

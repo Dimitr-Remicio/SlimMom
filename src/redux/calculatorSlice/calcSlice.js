@@ -4,12 +4,12 @@ import calcOperation from './calcOperation';
 const calcSlice = createSlice({
   name: 'calculator',
   initialState: {
-    userData: { dailyRate: '000', notRecFood: [] },
+    userData: { dailyRate: '000', notHealthy: [] },
     userInfo: {
       height: null,
       age: null,
-      currentWeight: null,
-      desiredWeight: null,
+      weightCurrent: null,
+      weightDesired: null,
       bloodType: '1',
     },
     loaderShow: false,
@@ -43,18 +43,18 @@ const calcSlice = createSlice({
     updateUser: (state, action) => {
       state.userInfo.height = action.payload.height;
       state.userInfo.age = action.payload.age;
-      state.userInfo.desiredWeight = action.payload.desiredWeight;
+      state.userInfo.weightDesired = action.payload.weightDesired;
       state.userInfo.bloodType = action.payload.bloodType;
-      state.userInfo.currentWeight = action.payload.currentWeight;
+      state.userInfo.weightCurrent = action.payload.weightCurrent;
     },
-    wipeUser: (state, _) => {
+    wipeUser: (state) => {
       state.userInfo.height = null;
       state.userInfo.age = null;
-      state.userInfo.desiredWeight = null;
+      state.userInfo.weightDesired = null;
       state.userInfo.bloodType = '1';
-      state.userInfo.currentWeight = null;
+      state.userInfo.weightCurrent = null;
       state.userData.dailyRate = '000';
-      state.userData.notRecFood = [];
+      state.userData.notHealthy = [];
     },
   },
 });

@@ -7,8 +7,8 @@ const initialState = {
     email: '',
     height: null,
     age: null,
-    currentWeight: null,
-    desiredWeight: null,
+    weightCurrent: null,
+    weightDesired: null,
     bloodType: null,
     createdAt: '',
   },
@@ -24,8 +24,7 @@ const authSlice = createSlice({
   extraReducers: {
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
+      state.isLoggedIn = false;
       state.loaderShow = false;
     },
     [authOperations.register.pending](state) {
@@ -54,8 +53,8 @@ const authSlice = createSlice({
         email: '',
         height: null,
         age: null,
-        currentWeight: null,
-        desiredWeight: null,
+        weightCurrent: null,
+        weightDesired: null,
         bloodType: null,
       };
       state.token = null;

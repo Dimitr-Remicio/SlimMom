@@ -87,12 +87,6 @@ const Input = styled.input`
   }
 `;
 
-const FormButtons = styled.div`
-  display: flex;
-  flex-direction: column;
-    display: block;
-`;
-
 
 
 const PasswordEye = styled.div`

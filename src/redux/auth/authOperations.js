@@ -1,10 +1,11 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { toast } from "react-toastify";
+import Notiflix from "notiflix";
 
-const base = "http://localhost:3000/api";
-
-axios.defaults.baseURL = `${base}`;
+// raiz
+// const base = "https://slimmomapi-dev-xdce.2.us-1.fl0.io/api";
+// dairodev
+const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
 
 
 const token = {
@@ -19,38 +20,46 @@ const headers = {
   "Content-type": "application/json",
 };
 const register = createAsyncThunk(
-  "/auth/register",
+  "/auth/signup",
   async (credential, thunkAPI) => {
     try {
-      const { data } = await axios.post(`${base}/auth/register`, credential);
-      toast.success("Registration was successful!", {
-        position: toast.POSITION.TOP_CENTER,
+      const { data } = await axios.post(`${base}/users/signup`, credential);
+      Notiflix.Notify.success("Registration was successful!", {
+        timeout: 6000,
       });
-      token.set(data.token);
+
       return data;
     } catch (error) {
-      toast.error("We could not complete your registration successfully!!", {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      Notiflix.Notify.error(
+        "We could not complete your registration successfully!!",
+        {
+          timeout: 6000,
+        }
+      );
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
-const logIn = createAsyncThunk(`${base}/auth/login`, async (credential, thunkAPI) => {
+const logIn = createAsyncThunk("/auth/login", async (credential, thunkAPI) => {
   try {
-    const { data } = await axios.post(`${base}/auth/login`, credential);
-
+    const { data } = await axios.post(`${base}/users/login`, credential);
+    Notiflix.Notify.success("wellcome back, you logged successfully", {
+      timeout: 6000,
+    });
     token.set(data.token);
     return data;
   } catch (error) {
+    Notiflix.Notify.error("Sorry, verify your email or password!!", {
+      timeout: 6000,
+    });
     return thunkAPI.rejectWithValue(error);
   }
 });
 
-const logOut = createAsyncThunk(`${base}/auth/logout`, async (_, thunkAPI) => {
+const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.get("/auth/logout");
+    await axios.get(`${base}/users/logout`);
     token.unset();
   } catch (error) {
     return thunkAPI.rejectWithValue();
@@ -85,9 +94,6 @@ const refreshUser = createAsyncThunk("auth/current", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error);
   }
 });
-
-[]
-{}
 
 const authOperations = {
   register,

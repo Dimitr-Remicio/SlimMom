@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import {
   fetchAll,
-  fetchProducts,
+  // fetchProducts,
   fetchDairy,
   addProduct,
   removeProduct,
@@ -54,10 +54,10 @@ const summaryForDaySlice = createSlice({
       state.error = null
     },
 
-    [fetchProducts.fulfilled]: (state, { payload }) => {
-      state.productList = payload;
-      state.error = null
-    },
+    // [fetchProducts.fulfilled]: (state, { payload }) => {
+    //   state.productList = payload;
+    //   state.error = null
+    // },
 
     [addProduct.fulfilled]: (state, { payload }) => {
       state.products = payload.result.products;
@@ -75,35 +75,35 @@ const summaryForDaySlice = createSlice({
       state.summary.nOfNorm = payload.result.summary.nOfNorm;
       state.error = null
     },
-    [fetchProducts.rejected]: (state, { payload }) => {
-      state.error = payload;
-    },
+    // [fetchProducts.rejected]: (state, { payload }) => {
+    //   state.error = payload;
+    // },
     [fetchAll.rejected]: (state, { payload }) => {
       state.error = payload;
     },
 
-    [fetchAll.pending]: (state, _) => {
+    [fetchAll.pending]: (state, ) => {
       state.error = null;
     },
-    [fetchProducts.pending]: (state, _) => {
-      state.error = null;
-    },
+    // [fetchProducts.pending]: (state, ) => {
+    //   state.error = null;
+    // },
     [addProduct.rejected]: (state, { payload }) => {
       state.error = payload;
     },
-    [addProduct.pending]: (state, _) => {
+    [addProduct.pending]: (state, ) => {
       state.error = null;
     },
     [fetchDairy.rejected]: (state, { payload }) => {
       state.error = payload;
     },
-    [fetchDairy.pending]: (state, _) => {
+    [fetchDairy.pending]: (state, ) => {
       state.error = null;
     },
     [removeProduct.rejected]: (state, { payload }) => {
       state.error = payload;
     },
-    [removeProduct.pending]: (state, _) => {
+    [removeProduct.pending]: (state, ) => {
       state.error = null;
     },
   },

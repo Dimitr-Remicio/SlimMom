@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { ToastContainer } from "react-toastify";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import authOperations from "../../../redux/auth/authOperations";
 import calcSelectors from "../../../redux/calculatorSlice/calculatorSelectors";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -18,24 +18,21 @@ import IconButton from "@mui/material/IconButton";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 
-import {
-  Cut,
-  Form,
-  Error,
-  InputBlock,
-} from "./RegisterForm.styled";
+import { Cut, Form, Error, InputBlock } from "./RegisterForm.styled";
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleClickShowConfirmPassword = () => setShowConfirmPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
-  const passwordRules =
-    /^(?=.*[a-zà-ÿ])(?=.*[A-ZÀ-ß])(?=.*\d)[a-zà-ÿA-ZÀ-ß\d]{8,50}$/;
+  const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).*$/;
   const emailRules = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{1,6}$/i;
 
   const validationSchema = yup.object().shape({
@@ -65,11 +62,15 @@ export default function RegisterForm() {
   });
 
   const dispatch = useDispatch();
-  const [eyeOutlined, setEyeOutlined] = useState(true);
   const authUserParams = useSelector(calcSelectors.getUserInfo);
-  const handleClick = () => {
-    setEyeOutlined(!eyeOutlined);
-  };
+
+  const nav = useNavigate();
+
+  function userRegister() {
+    setTimeout(() => {
+      nav("/SlimMom/login");
+    }, 1000);
+  }
 
   return (
     <section>
@@ -78,6 +79,7 @@ export default function RegisterForm() {
           name: "",
           email: "",
           password: "",
+          confirmPassword: "",
         }}
         validateOnBlur
         onSubmit={(values, actions) => {
@@ -87,6 +89,7 @@ export default function RegisterForm() {
                 authOperations.register({ ...values, ...authUserParams })
               );
           actions.resetForm();
+          userRegister();
         }}
         validationSchema={validationSchema}
       >
@@ -98,7 +101,10 @@ export default function RegisterForm() {
           handleBlur,
           handleSubmit,
         }) => (
-          <Form onSubmit={handleSubmit}>
+          <Form
+            onSubmit={handleSubmit}
+            style={{ height: "auto", margin: "0 auto" }}
+          >
             <InputBlock>
               <TextField
                 sx={{ width: "25ch", "& label": { letterSpacing: "1px" } }}
@@ -137,7 +143,7 @@ export default function RegisterForm() {
                 variant="standard"
               >
                 <InputLabel
-                  className="input__login"
+                  className="input__register"
                   htmlFor="standard-adornment-password"
                   style={{ letterSpacing: "1px" }}
                 >
@@ -160,7 +166,52 @@ export default function RegisterForm() {
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
                       >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+              {touched.password && errors.password && (
+                <Error>{errors.password}</Error>
+              )}
+            </InputBlock>
+
+            <InputBlock>
+              <FormControl
+                color="warning"
+                sx={{ width: "25ch" }}
+                variant="standard"
+              >
+                <InputLabel
+                  className="input__register"
+                  htmlFor="standard-adornment-password"
+                  style={{ letterSpacing: "1px" }}
+                >
+                  Confirm Password*
+                </InputLabel>
+                <Input
+                  color="warning"
+                  focused="true"
+                  id="standard-adornment-password"
+                  label="confirmPassword *"
+                  name="confirmPassword"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.confirmPassword}
+                  type={showConfirmPassword ? "text" : "password"}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowConfirmPassword}
+                        onMouseDown={handleMouseDownPassword}
+                      >
+                        {showConfirmPassword ? (
+                          <Visibility />
+                        ) : (
+                          <VisibilityOff />
+                        )}
                       </IconButton>
                     </InputAdornment>
                   }
@@ -173,6 +224,7 @@ export default function RegisterForm() {
 
             <Stack direction="row" spacing={2}>
               <Button
+                id="signup"
                 style={{
                   backgroundColor: "#FC842D",
                   padding: "15px 25px",
@@ -184,7 +236,7 @@ export default function RegisterForm() {
                 variant="contained"
                 type="submit"
               >
-                Register
+                Sign up
               </Button>
 
               <NavLink to="/SlimMom/login">
@@ -209,8 +261,9 @@ export default function RegisterForm() {
         )}
       </Formik>
       <ToastContainer
-        style={{ top: "35%" }}
+        style={{ top: "2%" }}
         toastStyle={{
+          width: "500px",
           border: "1px solid #FC842D",
           paddingTop: "20px",
           paddingBottom: "20px",

@@ -9,14 +9,16 @@ import "./Calculator.css";
 import Button from "@mui/material/Button";
 
 import * as Yup from "yup";
-import { Formik, ErrorMessage } from "formik";
+import { Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
 import authSelector from "../../redux/auth/selectors";
 import { updateUser } from "../../redux/calculatorSlice/calcSlice";
 import calcOperation from "../../redux/calculatorSlice/calcOperation";
 
-import { useEffect } from "react";
+
+import { useEffect, useState } from "react";
+import Modal from "../Modal/Modal";
 
 const CalculatorSchema = Yup.object().shape({
   height: Yup.number()
@@ -49,10 +51,25 @@ const CalculatorSchema = Yup.object().shape({
 });
 
 const CalcPublic = (props) => {
-  const { showModal, setShowModal, title } = props;
+  const { title } = props;
+  // OPNE Y CLOSE
+  const [isModalOpen, setModalOpen] = useState(false); // Estado para controlar la apertura y cierre del modal
+  // ...
+
+  const handleOpenModal = () => {
+    console.log("Opening modal");
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    console.log("Closing modal");
+    setModalOpen(false);
+  };
+
   const authUserParams = useSelector(calcSelectors.getUserInfo);
   //   const LoaderStatus = useSelector(calcSelectors.getLoaderStatus);
   const isLoggedIn = useSelector(authSelector.getIsLoggedIn);
+
   const FullUser = useSelector(authSelector.getFullUser);
   const dispatch = useDispatch();
 
@@ -212,25 +229,49 @@ const CalcPublic = (props) => {
                   </Grid>
                 </Grid>
               </form>
-              <Button
-                form="calculatorForm"
-                type="submit"
-                style={{
-                  backgroundColor: "#FC842D",
-                  padding: "15px 20px",
-                  width: "18rem",
-                  borderRadius: "20em",
-                  fontFamily: "Verdana bold",
-                  textTransform: "none",
-                  position: "absolute",
-                  left: "0",
-                  bottom: "0",
-                  transform: "translate(25%)",
-                }}
-                variant="contained"
-              >
-                Start losing weight
-              </Button>
+
+              {isLoggedIn ? (
+                <Button
+                  form="calculatorForm"
+                  type="submit"
+                  style={{
+                    backgroundColor: "#FC842D",
+                    padding: "15px 20px",
+                    width: "18rem",
+                    borderRadius: "20em",
+                    fontFamily: "Verdana bold",
+                    textTransform: "none",
+                    position: "absolute",
+                    left: "0",
+                    bottom: "0",
+                    transform: "translate(25%)",
+                  }}
+                  variant="contained"
+                >
+                  Start losing weight
+                </Button>
+              ) : (
+                <Button
+                  form="calculatorForm"
+                  type="submit"
+                  style={{
+                    backgroundColor: "#FC842D",
+                    padding: "15px 20px",
+                    width: "18rem",
+                    borderRadius: "20em",
+                    fontFamily: "Verdana bold",
+                    textTransform: "none",
+                    position: "absolute",
+                    left: "0",
+                    bottom: "0",
+                    transform: "translate(25%)",
+                  }}
+                  variant="contained"
+                  onClick={handleOpenModal}
+                >
+                  Start losing weight
+                </Button>
+              )}
             </>
           );
         }}
@@ -241,6 +282,7 @@ const CalcPublic = (props) => {
           <ModalContent setShowModal={setShowModal}></ModalContent>
         </Modal>
       )} */}
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
     </>
   );
 };

@@ -10,7 +10,7 @@ const Modal = ({ isOpen, onClose }) => {
     position: 'fixed',
     top: '50%', // Centra verticalmente
     left: '50%', // Centra horizontalmente
-    transform: 'translate(32%, -90%)', // Centra tanto horizontal como verticalmente
+    transform: 'translate(15%, -60%)', // Centra tanto horizontal como verticalmente
     border: '1px solid #E0E0E0',
     background: 'white',
     zIndex: 9999, // Asegura que el modal esté por encima de otros elementos
@@ -92,7 +92,7 @@ const buttonStar={
 
   return (
     isOpen && (
-      <div>
+      <div >
         
         <div style={modalStyles}>
           {/* Contenido del modal */}

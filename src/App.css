@@ -5,12 +5,12 @@
   padding: 0;
   box-sizing: border-box;
   letter-spacing: 1px;
-
 }
 
 body {
   font-family: "Verdana", sans-serif;
   height: 100vh;
+  overflow: hidden;
 }
 #root {
   height: 100%;
@@ -27,7 +27,6 @@ p {
   margin: 0;
 
   transition: all 500ms ease-in-out;
-
 }
 
 p {
@@ -47,13 +46,36 @@ ul {
 a {
   text-decoration: none;
   color: unset;
-  
 }
 
+.bg_blur{
+  position: absolute;
+
+  width: 100vw;
+  height: 105vh;
+
+  top: -10rem;
+  background-color: rgba(255, 255, 255, 0.434);
+  backdrop-filter: blur(18px);
+  
+  z-index: 6;
+  transition: all 800ms ease;
+}
+.bg__layout {
+  transition: all 800ms ease;
+  position: relative;
+  z-index: 50;
+  width: auto;
+  
+}
 section {
   padding-top: 50px;
   padding-bottom: 50px;
+  z-index: 10;
+  display: flex;
 
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .Layout {
@@ -68,18 +90,71 @@ section {
   margin: 0 auto;
 
   z-index: 10;
+  transition: all 800ms ease;
 
 }
+
 
 .blur {
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
-
+  transition: all 800ms ease;
+  
   position: fixed;
   z-index: 6;
   /* backdrop-filter: blur(2vmax) brightness(90%); */
   /* filter: brightness(90%); */
   /* -webkit-backdrop-filter: blur(13vmax); */
+}
+
+@media screen and (min-width: 768px) {
+  *{
+
+    transition: all 500ms ease;
+  }
+  .bg__layout {
+    position: relative;
+    z-index: 50;
+    width: auto;
+    
+  }
+  section {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
+@media screen and (min-width: 1020px) {
+  *{
+
+    transition: all 600ms ease;
+  }
+
+  .bg_blur{
+    position: absolute;
+
+    display: none;
+  
+    width: 0;
+    height: 0;
+  
+    backdrop-filter: blur(0);
+  
+    z-index: 6;
+
+  transition: all 800ms ease;
+  }
+  .bg__layout {
+    position: relative;
+    z-index: 50;
+    width: auto;
+    
+  }
+  section {
+    display:block;
+  }
 }

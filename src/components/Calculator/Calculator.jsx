@@ -16,7 +16,6 @@ import authSelector from "../../redux/auth/selectors";
 import { updateUser } from "../../redux/calculatorSlice/calcSlice";
 import calcOperation from "../../redux/calculatorSlice/calcOperation";
 
-
 import { useEffect, useState } from "react";
 import Modal from "../Modal/Modal";
 
@@ -54,7 +53,7 @@ const CalcPublic = (props) => {
   const { title } = props;
   // OPNE Y CLOSE
   const [isModalOpen, setModalOpen] = useState(false); // Estado para controlar la apertura y cierre del modal
-  // ...
+
 
   const handleOpenModal = () => {
     console.log("Opening modal");
@@ -111,9 +110,6 @@ const CalcPublic = (props) => {
           } else {
             dispatch(calcOperation.calc(values));
           }
-
-          setShowModal(true);
-
           actions.setSubmitting(false);
 
           if (!isLoggedIn) {
@@ -282,7 +278,7 @@ const CalcPublic = (props) => {
           <ModalContent setShowModal={setShowModal}></ModalContent>
         </Modal>
       )} */}
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}/>
     </>
   );
 };

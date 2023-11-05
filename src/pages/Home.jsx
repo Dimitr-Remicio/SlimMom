@@ -14,19 +14,19 @@ import FormHome from "../components/Forms/FormHome/FormHome";
 import { fetchAll } from '../redux/dairy/dairyOperations';
 
 const Home = () => {
-// OPNE Y CLOSE 
-const [isModalOpen, setModalOpen] = useState(false); // Estado para controlar la apertura y cierre del modal
-// ...
+// // OPNE Y CLOSE 
+// const [isModalOpen, setModalOpen] = useState(false); // Estado para controlar la apertura y cierre del modal
+// // ...
 
-const handleOpenModal = () => {
-  console.log("Opening modal");
-  setModalOpen(true);
-};
+// const handleOpenModal = () => {
+//   console.log("Opening modal");
+//   setModalOpen(true);
+// };
 
-const handleCloseModal = () => {
-  console.log("Closing modal");
-  setModalOpen(false);
-};
+// const handleCloseModal = () => {
+//   console.log("Closing modal");
+//   setModalOpen(false);
+// };
 
 
  
@@ -59,12 +59,12 @@ const handleCloseModal = () => {
     textTransform: "none",
   }}
   variant="contained"
-  onClick={handleOpenModal} // Abre el modal al hacer clic en el botón
+  // onClick={handleOpenModal} // Abre el modal al hacer clic en el botón
 >
   Start losing weight
 </Button>
 
-          <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+          {/* <Modal isOpen={isModalOpen} onClose={handleCloseModal} /> */}
       
           {/* <button onClick={findProducts}>show in console prod</button> */}
           {/* {

@@ -34,12 +34,16 @@ const Routers = () => {
         <Route
           path="/SlimMom/calculator"
           element={
-            isLoggedIn ? <Calculator /> : <Navigate to="/SlimMom/home" />
+            isLoggedIn ? <Calculator /> 
+            : <Calculator /> 
+            // : <Navigate to="/SlimMom/home" />
           }
         />
         <Route
           path="/SlimMom/diary"
-          element={isLoggedIn ? <Diary /> : <Navigate to="/SlimMom/home" />}
+          element={isLoggedIn ? <Diary /> 
+          :  <Diary /> }
+          // : <Navigate to="/SlimMom/home" />}
         />
       </Routes>
     </>

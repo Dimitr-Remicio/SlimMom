@@ -41,7 +41,7 @@ const Layout = () => {
           style={{ display: "flex", alignItems: "center", margin: "0auto" }}
         >
           <Container>
-            {userIsLoggedIn ? null : <BackAnimated />}
+            {/* {userIsLoggedIn ? null : <BackAnimated />} */}
             <div
               style={{
                 position: "relative",

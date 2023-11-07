@@ -1,6 +1,6 @@
+import React, { useEffect } from 'react';
 import Button from "@mui/material/Button";
-import { NavLink } from "react-router-dom";
-
+import { NavLink } from 'react-router-dom';
 import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import { wipeUser } from "../../redux/calculatorSlice/calcSlice";
@@ -13,7 +13,18 @@ const Modal = ({ isOpen, onClose }) => {
   console.log(notHealthy);
 
   const dispatch = useDispatch();
+  const modalStyles = {
+    width: '672px',
+    height: '542px',
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(15%, -44%)',
+    border: '1px solid #E0E0E0',
+    background: 'white',
+    zIndex: 9999,
 
+  };
 
   const titleStyles = {
     fontFamily: "Verdana",
@@ -23,7 +34,9 @@ const Modal = ({ isOpen, onClose }) => {
     letterSpacing: "0em",
     textAlign: "center",
     marginTop: "50px",
+
   };
+
   const close = {
     position: "absolute",
     width:"10px",
@@ -34,6 +47,7 @@ const Modal = ({ isOpen, onClose }) => {
     color: "black",
 
   };
+
   const valuekcal = {
     fontFamily: "Verdana",
     fontSize: "48px",
@@ -41,9 +55,10 @@ const Modal = ({ isOpen, onClose }) => {
     lineHeight: "32px",
     letterSpacing: "0.04em",
     textAlign: "center",
-    color: "#264061",
-    marginTop: "30px",
+    color:"#264061",
+    marginTop: "30px"
   };
+
   const kcla = {
     fontFamily: "Verdana",
     fontSize: "16px",
@@ -51,29 +66,31 @@ const Modal = ({ isOpen, onClose }) => {
     lineHeight: "32px",
     letterSpacing: "0.04em",
     textAlign: "center",
-    color: "#264061",
-    marginTop: "30px",
+    color:"#264061",
+    marginTop: "30px"
   };
+
   const vectorStyles = {
     minWidth: "70px",
     width: "100%",
     maxWidth: "330px",
     height: "1px", // Altura de 1 píxel para que parezca una línea
     border: "1px solid #E0E0E0", // Border de 1 píxel sólido de color negro
+
   };
 
   const notfoot = {
-    fontfamily: "Verdana",
-    fontSize: "20px",
-    fontWeight: "700",
-    lineHeight: "17px",
-    letterSpacing: "0.04em",
+    fontFamily: "Verdana", // Fixed the typo in fontFamily
+    lineHeight: "36px",
+    letterSpacing: "0em",
     textAlign: "center",
     marginTop: "40px",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
   };
+
+ 
   const buttonStar = {
     backgroundColor: "#FC842D",
     padding: "15px 20px",
@@ -100,7 +117,27 @@ const Modal = ({ isOpen, onClose }) => {
     color: "#9B9FAA",
     marginTop: "20px",
     textAlign: "center",
+
   };
+const listnotfoot ={
+  fontFamily: "Verdana",
+  fontFize: "14px",
+  fontWeight: "400",
+  lineHeight: "17px",
+  letterSpacing: "0.04em",
+ 
+  color: "#9B9FAA",
+  marginTop: "50px",
+  textAlign: "center",
+  
+
+
+}
+  
+  useEffect(() => {
+    console.log(dailyRate);
+    console.log(notHealthy);
+  }, [dailyRate, notHealthy]);
 
   return (
     isOpen && (
@@ -130,7 +167,6 @@ const Modal = ({ isOpen, onClose }) => {
                   <li key={index}> • {food}</li>
                 ))}
               </ul>
-
             <NavLink to="/SlimMom/signup">
               <button style={buttonStar}> Start losing weight</button>
             </NavLink>

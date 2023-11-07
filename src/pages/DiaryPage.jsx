@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
 import sprite from "../assets/sprite.svg";
 import RightSidebar from "../components/RightSidebar/RightSidebar";
 import DiaryDateCalendar from "../components/DiaryDateCalendar/DiaryDateCalendar";
+import DiaryProductForm from "../components/DiaryProductForm/DiaryProductForm";
+import DiaryProductsList from "../components/DiaryProductList/DiaryProductList";
+import { changeToggle } from "../redux/dairy/dairyReducer";
 
 const inputStyle = {
   borderTop: "none",
@@ -19,6 +23,7 @@ const inputStyle = {
 };
 
 function DiaryPage() {
+  const dispatch = useDispatch();
   const [productName, setProductName] = useState("");
   const [grams, setGrams] = useState("");
   const [products, setProducts] = useState([]);
@@ -34,7 +39,10 @@ function DiaryPage() {
   return (
     <section style={{ position: "relative", maxWidth: "700px", top: "0" }}>
       <DiaryDateCalendar />
-      <div>
+      <DiaryProductForm />
+      <DiaryProductsList />
+
+      {/* <div>
         <input
           type="text"
           placeholder="Enter product name"
@@ -58,13 +66,16 @@ function DiaryPage() {
             border: "none",
             boxShadow: "rgba(252, 132, 45, 0.5) 0px 4px 10px",
           }}
-          onClick={handleAddProduct}
+          // onClick={() => {
+          //   handleAddProduct();
+          //   dispatch(changeToggle(true));
+          // }}
         >
           <svg className="" viewBox="0 0 12 16" width="55" height="50">
             <use href={sprite + "#plus-ico"}></use>
           </svg>
         </button>
-      </div>
+      </div> */}
       {products.length === 0 && (
         <div style={{ margin: "60px 13px" }}>
           No products in diary for this day

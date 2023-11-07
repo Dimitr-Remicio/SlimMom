@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <section>
-      <button onClick={findProduct}>show in console prod</button>
+      {/* <button onClick={findProduct}>show in console prod</button> */}
       {/* {
             fetchAll.map((e) => (<li key={id}>{e}</li>))
           } */}

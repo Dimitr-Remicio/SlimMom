@@ -10,12 +10,9 @@ const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
 axios.defaults.baseURL = `${base}`;
 
 export const searchProduct = async (search) => {
-  try {
-    const { data } = await axios.get(`/products?product=${search}`);
+    const { data } = await axios.get(`${base}/products?search=${search}`);
+    console.log(data)
     return data;
-  } catch (error) {
-    throw error;
-  }
 };
 
 
@@ -33,9 +30,9 @@ export const getAllProduct = async () => {
     throw error;
   }
 };
-export const getDairy = async date => {
+export const getDairy = async () => {
   try {
-    const { data } = await axios.get(`/calc/user/${date}`);
+    const { data } = await axios.get(`${base}/days/info`);
     return data;
   } catch (error) {
     toast.error(
@@ -48,7 +45,7 @@ export const getDairy = async date => {
 
 export const addProductForUser = async newProduct => {
   try {
-    const { data } = await axios.post('/calc/user', newProduct);
+    const { data } = await axios.patch(`${base}/days`, newProduct);
     toast.success(`З'їдено!`, toastStyles);
     return data;
   } catch (error) {
@@ -57,9 +54,9 @@ export const addProductForUser = async newProduct => {
   }
 };
 
-export const deleteProductRequest = async ({ dataFormat, id }) => {
+export const deleteProductRequest = async () => {
   try {
-    const { data } = await axios.delete(`/calc/user/${dataFormat}/${id}`);
+    const { data } = await axios.delete(`${base}/days`);
     toast.success(`Видалено!`, toastStyles);
     return data;
   } catch (error) {

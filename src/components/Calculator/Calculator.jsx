@@ -245,17 +245,17 @@ const CalcPublic = (props) => {
                 <Button
                   form="calculatorForm"
                   type="submit"
+                  className="calc__btn"
+
                   style={{
                     backgroundColor: "#FC842D",
-                    padding: "15px 20px",
-                    width: "18rem",
+                    padding: "20px 20px",
                     borderRadius: "20em",
                     fontFamily: "Verdana bold",
                     textTransform: "none",
                     position: "absolute",
                     left: "0",
                     bottom: "0",
-                    transform: "translate(25%)",
                   }}
                   variant="contained"
                 >

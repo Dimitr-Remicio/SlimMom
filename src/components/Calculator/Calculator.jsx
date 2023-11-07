@@ -21,31 +21,31 @@ import Modal from "../Modal/Modal";
 
 const CalculatorSchema = Yup.object().shape({
   height: Yup.number()
-    .typeError("Обов`язково до заповнення")
-    .min(100, "Мінімальний зріст 100 см")
-    .max(250, "Максимальний зріст 250 см")
-    .required("Обов`язково до заповнення"),
+    .typeError("Campo obligatorio")
+    .min(100, "Altura mínima de 100 cm")
+    .max(250, "Altura máxima de 250 cm")
+    .required("Campo obligatorio"),
   age: Yup.number()
-    .typeError("Обов`язково до заповнення")
-    .min(18, "Мінімальний вік 18 років")
-    .max(100, "Максимальний вік 100 років ")
-    .required("Обов`язково до заповнення"),
+    .typeError("Campo obligatorio")
+    .min(18, "Edad mínima de 18 años")
+    .max(100, "Edad máxima de 100 años")
+    .required("Campo obligatorio"),
   weightCurrent: Yup.number()
-    .typeError("Обов`язково до заповнення")
+    .typeError("Campo obligatorio")
     .moreThan(
       Yup.ref("weightDesired"),
-      "Поточна вага має бути більшою за бажану"
+      "El peso actual debe ser mayor que el deseado"
     )
-    .test("min-width", "Мінімальна вага 30 кг", function (value) {
+    .test("min-width", "Peso mínimo de 30 kg", function (value) {
       return value > 29;
     })
-    .max(500, "Максимальна вага 500 кг")
-    .required("Обов`язково до заповнення"),
+    .max(500, "Peso máximo de 500 kg")
+    .required("Campo obligatorio"),
   weightDesired: Yup.number()
-    .typeError("Обов`язково до заповнення")
-    .min(20, "Мінімальна вага 20 кг")
-    .max(500, "Максимальна вага 500 кг")
-    .required("Обов`язково до заповнення"),
+    .typeError("Campo obligatorio")
+    .min(20, "Peso mínimo de 20 kg")
+    .max(500, "Peso máximo de 500 kg")
+    .required("Campo obligatorio"),
   blood: Yup.string().required(),
 });
 
@@ -215,7 +215,7 @@ const CalcPublic = (props) => {
                           wordSpacing: "0px",
                           paddingLeft: "0",
                           color: "#828282",
-                          borderBottom:"1px solid #828282"
+                          borderBottom: "1px solid #828282",
                         }}
                       >
                         Blood type <b>(select)</b>

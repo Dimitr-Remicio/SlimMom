@@ -12,8 +12,8 @@ const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
 const calc = createAsyncThunk('/calculator', async (credential, thunkAPI) => {
   try {
     const { data } = await axios.post(`${base}/calculator`, credential);
-    console.log(data);
-    console.log(credential);
+    // console.log(data);
+    // console.log(credential);
     return {usData: data, usInfo:credential };
   } catch (error) {
     return thunkAPI.rejectWithValue(error);

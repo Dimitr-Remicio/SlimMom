@@ -18,15 +18,16 @@ import IconButton from "@mui/material/IconButton";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 
-import { Cut, Form, Error, InputBlock } from "./RegisterForm.styled";
+import "./FormRegister.css";
+
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleClickShowConfirmPassword = () => setShowConfirmPassword((show) => !show);
+  const handleClickShowConfirmPassword = () =>
+    setShowConfirmPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -73,7 +74,7 @@ export default function RegisterForm() {
   }
 
   return (
-    <section>
+    <div className="wrapper">
       <Formik
         initialValues={{
           name: "",
@@ -101,12 +102,13 @@ export default function RegisterForm() {
           handleBlur,
           handleSubmit,
         }) => (
-          <Form
+          <form
+            id="FormSignup"
             onSubmit={handleSubmit}
-            style={{ height: "auto", margin: "0 auto" }}
           >
-            <InputBlock>
+            <div className="inputBlock">
               <TextField
+                className="SignupInput"
                 sx={{ width: "25ch", "& label": { letterSpacing: "1px" } }}
                 id="standard-basic"
                 label="Name*"
@@ -117,13 +119,13 @@ export default function RegisterForm() {
                 value={values.name}
                 variant="standard"
               />
-              <Cut></Cut>
-              {touched.name && errors.name && <Error>{errors.name}</Error>}
-            </InputBlock>
-            <InputBlock>
+              {touched.name && errors.name && <div className="errorlabel">{errors.name}</div>}
+            </div>
+            <div className="inputBlock">
               <TextField
                 sx={{ width: "25ch", "& label": { letterSpacing: "1px" } }}
                 id="standard-basic"
+                className="SignupInput"
                 label="Email *"
                 type="email"
                 name="email"
@@ -133,11 +135,12 @@ export default function RegisterForm() {
                 variant="standard"
               />
 
-              {touched.email && errors.email && <Error>{errors.email}</Error>}
-            </InputBlock>
+              {touched.email && errors.email && <div className="errorlabel">{errors.email}</div>}
+            </div>
 
-            <InputBlock>
+            <div className="inputBlock">
               <FormControl
+                className="SignupInput"
                 color="warning"
                 sx={{ width: "25ch" }}
                 variant="standard"
@@ -152,6 +155,8 @@ export default function RegisterForm() {
                 <Input
                   color="warning"
                   focused="true"
+                  className="SignupInput"
+
                   id="standard-adornment-password"
                   label="Password *"
                   name="password"
@@ -173,13 +178,14 @@ export default function RegisterForm() {
                 />
               </FormControl>
               {touched.password && errors.password && (
-                <Error>{errors.password}</Error>
+                <div className="errorlabel">{errors.password}</div>
               )}
-            </InputBlock>
+            </div>
 
-            <InputBlock>
+            <div className="inputBlock">
               <FormControl
                 color="warning"
+                className="SignupInput"
                 sx={{ width: "25ch" }}
                 variant="standard"
               >
@@ -196,6 +202,7 @@ export default function RegisterForm() {
                   id="standard-adornment-password"
                   label="confirmPassword *"
                   name="confirmPassword"
+                  className="SignupInput"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.confirmPassword}
@@ -218,13 +225,14 @@ export default function RegisterForm() {
                 />
               </FormControl>
               {touched.password && errors.password && (
-                <Error>{errors.password}</Error>
+                <div className="errorlabel">{errors.password}</div>
               )}
-            </InputBlock>
+            </div>
 
-            <Stack direction="row" spacing={2}>
+            <Stack className="contButton" >
               <Button
                 id="signup"
+                className="signupInvert"
                 style={{
                   backgroundColor: "#FC842D",
                   padding: "15px 25px",
@@ -241,6 +249,7 @@ export default function RegisterForm() {
 
               <NavLink to="/SlimMom/login">
                 <Button
+                  className="loginInvert"
                   style={{
                     border: "3px solid #FC842D",
                     color: "#FC842D",
@@ -250,6 +259,8 @@ export default function RegisterForm() {
                     fontFamily: "Verdana bold",
                     textTransform: "none",
                     textAlign: "center",
+                    backgroundColor: "rgba(255, 255, 255, 0.88)",
+
                   }}
                   variant="outlined"
                 >
@@ -257,21 +268,10 @@ export default function RegisterForm() {
                 </Button>
               </NavLink>
             </Stack>
-          </Form>
+          </form>
         )}
       </Formik>
-      <ToastContainer
-        style={{ top: "2%" }}
-        toastStyle={{
-          width: "500px",
-          border: "1px solid #FC842D",
-          paddingTop: "20px",
-          paddingBottom: "20px",
-          paddingLeft: "10px",
-          paddingRight: "10px",
-          textAlign: "center",
-        }}
-      />
-    </section>
+      
+    </div>
   );
 }

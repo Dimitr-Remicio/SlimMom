@@ -10,7 +10,7 @@ const calcSlice = createSlice({
       age: null,
       weightCurrent: null,
       weightDesired: null,
-      bloodType: '1',
+      blood: '1',
     },
     loaderShow: false,
   },
@@ -44,14 +44,14 @@ const calcSlice = createSlice({
       state.userInfo.height = action.payload.height;
       state.userInfo.age = action.payload.age;
       state.userInfo.weightDesired = action.payload.weightDesired;
-      state.userInfo.bloodType = action.payload.bloodType;
+      state.userInfo.blood = action.payload.blood;
       state.userInfo.weightCurrent = action.payload.weightCurrent;
     },
     wipeUser: (state) => {
       state.userInfo.height = null;
       state.userInfo.age = null;
       state.userInfo.weightDesired = null;
-      state.userInfo.bloodType = '1';
+      state.userInfo.blood = '1';
       state.userInfo.weightCurrent = null;
       state.userData.dailyRate = '000';
       state.userData.notHealthy = [];

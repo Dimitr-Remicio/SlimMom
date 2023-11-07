@@ -9,7 +9,7 @@ const initialState = {
     age: null,
     weightCurrent: null,
     weightDesired: null,
-    bloodType: null,
+    blood: null,
     createdAt: '',
   },
   token: null,
@@ -55,7 +55,7 @@ const authSlice = createSlice({
         age: null,
         weightCurrent: null,
         weightDesired: null,
-        bloodType: null,
+        blood: null,
       };
       state.token = null;
       state.isLoggedIn = false;

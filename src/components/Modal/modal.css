@@ -1,7 +1,45 @@
-.modalcenter{
-    min-height:100vh ;
-    position: relative;
+.contModal {
+  z-index: 500 !important;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px 20px;
+  justify-content: space-evenly;
+
+
+  /* display: block; */
+  /* position:; */
 }
-.modalcentrado{
-    position: absolute;
+.modAl {
+  position: absolute;
+  display: block;
+  z-index: 700;
+  margin: 20px;
+  width: 70vw;
+  max-width: 800px;
+  min-width: 300px;
+  height: 100%;
+  min-height: 574px;
+  max-height: 78vh;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ffffff;
+  background: white;
+
+}
+@media screen and (min-width: 768px) {
+    
+    .modAl{
+            box-shadow: 0px 0px 200px 20px #00000025;
+            & h2{
+                font-size: 26px !important;
+            }
+
+    }
 }

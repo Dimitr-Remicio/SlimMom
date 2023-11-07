@@ -9,10 +9,12 @@
 
 body {
   font-family: "Verdana", sans-serif;
-  height: 100vh;
-  overflow: hidden;
+  height: auto;
+  overflow-x: hidden !important;
+  overflow-y: scroll;
 }
 #root {
+  width: 100%;
   height: 100%;
 }
 
@@ -48,30 +50,28 @@ a {
   color: unset;
 }
 
-.bg_blur{
-  position: absolute;
+.bg_blur {
+  position: fixed;
 
-  width: 100vw;
-  height: 105vh;
+  width: 100% !important;
+  height: 200% !important;
 
   top: -10rem;
-  background-color: rgba(255, 255, 255, 0.434);
-  backdrop-filter: blur(18px);
-  
-  z-index: 6;
-  transition: all 800ms ease;
+  background-color: rgba(255, 255, 255, 0.401);
+  backdrop-filter: blur(25px);
+
+  z-index: 3;
+  transition: none !important;
 }
-.bg__layout {
-  transition: all 800ms ease;
-  position: relative;
-  z-index: 50;
-  width: auto;
-  
-}
+
 section {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  width: auto;
+  height: auto;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  /* padding-bottom: 10rem; */
   z-index: 10;
+  position: relative;
   display: flex;
 
   align-items: flex-start;
@@ -79,21 +79,23 @@ section {
 }
 
 .Layout {
-  position: absolute;
+  background-image: url("./assets/images/Group.png");
+  background-repeat: no-repeat;
+  background-size: 100vh;
+  background-position: 80% -30%;
 
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  height: 80%;
+  display: block;
+  position: relative;
+
+  /* align-items: center; */
+  /* margin: 0 auto; */
+  bottom: 0;
+  height: 100%;
   width: 100%;
 
-  margin: 0 auto;
-
-  z-index: 10;
+  z-index: 3;
   transition: all 800ms ease;
-
 }
-
 
 .blur {
   width: 100%;
@@ -101,7 +103,7 @@ section {
   left: 0;
   top: 0;
   transition: all 800ms ease;
-  
+
   position: fixed;
   z-index: 6;
   /* backdrop-filter: blur(2vmax) brightness(90%); */
@@ -110,17 +112,36 @@ section {
 }
 
 @media screen and (min-width: 768px) {
-  *{
+  #root {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
+    height: 100%;
+  }
+  .Layout {
+    background-image: none;
+
+    margin-top: 5rem;
+    height: auto !important;
+  }
+  body {
+    font-family: "Verdana", sans-serif;
+    height: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  * {
     transition: all 500ms ease;
   }
   .bg__layout {
     position: relative;
     z-index: 50;
     width: auto;
-    
   }
   section {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
     display: flex;
     flex-direction: column;
 
@@ -129,32 +150,39 @@ section {
   }
 }
 @media screen and (min-width: 1020px) {
-  *{
-
+  * {
     transition: all 600ms ease;
   }
-
-  .bg_blur{
+  .Layout {
+    display: flex;
+    align-items: center;
+    margin-top: 5rem;
+    height: 600px !important;
+  }
+  body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+  .bg_blur {
     position: absolute;
 
     display: none;
-  
+
     width: 0;
     height: 0;
-  
+
     backdrop-filter: blur(0);
-  
+
     z-index: 6;
 
-  transition: all 800ms ease;
+    transition: all 800ms ease;
   }
   .bg__layout {
     position: relative;
     z-index: 50;
     width: auto;
-    
   }
   section {
-    display:block;
+    display: block;
   }
 }

@@ -1,10 +1,14 @@
 .container {
+  /* position: relative; */
+
   width: 80vw;
 
   margin-left: auto;
   margin-right: auto;
 
   margin: 0 auto;
+
+  /* z-index: 8; */
 }
 
 @media screen and (min-width: 768px) {

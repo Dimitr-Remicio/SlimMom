@@ -54,7 +54,6 @@ const CalcPublic = (props) => {
   // OPNE Y CLOSE
   const [isModalOpen, setModalOpen] = useState(false); // Estado para controlar la apertura y cierre del modal
 
-
   const handleOpenModal = () => {
     console.log("Opening modal");
     setModalOpen(true);
@@ -131,28 +130,32 @@ const CalcPublic = (props) => {
               type: "number",
               label: "Height - Cm*",
               value: height,
-              xs: 6,
+              xs: 10,
+              xs_calc: "xs_calc",
             },
             {
               name: "weightDesired",
               type: "number",
               label: "Desired Weight - Kg*",
               value: weightDesired,
-              xs: 0,
+              xs: 5.5,
+              xs_calc: "xs_calc",
             },
             {
               name: "age",
               type: "number",
               label: "Age*",
               value: age,
-              xs: 0,
+              xs: 10,
+              xs_calc: "xs_calc",
             },
             {
               name: "weightCurrent",
               type: "number",
               label: "Current Weight - Kg*",
               value: weightCurrent,
-              xs: 8,
+              xs: 6,
+              xs_calc: "xs_calc",
             },
           ];
 
@@ -165,12 +168,24 @@ const CalcPublic = (props) => {
           return (
             <>
               <form id="calculatorForm" onSubmit={handleSubmit}>
-                <Grid container spacing={3} key={name}>
-                  {settings.map(({ name, type, label, value, xs }) => {
+                <Grid
+                  container
+                  spacing={3}
+                  key={name}
+                  className="FormContainer"
+                >
+                  {settings.map(({ name, type, label, value, xs, xs_calc }) => {
                     return (
-                      <Grid item xs={xs} key={name}>
+                      <Grid
+                        item
+                        xs={xs}
+                        id={"cont" + name}
+                        className="GridTxtField"
+                        key={name}
+                      >
                         <TextField
                           id={name}
+                          className={xs_calc}
                           // id="standard-number-1"
                           label={label}
                           type={type}
@@ -182,46 +197,46 @@ const CalcPublic = (props) => {
                       </Grid>
                     );
                   })}
-                </Grid>
-                <Grid
-                  style={{
-                    position: "absolute",
-                    left: "15.7rem",
-                    bottom: "8rem",
-                  }}
-                >
-                  <Grid item xs={0} sx={{ paddingBottom: "1rem" }}>
-                    <p
-                      id="standard-number-1"
-                      className="BloodTypeLabel"
-                      style={{
-                        fontSize: "16px",
-                        letterSpacing: "0.15008px",
-                        lineHeight: "23px",
-                        textDecoration: "none solid rgba(0, 0, 0, 0.87)",
-                        wordSpacing: "0px",
-                        paddingLeft: "0",
-                        color: "#828282",
-                      }}
+                  <Grid className="bloodType">
+                    <Grid
+                      item
+                      xs={0}
+                      sx={{ paddingBottom: "1.8rem" }}
+                      className="bloodLabel"
                     >
-                      Blood type ⥥ *
-                    </p>
-                  </Grid>
-                  <Grid item xs={0}>
-                    <TextField
-                      id="outlined-select-currency"
-                      select
-                      helperText=""
-                      // label="Select"
-                      defaultValue="1"
-                      sx={{ width: "18ch" }}
-                    >
-                      {bloodSettings.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.label}
-                        </MenuItem>
-                      ))}
-                    </TextField>
+                      <p
+                        id="standard-number-1"
+                        className="BloodTypeLabel"
+                        style={{
+                          fontSize: "16px",
+                          letterSpacing: "0.15008px",
+                          lineHeight: "25px",
+                          textDecoration: "none solid rgba(0, 0, 0, 0.87)",
+                          wordSpacing: "0px",
+                          paddingLeft: "0",
+                          color: "#828282",
+                          borderBottom:"1px solid #828282"
+                        }}
+                      >
+                        Blood type <b>(select)</b>
+                      </p>
+                    </Grid>
+                    <Grid item xs={0} className="BloodContain">
+                      <TextField
+                        id="outlined-select-currency"
+                        select
+                        helperText=""
+                        className="BloodSelector"
+                        defaultValue="1"
+                        sx={{ width: "18ch" }}
+                      >
+                        {bloodSettings.map((option) => (
+                          <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                          </MenuItem>
+                        ))}
+                      </TextField>
+                    </Grid>
                   </Grid>
                 </Grid>
               </form>
@@ -250,17 +265,13 @@ const CalcPublic = (props) => {
                 <Button
                   form="calculatorForm"
                   type="submit"
+                  className="calc__btn"
                   style={{
-                    backgroundColor: "#FC842D",
+                    backgroundColor: "#fc842d",
                     padding: "15px 20px",
-                    width: "18rem",
                     borderRadius: "20em",
-                    fontFamily: "Verdana bold",
-                    textTransform: "none",
                     position: "absolute",
-                    left: "0",
                     bottom: "0",
-                    transform: "translate(25%)",
                   }}
                   variant="contained"
                   onClick={handleOpenModal}
@@ -278,7 +289,7 @@ const CalcPublic = (props) => {
           <ModalContent setShowModal={setShowModal}></ModalContent>
         </Modal>
       )} */}
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal}/>
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
     </>
   );
 };

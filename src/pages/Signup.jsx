@@ -1,18 +1,18 @@
 // import React from "react";
 import RegisterForm from "../components/Forms/FormRegister/FormRegister";
+import "../styles/register.css";
 
 const Signup = () => {
   return (
+    <>
+
     <section>
-      <h3
-        style={{
-          color: "#FC842D",
-        }}
-      >
-        Sign Up
-      </h3>
-      <RegisterForm />
+      <div className="register">
+        <h3>Sign Up</h3>
+        <RegisterForm />
+      </div>
     </section>
+    </>
   );
 };
 

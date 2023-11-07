@@ -16,7 +16,7 @@ const Layout = () => {
       {userIsLoggedIn ? (
         <div
           className="Layout"
-          style={{ display: "flex", alignItems: "center" }}
+          // style={{ display: "flex", alignItems: "center" }}
         >
           <Container>
             {userIsLoggedIn ? null : <BackAnimated />}
@@ -35,18 +35,16 @@ const Layout = () => {
           </Container>
         </div>
       ) : (
-          <div
-            className="Layout"
-            style={{ display: "flex", alignItems: "center", margin: "0auto" }}
-          >
+        <div
+          className="Layout"
+          // style={{ display: "flex", alignItems: "center", margin: "0auto" }}
+        >
           <div className="bg_blur"></div>
-            <Container>
-              {userIsLoggedIn ? null : <BackAnimated />}
-              <div className="bg__layout">
-                <Routers />
-              </div>
-            </Container>
-          </div>
+          <Container>
+            {userIsLoggedIn ? null : <BackAnimated />}
+            <Routers />
+          </Container>
+        </div>
       )}
     </>
   );

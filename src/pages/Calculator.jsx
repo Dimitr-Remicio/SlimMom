@@ -9,6 +9,9 @@ import RightSidebar from "../components/RightSidebar/RightSidebar";
 const Calculator = () => {
   
   return (
+    <>
+      
+
     <Container>
       <section>
         <div className="Home">
@@ -17,9 +20,10 @@ const Calculator = () => {
 "
           />
         </div>
-        <RightSidebar />
       </section>
     </Container>
+        <RightSidebar />
+    </>
   );
 };
 

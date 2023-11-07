@@ -3,6 +3,7 @@
   width: 35%; /* Ancho de la barra lateral */
   height: 100%; /* Altura de la barra lateral */
   background-color: #e0e1e2b4;
+  background-image: url('../../assets/images/bgPatternLeaf.png');
   color: rgb(117, 111, 111); /* Color del texto en la barra lateral */
   padding: 40px 20px 84px 20px;
   position: fixed; /* Barra lateral fija en la página */
@@ -35,6 +36,8 @@
 .summary-sidebar {
   width: 280px;
   margin: 0 auto;
+  margin-top: 40px;
+  
   & ul {
     display: flex;
     flex-direction: column;
@@ -54,7 +57,7 @@
 }
 .title-sidebar {
   color: rgb(99, 98, 98);
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 17px;
   letter-spacing: 0.04em;
@@ -66,4 +69,6 @@
   line-height: 17px;
   letter-spacing: 0.04em;
   color: #9b9faa;
+
+  
 }

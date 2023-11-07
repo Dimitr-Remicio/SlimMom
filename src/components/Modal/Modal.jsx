@@ -1,22 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from "@mui/material/Button";
 import { NavLink } from 'react-router-dom';
-
+import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
+import { useSelector } from "react-redux";
 
 const Modal = ({ isOpen, onClose }) => {
   const modalStyles = {
     width: '672px',
-    height: '574px',
+    height: '542px',
     position: 'fixed',
-    top: '50%', // Centra verticalmente
-    left: '50%', // Centra horizontalmente
-    transform: 'translate(15%, -60%)', // Centra tanto horizontal como verticalmente
+    top: '50%',
+    left: '50%',
+    transform: 'translate(15%, -44%)',
     border: '1px solid #E0E0E0',
     background: 'white',
-    zIndex: 9999, // Asegura que el modal esté por encima de otros elementos
-
+    zIndex: 9999,
   };
-
 
   const titleStyles = {
     fontFamily: 'Verdana',
@@ -25,94 +24,116 @@ const Modal = ({ isOpen, onClose }) => {
     lineHeight: '36px',
     letterSpacing: '0em',
     textAlign: 'center',
-    marginTop: "100px"
+    marginTop: "72px"
   };
-  const close ={
+
+  const close = {
     position: 'absolute',
-    top: '10px', // Ajusta la posición vertical
-    right: '10px', // Ajusta la posición horizontal para la esquina derecha
+    top: '10px',
+    right: '10px',
     cursor: 'pointer',
     color: "black"
-  }
-const valuekcal = {
-fontFamily: "Verdana",
-fontSize: "48px",
-fontWeight: "700",
-lineHeight: "32px",
-letterSpacing: "0.04em",
-textAlign: "center",
-color:"#264061",
-marginTop: "30px",
-}
-const kcla= {
-fontFamily: "Verdana",
-fontSize: "16px",
-fontWeight: "700",
-lineHeight: "32px",
-letterSpacing: "0.04em",
-textAlign: "center",
-color:"#264061",
-marginTop: "30px",
-}
-const vectorStyles = {
-    width: '330px',
-    height: '1px', // Altura de 1 píxel para que parezca una línea
-    top:"300px",
-    left: "184px",
-    border: '1px solid #E0E0E0', // Border de 1 píxel sólido de color negro
-    position: 'absolute',
-    
   };
-  
-  const notfoot ={
-    fontfamily: "Verdana",
-  fontSize: "20px",
-  fontWeight: "700",
-  lineHeight: "17px",
-  letterSpacing: "0.04em",
-  textAlign: "center",
-  marginTop: "100px",
-  }
-const buttonStar={
+
+  const valuekcal = {
+    fontFamily: "Verdana",
+    fontSize: "48px",
+    fontWeight: "700",
+    lineHeight: "32px",
+    letterSpacing: "0.04em",
+    textAlign: "center",
+    color:"#264061",
+    marginTop: "30px"
+  };
+
+  const kcla = {
+    fontFamily: "Verdana",
+    fontSize: "16px",
+    fontWeight: "700",
+    lineHeight: "32px",
+    letterSpacing: "0.04em",
+    textAlign: "center",
+    color:"#264061",
+    marginTop: "30px"
+  };
+
+  const vectorStyles = {
+    width: '330px',
+    height: '1px',
+    top: "300px",
+    left: "184px",
+    border: '1px solid #E0E0E0',
+    position: 'absolute',
+  };
+
+  const notfoot = {
+    fontFamily: "Verdana", // Fixed the typo in fontFamily
+    fontSize: "20px",
+    fontWeight: "700",
+    lineHeight: "17px",
+    letterSpacing: "0.04em",
+    textAlign: "center",
+    marginTop: "100px"
+  };
+
+  const buttonStar = {
     backgroundColor: "#FC842D",
     padding: "15px 20px",
-    width: "18rem",
+    width: "14rem",
     borderRadius: "20em",
     fontFamily: "Verdana bold",
     textTransform: "none",
-   position: "relative",
-   top: "146px",
-   left: "194px",
-   color:"#FFFFFF" ,
-   borderColor: "transparent",
-   cursor: "pointer",
+    position: "relative",
+    top: "23px",
+    left: "223px",
+    color:"#FFFFFF" ,
+    borderColor: "transparent",
+    cursor: "pointer"
+  };
+const listnotfoot ={
+  fontFamily: "Verdana",
+  fontFize: "14px",
+  fontWeight: "400",
+  lineHeight: "17px",
+  letterSpacing: "0.04em",
+ 
+  color: "#9B9FAA",
+  marginTop: "50px",
+  textAlign: "center",
+  
+
+
 }
-
-
+  const { dailyRate, notHealthy } = useSelector(calcSelectors.getUserData);
+  
+  useEffect(() => {
+    console.log(dailyRate);
+    console.log(notHealthy);
+  }, [dailyRate, notHealthy]);
 
   return (
     isOpen && (
       <div >
-        
         <div style={modalStyles}>
-          {/* Contenido del modal */}
           <Button style={close} onClick={onClose}>
             X
           </Button>
-          <h2 style={titleStyles} >Your recommended daily calorie intake is</h2>
+          <h2 style={titleStyles}>Your recommended daily calorie intake is</h2>
           <br />
-          <p style={valuekcal}>2800 <span style={kcla}>kcal</span></p>
+          <p style={valuekcal}>{dailyRate} <span style={kcla}>kcal</span></p>
+
           <p style={vectorStyles}></p>
           <br />
           <p style={notfoot}>Foods you shouldnt eat</p>
-          <ul>
-           
+          <ul style={listnotfoot}>
+            {notHealthy.map((food, index) => (
+              <li key={index}>{food}</li>
+            ))}
           </ul>
 
           <NavLink to="/SlimMom/signup">
-          <button  style={buttonStar}> Start losing weight</button>
+            <button style={buttonStar}> Start losing weight</button>
           </NavLink>
-      
         </div>
       </div>
     )

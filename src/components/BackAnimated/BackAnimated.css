@@ -1,14 +1,77 @@
 .bg-animated{
-
-    position: absolute;
-    width: 900px;
-    height: auto;
+    display: none;
+    position: fixed;
+    /* top: 0; */
+    /* bottom: 0; */
+    left: 0;
     right: 0;
-    top: 0;
-    bottom: 0;
-    float: right;
 
-    transform: translateX(-5rem);
+    width: 500px;
 
-    z-index: 2;
+    transform: translateX(0rem) translateY(4rem);
+    
+}
+
+
+@media screen and (min-width: 768px){
+    .bg-animated{
+
+        position: absolute;
+        display: block;
+        width: 100%;
+        max-width: 980px;
+        height: auto;
+        margin: 0 auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        float: left;
+        transform: translateX(-2.5rem);
+        
+        
+        & *{
+            
+            transition: none;
+        }
+        z-index: 2;
+    }
+    
+}
+@media screen and (min-width: 1024px){
+    .bg-animated{
+        
+        display: block;
+        position: absolute;
+        width: 900px;
+        height: auto;
+        top: 0;
+        right: 0;
+        float: right;
+        
+        transform: translateX(16rem);
+        
+        z-index: 2;
+    }
+    
+}
+@media screen and (min-width: 1440px){
+    .bg-animated{
+        
+        display: block;
+        position: absolute;
+        width: 900px;
+        height: auto;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        /* margin: 0; */
+        float: right;
+        
+        transform: translateX(20rem);
+        
+        z-index: 2;
+
+    }
+    
 }

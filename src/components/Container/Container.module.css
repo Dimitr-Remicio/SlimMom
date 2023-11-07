@@ -1,21 +1,25 @@
 .container {
+  /* position: relative; */
+
   width: 80vw;
 
   margin-left: auto;
   margin-right: auto;
 
   margin: 0 auto;
+
+  /* z-index: 8; */
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    width: 80vw;
+    width: 84vw;
     margin: 0 auto;
   }
 }
 @media screen and (min-width: 1280px) {
   .container {
-    width: 89vw;
+    width: 85vw;
     margin: 0 auto;
   }
 }
@@ -24,6 +28,7 @@
   .container {
     /* width: 100vw; */
     width: 85rem;
+    /* max-width: 1279px; */
     margin: 0 auto;
   }
 }

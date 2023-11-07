@@ -2,9 +2,15 @@ import React, { useEffect } from 'react';
 import Button from "@mui/material/Button";
 import { NavLink } from 'react-router-dom';
 import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { wipeUser } from "../../redux/calculatorSlice/calcSlice";
 
 const Modal = ({ isOpen, onClose }) => {
+  const { dailyRate, notHealthy } = useSelector(calcSelectors.getUserData);
+  console.log(dailyRate);
+  console.log(notHealthy);
+
+  const dispatch = useDispatch();
   const modalStyles = {
     width: '672px',
     height: '542px',
@@ -15,11 +21,12 @@ const Modal = ({ isOpen, onClose }) => {
     border: '1px solid #E0E0E0',
     background: 'white',
     zIndex: 9999,
+
   };
 
   const titleStyles = {
-    fontFamily: 'Verdana',
-    fontSize: '26px',
+    fontFamily: "Verdana",
+    fontSize: "26px",
     fontWeight: 700,
     lineHeight: '36px',
     letterSpacing: '0em',
@@ -68,14 +75,48 @@ const Modal = ({ isOpen, onClose }) => {
 
   const notfoot = {
     fontFamily: "Verdana", // Fixed the typo in fontFamily
-    fontSize: "20px",
+    lineHeight: "36px",
+    letterSpacing: "0em",
+    textAlign: "center",
+    marginTop: "100px",
+  };
+  const close = {
+    position: "absolute",
+    top: "10px", // Ajusta la posición vertical
+    right: "10px", // Ajusta la posición horizontal para la esquina derecha
+    cursor: "pointer",
+    color: "black",
+  };
+  const valuekcal = {
+    fontFamily: "Verdana",
+    fontSize: "48px",
     fontWeight: "700",
-    lineHeight: "17px",
+    lineHeight: "32px",
     letterSpacing: "0.04em",
     textAlign: "center",
-    marginTop: "100px"
+    color: "#264061",
+    marginTop: "30px",
+  };
+  const kcla = {
+    fontFamily: "Verdana",
+    fontSize: "16px",
+    fontWeight: "700",
+    lineHeight: "32px",
+    letterSpacing: "0.04em",
+    textAlign: "center",
+    color: "#264061",
+    marginTop: "30px",
+  };
+  const vectorStyles = {
+    width: "330px",
+    height: "1px", // Altura de 1 píxel para que parezca una línea
+    top: "300px",
+    left: "184px",
+    border: "1px solid #E0E0E0", // Border de 1 píxel sólido de color negro
+    position: "absolute",
   };
 
+ 
   const buttonStar = {
     backgroundColor: "#FC842D",
     padding: "15px 20px",
@@ -115,7 +156,13 @@ const listnotfoot ={
     isOpen && (
       <div >
         <div style={modalStyles}>
-          <Button style={close} onClick={onClose}>
+          <Button
+            style={close}
+            onClick={() => {
+              onClose();
+              dispatch(wipeUser());
+            }}
+          >
             X
           </Button>
           <h2 style={titleStyles}>Your recommended daily calorie intake is</h2>
@@ -130,6 +177,7 @@ const listnotfoot ={
               <li key={index}>{food}</li>
             ))}
           </ul>
+
 
           <NavLink to="/SlimMom/signup">
             <button style={buttonStar}> Start losing weight</button>

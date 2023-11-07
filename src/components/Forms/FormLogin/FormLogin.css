@@ -1,0 +1,159 @@
+.wrapperForm {
+  padding-top: 3rem;
+  width: auto;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  /* @media screen and (min-width: ${layoutStyles.tablet}) {
+        display: block;
+    } */
+}
+#FormLogin {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  display: block;
+  /* width: 400px; */
+}
+
+.LoginControl {
+  width: 1000px !important;
+}
+.LoginInput {
+  width: 100% !important;
+
+  & label {
+    font-family: "Verdana" !important;
+
+    font-size: 1.2em;
+  }
+  & input {
+    font-family: "Verdana" !important;
+    height: 35px;
+    font-size: 1.2em;
+  }
+}
+
+.inputBlock {
+  position: relative;
+  margin-bottom: 35px !important;
+}
+
+.FormButton {
+  width: 100%;
+  padding: 15px 25px !important;
+}
+.contButton {
+  width: 100% !important;
+  margin-top: 4rem;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  gap: 2rem;
+
+  /* height: 70px !important; */
+}
+.errorLabel {
+  margin-top: 1rem;
+  color: red;
+  font-size: 0.9em;
+}
+
+@media screen and (min-width: 608px) {
+  
+  .contButton {
+    width: 100% !important;
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row !important;
+    gap: 2rem;
+    /* align-items: center; */
+    justify-content: center;
+
+    & .login {
+      width: 250px !important;
+    }
+    & .signup {
+      width: 250px !important;
+    }
+  }
+  .FormButton {
+    padding: 15px 25px !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  .wrapperForm {
+    padding-top: 0 !important;
+    width: auto;
+    align-items: flex-start !important;
+
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    /* @media screen and (min-width: ${layoutStyles.tablet}) {
+            display: block;
+        } */
+  }
+  #FormLogin {
+    width: 400px;
+    display: flex;
+    align-items: flex-start;
+  }
+  .LoginInput {
+    width: 254px !important;
+
+    & label {
+      font-family: "Verdana" !important;
+
+      font-size: 1em;
+    }
+    & input {
+      font-family: "Verdana" !important;
+      height: 30px;
+      font-size: 1em;
+    }
+  }
+  .inputBlock {
+    position: relative;
+    margin-bottom: 35px;
+    margin-left: 0;
+    /* @media screen and (min-device-width: 768px) {
+          margin-left: 0;
+      } */
+  }
+  .FormButton {
+    /* width: auto !important; */
+    /* width: auto !important; */
+    padding: 15px 25px !important;
+  }
+  .contButton {
+    padding: 0;
+    margin: 1rem auto;
+    /* flex-direction: row !important; */
+    flex-wrap: wrap;
+    gap: 1rem;
+    /* height: auto !important; */
+    /* width: auto !important; */
+
+    & .signup {
+      width: 230px !important;
+    }
+    & .login {
+      width: 150px !important;
+    }
+  }
+  .errorLabel {
+    margin-top: 0.5rem;
+    color: red;
+    font-size: 0.8em;
+  }
+}

@@ -8,7 +8,7 @@ const Login = () => {
     <>
       <section>
         <div className="Login">
-          <h3 style={{color: "#FC842D"}}>Log In</h3>
+          <h3>Log In</h3>
           <LoginForm />
         </div>
       </section>

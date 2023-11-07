@@ -63,6 +63,20 @@ a {
   z-index: 3;
   transition: none !important;
 }
+.bg_blur2 {
+  position: fixed;
+
+  width: 100% !important;
+  height: 200% !important;
+
+  top: -20rem;
+  left: 0;
+  background-color: rgba(129, 129, 129, 0.096);
+  backdrop-filter: blur(50px);
+
+  z-index: 3;
+  transition: none !important;
+}
 
 section {
   width: auto;
@@ -227,6 +241,20 @@ section {
     height: 0;
 
     backdrop-filter: blur(0);
+
+    z-index: 6;
+
+    transition: all 800ms ease;
+  }
+  .bg_blur2 {
+    position: absolute;
+
+    display: block;
+
+    width: 0;
+    height: 0;
+
+    backdrop-filter: blur(20px);
 
     z-index: 6;
 

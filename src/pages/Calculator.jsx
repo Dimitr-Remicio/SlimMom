@@ -14,7 +14,7 @@ const Calculator = () => {
 
     <Container>
       <section>
-        <div className="Home">
+        <div className="Home calculator">
           <FormHome
             title="Calculate your daily calorie intake right now
 "

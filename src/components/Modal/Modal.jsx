@@ -5,6 +5,7 @@ import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import { wipeUser } from "../../redux/calculatorSlice/calcSlice";
 
+
 const Modal = ({ isOpen, onClose }) => {
   const { dailyRate, notHealthy } = useSelector(calcSelectors.getUserData);
   console.log(dailyRate);
@@ -80,41 +81,6 @@ const Modal = ({ isOpen, onClose }) => {
     textAlign: "center",
     marginTop: "100px",
   };
-  const close = {
-    position: "absolute",
-    top: "10px", // Ajusta la posición vertical
-    right: "10px", // Ajusta la posición horizontal para la esquina derecha
-    cursor: "pointer",
-    color: "black",
-  };
-  const valuekcal = {
-    fontFamily: "Verdana",
-    fontSize: "48px",
-    fontWeight: "700",
-    lineHeight: "32px",
-    letterSpacing: "0.04em",
-    textAlign: "center",
-    color: "#264061",
-    marginTop: "30px",
-  };
-  const kcla = {
-    fontFamily: "Verdana",
-    fontSize: "16px",
-    fontWeight: "700",
-    lineHeight: "32px",
-    letterSpacing: "0.04em",
-    textAlign: "center",
-    color: "#264061",
-    marginTop: "30px",
-  };
-  const vectorStyles = {
-    width: "330px",
-    height: "1px", // Altura de 1 píxel para que parezca una línea
-    top: "300px",
-    left: "184px",
-    border: "1px solid #E0E0E0", // Border de 1 píxel sólido de color negro
-    position: "absolute",
-  };
 
  
   const buttonStar = {
@@ -145,7 +111,6 @@ const listnotfoot ={
 
 
 }
-  const { dailyRate, notHealthy } = useSelector(calcSelectors.getUserData);
   
   useEffect(() => {
     console.log(dailyRate);

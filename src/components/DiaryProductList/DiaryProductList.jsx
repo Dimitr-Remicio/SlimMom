@@ -19,20 +19,10 @@ export default function DiaryProductList() {
         <button
           type="button"
           onClick={() => {
-            toast.dismiss();
             deleteProduct(date, id);
           }}
         >
           So
-        </button>
-
-        <button
-          type="button"
-          onClick={() => {
-            toast.dismiss();
-          }}
-        >
-          Ні
         </button>
       </>,
   

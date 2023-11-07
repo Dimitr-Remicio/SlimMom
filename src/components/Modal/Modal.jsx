@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from "@mui/material/Button";
 import { NavLink } from 'react-router-dom';
 import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
@@ -9,9 +9,7 @@ import "./modal.css";
 
 const Modal = ({ isOpen, onClose }) => {
   const { dailyRate, notHealthy } = useSelector(calcSelectors.getUserData);
-  console.log(dailyRate);
-  console.log(notHealthy);
-
+  const [nHealthy, setNotHealthy] = useState([]);
   const dispatch = useDispatch();
 
 
@@ -117,8 +115,7 @@ const Modal = ({ isOpen, onClose }) => {
   };
   
   useEffect(() => {
-    console.log(dailyRate);
-    console.log(notHealthy);
+    setNotHealthy(notHealthy);
   }, [dailyRate, notHealthy]);
 
   return (
@@ -145,7 +142,7 @@ const Modal = ({ isOpen, onClose }) => {
               <p style={vectorStyles}></p>
               <p style={notfoot}>Foods you shouldnt eat</p>
               <ul style={listnotfoot}>
-                {notHealthy.map((food, index) => (
+                {nHealthy.map((food, index) => (
                   <li key={index} className='itemModal'> • {food}</li>
                 ))}
               </ul>

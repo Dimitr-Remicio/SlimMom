@@ -54,14 +54,7 @@ const Header = () => {
           },
         ])
       : (nav__links = [
-          {
-            path: "/SlimMom/diary",
-            display: "Diary",
-          },
-          {
-            path: "/SlimMom/calculator",
-            display: "Calculator",
-          },
+      
           {
             path: "/SlimMom/login",
             display: "Login",
@@ -93,15 +86,6 @@ const Header = () => {
             path: "/SlimMom/home",
             display: "Home",
           },
-          {
-            path: "/SlimMom/diary",
-            display: "Diary",
-          },
-          {
-            path: "/SlimMom/calculator",
-            display: "Calculator",
-          },
-
           {
             path: "/SlimMom/login",
             display: "Login",

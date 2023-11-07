@@ -13,22 +13,11 @@ const Modal = ({ isOpen, onClose }) => {
   console.log(notHealthy);
 
   const dispatch = useDispatch();
-  const modalStyles = {
-    width: '672px',
-    height: '542px',
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(15%, -44%)',
-    border: '1px solid #E0E0E0',
-    background: 'white',
-    zIndex: 9999,
 
-  };
 
   const titleStyles = {
     fontFamily: "Verdana",
-    fontSize: "1em",
+    fontSize: "1.5em",
     fontWeight: 700,
     lineHeight: "36px",
     letterSpacing: "0em",
@@ -41,8 +30,8 @@ const Modal = ({ isOpen, onClose }) => {
     position: "absolute",
     width:"10px",
     fontSize:"25px",
-    top: "2rem", // Ajusta la posición vertical
-    right: "2rem", // Ajusta la posición horizontal para la esquina derecha
+    top: "1.5rem", // Ajusta la posición vertical
+    right: "1rem", // Ajusta la posición horizontal para la esquina derecha
     cursor: "pointer",
     color: "black",
 
@@ -82,9 +71,10 @@ const Modal = ({ isOpen, onClose }) => {
   const notfoot = {
     fontFamily: "Verdana", // Fixed the typo in fontFamily
     lineHeight: "36px",
+    fontSize:"19px",
     letterSpacing: "0em",
     textAlign: "center",
-    marginTop: "40px",
+    marginTop: "20px",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
@@ -115,24 +105,16 @@ const Modal = ({ isOpen, onClose }) => {
     letterSpacing: "0.04em",
 
     color: "#9B9FAA",
-    marginTop: "20px",
+    marginTop: "10px",
+    marginBottom: "10px",
     textAlign: "center",
 
+    gap:"0.5em",
+    display:"flex",
+    flexDirection:"column",
+    alignItems:"flex-start",
+
   };
-const listnotfoot ={
-  fontFamily: "Verdana",
-  fontFize: "14px",
-  fontWeight: "400",
-  lineHeight: "17px",
-  letterSpacing: "0.04em",
- 
-  color: "#9B9FAA",
-  marginTop: "50px",
-  textAlign: "center",
-  
-
-
-}
   
   useEffect(() => {
     console.log(dailyRate);
@@ -164,7 +146,7 @@ const listnotfoot ={
               <p style={notfoot}>Foods you shouldnt eat</p>
               <ul style={listnotfoot}>
                 {notHealthy.map((food, index) => (
-                  <li key={index}> • {food}</li>
+                  <li key={index} className='itemModal'> • {food}</li>
                 ))}
               </ul>
             <NavLink to="/SlimMom/signup">

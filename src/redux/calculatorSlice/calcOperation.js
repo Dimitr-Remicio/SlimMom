@@ -5,8 +5,7 @@ import axios from 'axios';
 // raiz
 // const base = "http://localhost:3000/api";
 // dairodev
-// const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
-const base = "https://slimmom-7ckv.onrender.com/api";
+const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
 
 
 

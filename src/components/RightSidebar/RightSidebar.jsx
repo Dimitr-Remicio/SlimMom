@@ -15,10 +15,11 @@ import { useState } from "react";
 export default function SummaryForDay() {
   const date = new Date();
   const { notHealthy} = useSelector(calcSelectors.getUserData);
-  // const { summary } = useSelector(calcSelectors.getUserData);
+  const { user} = useSelector(calcSelectors.getUserData);
+  const { summary } = useSelector(calcSelectors.getUserData);
   const reduxDate = useSelector(getDate);
   const dailyRate = useSelector(getDaily);
-  const summary = useSelector(getSummary);
+  // const summary = useSelector(getSummary);
 
   const [Healthy, setNotHealthy] = useState([]);
 
@@ -28,6 +29,7 @@ export default function SummaryForDay() {
     }
   }, [notHealthy]);
 
+  console.log(user)
   console.log(summary)
 
   return (
@@ -63,7 +65,7 @@ export default function SummaryForDay() {
             <ul>
               {Healthy.map((products, key) => (
                 <li key={key} className="itemModal">
-                  • {products}
+                  • {products.title}
                 </li>
               ))}
             </ul>

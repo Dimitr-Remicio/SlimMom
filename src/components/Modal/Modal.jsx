@@ -1,17 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
 import { useDispatch, useSelector } from "react-redux";
-import { wipeUser } from "../../redux/calculatorSlice/calcSlice";
+import {
+  setIsModalOpen,
+  wipeUser,
+} from "../../redux/calculatorSlice/calcSlice";
 
 import "./modal.css";
+import calcOperation from "../../redux/calculatorSlice/calcOperation";
 
-const Modal = ({ isOpen, onClose }) => {
+const Modal = ({ isOpen }) => {
   const { dailyRate, notHealthy } = useSelector(calcSelectors.getUserData);
-  const [nHealthy, setNotHealthy] = useState([]);
+
+  const [Products, setProductsModal] = useState([]);
   const dispatch = useDispatch();
 
+  let productsModal = Products;
+  dispatch(calcOperation.calc);
+  console.log(productsModal);
+
+  useEffect(() => {
+    if (notHealthy && notHealthy) {
+      setProductsModal(notHealthy);
+    }
+  }, [notHealthy]);
 
   const titleStyles = {
     fontFamily: "Verdana",
@@ -21,18 +35,16 @@ const Modal = ({ isOpen, onClose }) => {
     letterSpacing: "0em",
     textAlign: "center",
     marginTop: "50px",
-
   };
 
   const close = {
     position: "absolute",
-    width:"10px",
-    fontSize:"25px",
+    width: "10px",
+    fontSize: "25px",
     top: "1.5rem", // Ajusta la posición vertical
     right: "1rem", // Ajusta la posición horizontal para la esquina derecha
     cursor: "pointer",
     color: "black",
-
   };
 
   const valuekcal = {
@@ -42,8 +54,8 @@ const Modal = ({ isOpen, onClose }) => {
     lineHeight: "32px",
     letterSpacing: "0.04em",
     textAlign: "center",
-    color:"#264061",
-    marginTop: "30px"
+    color: "#264061",
+    marginTop: "30px",
   };
 
   const kcla = {
@@ -53,8 +65,8 @@ const Modal = ({ isOpen, onClose }) => {
     lineHeight: "32px",
     letterSpacing: "0.04em",
     textAlign: "center",
-    color:"#264061",
-    marginTop: "30px"
+    color: "#264061",
+    marginTop: "30px",
   };
 
   const vectorStyles = {
@@ -63,13 +75,12 @@ const Modal = ({ isOpen, onClose }) => {
     maxWidth: "330px",
     height: "1px", // Altura de 1 píxel para que parezca una línea
     border: "1px solid #E0E0E0", // Border de 1 píxel sólido de color negro
-
   };
 
   const notfoot = {
     fontFamily: "Verdana", // Fixed the typo in fontFamily
     lineHeight: "36px",
-    fontSize:"19px",
+    fontSize: "19px",
     letterSpacing: "0em",
     textAlign: "center",
     marginTop: "20px",
@@ -78,7 +89,6 @@ const Modal = ({ isOpen, onClose }) => {
     alignItems: "flex-start",
   };
 
- 
   const buttonStar = {
     backgroundColor: "#FC842D",
     padding: "15px 20px",
@@ -92,7 +102,7 @@ const Modal = ({ isOpen, onClose }) => {
     borderColor: "transparent",
     cursor: "pointer",
     position: "relative",
-    
+
     // bottom:"-8rem"
   };
   const listnotfoot = {
@@ -107,49 +117,56 @@ const Modal = ({ isOpen, onClose }) => {
     marginBottom: "10px",
     textAlign: "center",
 
-    gap:"0.5em",
-    display:"flex",
-    flexDirection:"column",
-    alignItems:"flex-start",
-
+    gap: "0.5em",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
   };
-  
-  useEffect(() => {
-    setNotHealthy(notHealthy);
-  }, [dailyRate, notHealthy]);
 
   return (
     isOpen && (
       <div className="backdrop">
-          <div className="modAl">
-            <div className="contModal">
+        <div className="modAl">
+          <div className="contModal">
             <Button
               style={close}
               onClick={() => {
-                onClose();
+                dispatch(setIsModalOpen(false));
                 dispatch(wipeUser());
               }}
             >
               X
             </Button>
-              <h2 style={titleStyles}>
-                Your recommended daily calorie intake is
-              </h2>
-              <br />
-              <p style={valuekcal}>
-                {dailyRate}<span style={kcla}>kcal</span>
-              </p>
-              <p style={vectorStyles}></p>
-              <p style={notfoot}>Foods you shouldnt eat</p>
-              <ul style={listnotfoot}>
-                {nHealthy.map((food, index) => (
-                  <li key={index} className='itemModal'> • {food}</li>
-                ))}
-              </ul>
+            <h2 style={titleStyles}>
+              Your recommended daily calorie intake is
+            </h2>
+            <br />
+            <p style={valuekcal}>
+              {dailyRate}
+              <span style={kcla}>kcal</span>
+            </p>
+            <p style={vectorStyles}></p>
+            <p style={notfoot}>Foods you shouldnt eat</p>
+            <ul style={listnotfoot}>
+              {productsModal.map((product, key) => (
+                <li key={key} className="itemModal">
+                  • {product}
+                </li>
+              ))}
+            </ul>
             <NavLink to="/signup">
-              <button style={buttonStar}> Start losing weight</button>
+              <button
+                style={buttonStar}
+                onClick={() => {
+                  dispatch(setIsModalOpen(false));
+                  dispatch(wipeUser());
+                }}
+              >
+                {" "}
+                Start losing weight
+              </button>
             </NavLink>
-            </div>
+          </div>
         </div>
       </div>
     )

@@ -13,11 +13,13 @@ const calcSlice = createSlice({
       blood: '1',
     },
     loaderShow: false,
+    isModalOpen: false,
   },
   extraReducers: {
     [calcOperation.calc.fulfilled](state, action) {
       state.userData = action.payload.usData;
       state.userInfo = action.payload.usInfo;
+      state.isModalOpen = true;
       state.loaderShow = false;
     },
     [calcOperation.calc.pending](state) {
@@ -26,7 +28,8 @@ const calcSlice = createSlice({
     [calcOperation.calc.rejected](state) {
       state.loaderShow = false;
     },
-
+    
+    
     [calcOperation.calcUserUpdate.fulfilled](state, action) {
       state.userData = action.payload;
       state.loaderShow = false;
@@ -38,8 +41,11 @@ const calcSlice = createSlice({
       state.loaderShow = false;
     },
   },
-
+  
   reducers: {
+    setIsModalOpen: (state, action) => {
+      state.isModalOpen = action.payload;
+    },
     updateUser: (state, action) => {
       state.userInfo.height = action.payload.height;
       state.userInfo.age = action.payload.age;
@@ -61,4 +67,4 @@ const calcSlice = createSlice({
 
 export default calcSlice.reducer;
 
-export const { updateUser, wipeUser } = calcSlice.actions;
+export const { updateUser, wipeUser, setIsModalOpen } = calcSlice.actions;

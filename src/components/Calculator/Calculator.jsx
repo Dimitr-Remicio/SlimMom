@@ -13,44 +13,47 @@ import { Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
 import authSelector from "../../redux/auth/selectors";
-import { updateUser } from "../../redux/calculatorSlice/calcSlice";
+import { setIsModalOpen, updateUser } from "../../redux/calculatorSlice/calcSlice";
 import calcOperation from "../../redux/calculatorSlice/calcOperation";
 
+
+
+
 import { useEffect, useState } from "react";
+import Modal from "../Modal/Modal";
 
 const CalculatorSchema = Yup.object().shape({
   height: Yup.number()
-    .typeError("Campo obligatorio")
-    .min(100, "Altura mínima de 100 cm")
-    .max(250, "Altura máxima de 250 cm")
-    .required("Campo obligatorio"),
+    .typeError("Обов`язково до заповнення")
+    .min(100, "Мінімальний зріст 100 см")
+    .max(250, "Максимальний зріст 250 см")
+    .required("Обов`язково до заповнення"),
   age: Yup.number()
-    .typeError("Campo obligatorio")
-    .min(18, "Edad mínima de 18 años")
-    .max(100, "Edad máxima de 100 años")
-    .required("Campo obligatorio"),
+    .typeError("Обов`язково до заповнення")
+    .min(18, "Мінімальний вік 18 років")
+    .max(100, "Максимальний вік 100 років ")
+    .required("Обов`язково до заповнення"),
   weightCurrent: Yup.number()
-    .typeError("Campo obligatorio")
+    .typeError("Обов`язково до заповнення")
     .moreThan(
       Yup.ref("weightDesired"),
-      "El peso actual debe ser mayor que el deseado"
+      "Поточна вага має бути більшою за бажану"
     )
-    .test("min-width", "Peso mínimo de 30 kg", function (value) {
+    .test("min-width", "Мінімальна вага 30 кг", function (value) {
       return value > 29;
     })
-    .max(500, "Peso máximo de 500 kg")
-    .required("Campo obligatorio"),
+    .max(500, "Максимальна вага 500 кг")
+    .required("Обов`язково до заповнення"),
   weightDesired: Yup.number()
-    .typeError("Campo obligatorio")
-    .min(20, "Peso mínimo de 20 kg")
-    .max(500, "Peso máximo de 500 kg")
-    .required("Campo obligatorio"),
+    .typeError("Обов`язково до заповнення")
+    .min(20, "Мінімальна вага 20 кг")
+    .max(500, "Максимальна вага 500 кг")
+    .required("Обов`язково до заповнення"),
   blood: Yup.string().required(),
 });
 
-const CalcPublic = (props, ) => {
+const CalcPublic = (props) => {
   const { title } = props;
- 
 
   const authUserParams = useSelector(calcSelectors.getUserInfo);
   //   const LoaderStatus = useSelector(calcSelectors.getLoaderStatus);
@@ -96,6 +99,7 @@ const CalcPublic = (props, ) => {
             dispatch(updateUser(values));
           } else {
             dispatch(calcOperation.calc(values));
+            dispatch(setIsModalOpen(true));
           }
           actions.setSubmitting(false);
 
@@ -203,7 +207,7 @@ const CalcPublic = (props, ) => {
                           wordSpacing: "0px",
                           paddingLeft: "0",
                           color: "#828282",
-                          borderBottom: "1px solid #828282",
+                          borderBottom:"1px solid #828282"
                         }}
                       >
                         Blood type <b>(select)</b>
@@ -249,18 +253,28 @@ const CalcPublic = (props, ) => {
                 >
                   Start losing weight
                 </Button>
-              ) : null
-                }
+              ) : (
+                <Button
+                  form="calculatorForm"
+                  type="submit"
+                  className="calc__btn"
+                  style={{
+                    backgroundColor: "#fc842d",
+                    padding: "15px 20px",
+                    borderRadius: "20em",
+                    position: "absolute",
+                    bottom: "0",
+                  }}
+                  variant="contained"
+                >
+                  Start losing weight
+                </Button>
+              )}
             </>
           );
         }}
       </Formik>
-      {/* {LoaderStatus && <Loader />}
-      {showModal && !LoaderStatus && (
-        <Modal setShowModal={setShowModal}>
-          <ModalContent setShowModal={setShowModal}></ModalContent>
-        </Modal>
-      )} */}
+
     </>
   );
 };

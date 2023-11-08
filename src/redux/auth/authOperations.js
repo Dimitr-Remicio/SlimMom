@@ -5,7 +5,7 @@ import Notiflix from "notiflix";
 // raiz
 // const base = "https://slimmomapi-dev-xdce.2.us-1.fl0.io/api";
 // dairodev
-const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
+const base = "https://slimmom-7ckv.onrender.com/api";
 
 
 const token = {
@@ -60,8 +60,14 @@ const logIn = createAsyncThunk("/auth/login", async (credential, thunkAPI) => {
 const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
   try {
     await axios.get(`${base}/users/logout`);
+    Notiflix.Notify.success("you logout sucessfully!", {
+      timeout: 6000,
+    });
     token.unset();
   } catch (error) {
+    Notiflix.Notify.error("sorry, you not authorizated!", {
+      timeout: 6000,
+    });
     return thunkAPI.rejectWithValue();
   }
 });

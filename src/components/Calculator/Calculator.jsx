@@ -17,7 +17,6 @@ import { updateUser } from "../../redux/calculatorSlice/calcSlice";
 import calcOperation from "../../redux/calculatorSlice/calcOperation";
 
 import { useEffect, useState } from "react";
-import Modal from "../Modal/Modal";
 
 const CalculatorSchema = Yup.object().shape({
   height: Yup.number()
@@ -49,20 +48,9 @@ const CalculatorSchema = Yup.object().shape({
   blood: Yup.string().required(),
 });
 
-const CalcPublic = (props) => {
+const CalcPublic = (props, ) => {
   const { title } = props;
-  // OPNE Y CLOSE
-  const [isModalOpen, setModalOpen] = useState(false); // Estado para controlar la apertura y cierre del modal
-
-  const handleOpenModal = () => {
-    console.log("Opening modal");
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    console.log("Closing modal");
-    setModalOpen(false);
-  };
+ 
 
   const authUserParams = useSelector(calcSelectors.getUserInfo);
   //   const LoaderStatus = useSelector(calcSelectors.getLoaderStatus);
@@ -261,24 +249,8 @@ const CalcPublic = (props) => {
                 >
                   Start losing weight
                 </Button>
-              ) : (
-                <Button
-                  form="calculatorForm"
-                  type="submit"
-                  className="calc__btn"
-                  style={{
-                    backgroundColor: "#fc842d",
-                    padding: "15px 20px",
-                    borderRadius: "20em",
-                    position: "absolute",
-                    bottom: "0",
-                  }}
-                  variant="contained"
-                  onClick={handleOpenModal}
-                >
-                  Start losing weight
-                </Button>
-              )}
+              ) : null
+                }
             </>
           );
         }}
@@ -289,7 +261,6 @@ const CalcPublic = (props) => {
           <ModalContent setShowModal={setShowModal}></ModalContent>
         </Modal>
       )} */}
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
     </>
   );
 };

@@ -27,23 +27,33 @@ const Routers = () => {
       {/* )} */}
 
       <Routes>
-        <Route path="SlimMom/" element={<Navigate to="home" />} />
-        <Route path="/SlimMom/home" element={<Home />} />
-        <Route path="/SlimMom/login" element={<Login />} />
-        <Route path="/SlimMom/signup" element={<Signup />} />
+        <Route path="*" element={<Navigate to="/home" />} />
+        <Route path="SlimMom" element={<Navigate to="home" />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route
-          path="/SlimMom/calculator"
+          path="/calculator"
           element={
-            isLoggedIn ? <Calculator /> 
-            // : <Calculator /> 
-            : <Navigate to="/SlimMom/home" />
+            isLoggedIn ? (
+              <Calculator />
+            ) 
+            : (
+              <Navigate to="/home" />
+              // : <Calculator />
+            )
           }
         />
         <Route
-          path="/SlimMom/diary"
-          element={isLoggedIn ? <Diary /> 
-          // :  <Diary /> }
-          : <Navigate to="/SlimMom/home" />}
+          path="/diary"
+          element={
+            isLoggedIn ? (
+              <Diary />
+            ) : (
+              // :  <Diary /> }
+              <Navigate to="/home" />
+            )
+          }
         />
       </Routes>
     </>

@@ -45,22 +45,22 @@ const Header = () => {
     userIsLoggedIn
       ? (nav__links = [
           {
-            path: "/SlimMom/diary",
+            path: "/diary",
             display: "Diary",
           },
           {
-            path: "/SlimMom/calculator",
+            path: "/calculator",
             display: "Calculator",
           },
         ])
       : (nav__links = [
       
           {
-            path: "/SlimMom/login",
+            path: "/login",
             display: "Login",
           },
           {
-            path: "/SlimMom/signup",
+            path: "/signup",
             display: "Signup",
           },
         ]);
@@ -69,11 +69,11 @@ const Header = () => {
     userIsLoggedIn
       ? (nav__links2 = [
           {
-            path: "/SlimMom/diary",
+            path: "/diary",
             display: "Diary",
           },
           {
-            path: "/SlimMom/calculator",
+            path: "/calculator",
             display: "Calculator",
           },
         ])
@@ -83,22 +83,22 @@ const Header = () => {
           //   display: "Diary",
           // },
           {
-            path: "/SlimMom/home",
+            path: "/home",
             display: "Home",
           },
           {
-            path: "/SlimMom/login",
+            path: "/login",
             display: "Login",
           },
           {
-            path: "/SlimMom/signup",
+            path: "/signup",
             display: "Signup",
           },
         ]);
   }
 
   {
-    userIsLoggedIn ? (home = "/SlimMom/calculator") : (home = "/SlimMom");
+    userIsLoggedIn ? (home = "/calculator") : (home = "/home");
   }
 
   return (

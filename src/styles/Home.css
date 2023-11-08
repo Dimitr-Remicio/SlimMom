@@ -23,22 +23,39 @@
 }
 
 @media screen and (min-width: 708px) {
+    .calculator{
+        height: 68vh;
+
+    }
     .Home{
         width: 480px;
         display: flex;
         flex-direction: column;
         align-items: center;
-    
+        
         transition: all 500ms ease-in-out;
         margin: 0;
         transform: translate(0%, 0%);
-    
+        
         & h1{
             font-family: "Verdana bold", sans-serif;
             font-size: 30px;
             letter-spacing: 0;
         }
-    
-    
+        
+        
+    }
+}
+
+@media screen and (min-width: 1020px) {
+    .calculator{
+        margin-top: 10rem;
+    padding-bottom: 0rem;
+
+    }
+
+    .Home{
+        padding-bottom: 0rem;
+
     }
 }

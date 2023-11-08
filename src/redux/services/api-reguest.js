@@ -6,7 +6,10 @@ import { toastStyles } from '../../styles/toastStyled.js';
 // raiz
 // const base = "https://slimmomapi-dev-xdce.2.us-1.fl0.io/api";
 // dairodev
-const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
+// const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
+const base = "https://slimmom-7ckv.onrender.com/api";
+
+
 axios.defaults.baseURL = `${base}`;
 
 export const searchProduct = async (search) => {
@@ -32,7 +35,7 @@ export const getAllProduct = async () => {
 };
 export const getDairy = async () => {
   try {
-    const { data } = await axios.get(`${base}/days/info`);
+    const { data } = await axios.post(`${base}/days/info`);
     return data;
   } catch (error) {
     toast.error(

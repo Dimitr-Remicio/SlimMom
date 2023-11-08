@@ -14,14 +14,13 @@ import { useState } from "react";
 
 export default function SummaryForDay() {
   const date = new Date();
-  const { notHealthy } = useSelector(calcSelectors.getUserData);
+  const { notHealthy} = useSelector(calcSelectors.getUserData);
+  // const { summary } = useSelector(calcSelectors.getUserData);
   const reduxDate = useSelector(getDate);
   const dailyRate = useSelector(getDaily);
   const summary = useSelector(getSummary);
 
-  const [Healthy, setNotHealthy] = useState([{}]);
-
-
+  const [Healthy, setNotHealthy] = useState([]);
 
   useEffect(() => {
     if (notHealthy && notHealthy.products) {
@@ -29,6 +28,7 @@ export default function SummaryForDay() {
     }
   }, [notHealthy]);
 
+  console.log(summary)
 
   return (
     <>
@@ -50,21 +50,20 @@ export default function SummaryForDay() {
                 {summary.consumed ? Math.round(summary.consumed) : "000"} kcal
               </li>
               <li>
-                Dialy rate {dailyRate ? Math.round(dailyRate) : "000"} kcal
+                Dialy rate {dailyRate? Math.round(dailyRate) : "000"} kcal
               </li>
               <li>
                 n% than normal{" "}
-                {summary.nOfNorm ? Math.round(summary.nOfNorm) : "000"} %
+                {summary.percentOfDailyRate ? Math.round(summary.percentOfDailyRate) : "0"} %
               </li>
             </ul>
           </div>
           <div className="food-sidebar">
             <h4 className="title-sidebar">Food not recommended</h4>
             <ul>
-              {Healthy.map((product, id) => (
-                <li key={id} className="itemModal">
-                  {" "}
-                  • {product.title}
+              {Healthy.map((products, key) => (
+                <li key={key} className="itemModal">
+                  • {products}
                 </li>
               ))}
             </ul>

@@ -15,7 +15,7 @@ body {
 }
 #root {
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 h1,
@@ -63,6 +63,20 @@ a {
   z-index: 3;
   transition: none !important;
 }
+.bg_blur2 {
+  position: fixed;
+
+  width: 100% !important;
+  height: 200% !important;
+
+  top: -20rem;
+  left: 0;
+  background-color: rgba(129, 129, 129, 0.096);
+  backdrop-filter: blur(50px);
+
+  z-index: 3;
+  transition: none !important;
+}
 
 section {
   width: auto;
@@ -81,13 +95,12 @@ section {
   position: fixed;
   background-color: rgba(0, 0, 0, 0.186);
 
-  width: 120vw;
-  height: 120vh;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  transform:translate(-20%,-13rem) !important;
+  z-index: 600 !important;
+  width: 100vw;
+  height: 100vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) !important;
 
   backdrop-filter: blur(2px);
   transition: none !important;
@@ -137,13 +150,12 @@ section {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.186);
   
-    width: 120vw;
-    height: 120vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    transform:translate(-18vw,-18rem) !important;
+    z-index: 600;
+    width: 100vw;
+    height: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) !important;
   
     backdrop-filter: blur(2px);
     transition: none !important;
@@ -160,7 +172,7 @@ section {
   .Layout {
     background-image: none;
 
-    margin-top: 5rem;
+    margin-top: 0;
     height: auto !important;
   }
   body {
@@ -188,17 +200,25 @@ section {
   }
 }
 @media screen and (min-width: 1020px) {
+
+  #root{
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100vh;
+  }
+
+
   .backdrop{
     position: fixed;
     background-color: rgba(0, 0, 0, 0.186);
   
-    width: 115vw;
-    height: 120vh;
-    top: 0;
-    left: 55%;
-    right: 0;
-    margin: 0 auto;
-    transform:translate(-31%,-20rem) !important;
+    z-index: 600;
+    width: 100vw;
+    height: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) !important;
   
     backdrop-filter: blur(2px);
     transition: none !important;
@@ -211,8 +231,9 @@ section {
   .Layout {
     display: flex;
     align-items: center;
-    margin-top: 5rem;
-    height: 600px !important;
+    margin-top: 0;
+    height: 88vh !important;
+    min-height: 600px !important;
   }
   body {
     overflow-y: hidden;
@@ -232,6 +253,20 @@ section {
 
     transition: all 800ms ease;
   }
+  .bg_blur2 {
+    position: absolute;
+
+    display: block;
+
+    width: 0;
+    height: 0;
+
+    backdrop-filter: blur(20px);
+
+    z-index: 6;
+
+    transition: all 800ms ease;
+  }
   .bg__layout {
     position: relative;
     z-index: 50;
@@ -246,20 +281,15 @@ section {
   .backdrop{
     position: absolute;
     background-color: rgba(255, 255, 255, 0.498);
-  
+    z-index: 600;
     width: 100vw;
-    height: 120vh;
-    top: 0;
-    right: 0;
-
-    margin: 0;
-    
-    margin: 0 !important;
-
+    height: 100vh;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%) !important;
     backdrop-filter: blur(10px);
     transition: none !important;
-
-    transform:translate(-30vw,-20rem) !important;
+    margin: 0 auto;
 
   
   }

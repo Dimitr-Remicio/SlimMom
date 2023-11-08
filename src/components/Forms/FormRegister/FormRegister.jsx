@@ -69,7 +69,7 @@ export default function RegisterForm() {
 
   function userRegister() {
     setTimeout(() => {
-      nav("/SlimMom/login");
+      nav("/login");
     }, 1000);
   }
 
@@ -247,7 +247,7 @@ export default function RegisterForm() {
                 Sign up
               </Button>
 
-              <NavLink to="/SlimMom/login">
+              <NavLink to="/login">
                 <Button
                   className="loginInvert"
                   style={{

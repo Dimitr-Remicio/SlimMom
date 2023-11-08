@@ -60,7 +60,7 @@ export default function LoginForm() {
 
   function userLogin() {
     setTimeout(() => {
-      nav("/SlimMom/home");
+      nav("/home");
     }, 500);
   }
 
@@ -165,7 +165,7 @@ export default function LoginForm() {
                 Login
               </Button>
 
-              <NavLink to="/SlimMom/signup">
+              <NavLink to="/signup">
                 <Button
                   className="FormButton signup"
                   style={{

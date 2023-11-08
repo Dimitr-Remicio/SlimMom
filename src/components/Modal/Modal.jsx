@@ -146,7 +146,7 @@ const Modal = ({ isOpen, onClose }) => {
                   <li key={index} className='itemModal'> • {food}</li>
                 ))}
               </ul>
-            <NavLink to="/SlimMom/signup">
+            <NavLink to="/signup">
               <button style={buttonStar}> Start losing weight</button>
             </NavLink>
             </div>

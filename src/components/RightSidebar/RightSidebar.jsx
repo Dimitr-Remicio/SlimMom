@@ -5,8 +5,9 @@ import {
   getSummary,
   getDate,
   getNotRecFood,
+  getDaily
 } from "../../redux/dairy/dairySelector";
-import { getDaily } from "../../redux/dairy/dairySelector";
+// import { getDaily } from "../../redux/dairy/dairySelector";
 import "./RightSidebar.css"; // Asegúrate de importar tus estilos CSS
 import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
 import { useState } from "react";
@@ -23,10 +24,10 @@ export default function SummaryForDay() {
 
 
   useEffect(() => {
-
-    setNotHealthy(notHealthy.products);
+    if (notHealthy && notHealthy.products) {
+      setNotHealthy(notHealthy.products);
+    }
   }, [notHealthy]);
-  console.log(summary)
 
 
   return (

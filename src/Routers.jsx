@@ -10,12 +10,13 @@ import Signup from './pages/Signup';
 const Routers = () => {
   return (
     <Routes>
-      <Route path="SlimMom/" element={<Navigate to='home' />} />
-      <Route path='/SlimMom/home' element={<Home/>}/>
-      <Route path='/SlimMom/calculator' element={<Calculator/>}/>
-      <Route path='/SlimMom/diary' element={<Diary/>}/>
-      <Route path='/SlimMom/login' element={<Login/>}/>
-      <Route path='/SlimMom/signup' element={<Signup/>}/>
+      <Route path="*" element={<Navigate to="/" />} />
+      <Route path="SlimMom" element={<Navigate to='home' />} />
+      <Route path='home' element={<Home/>}/>
+      <Route path='calculator' element={<Calculator/>}/>
+      <Route path='diary' element={<Diary/>}/>
+      <Route path='login' element={<Login/>}/>
+      <Route path='signup' element={<Signup/>}/>
   </Routes>
 ) 
 }

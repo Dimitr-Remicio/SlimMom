@@ -1,40 +1,38 @@
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
+import React, { useState, forwardRef } from "react";
+import { DatePickerWrapper } from "./DiaryDateCalendar.styled";
 import "react-datepicker/dist/react-datepicker.css";
-import "./DiaryDateCalendar.css"; // Importa tus estilos CSS aquí
-import CalendarIcon from "./images/calendar.png"; 
+import DatePicker from "react-datepicker";
+// import CalendarIcon from "../../images/svg/calendar.svg"
+import { useDispatch } from "react-redux";
+import { addDate } from "../../redux/dairy/dairyReducer";
+import moment from "moment/moment";
 
-const DiaryDateCalendar = () => {
+export const DiaryDateCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const today = new Date();
-
-  const handleDateChange = (date) => {
+  const dispatch = useDispatch()
+  const handleChange = (date) => {
+    const formattedDate = moment(date).format("DD.MM.YYYY")
     setSelectedDate(date);
-  };
-
+    dispatch(addDate(formattedDate)) 
+  }
+  
+  const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+    <div>
+      <DatePickerWrapper onClick={onClick} ref={ref}>
+        {value}
+        {/* <Icon src={CalendarIcon} alt="calendar icon" /> COLOCAR EL SVG DEL CALENDARIO*/}
+      </DatePickerWrapper>
+    </div>
+  ));
   return (
-    <div className="diary-date-calendar">
-       <div className="date-display">
-        <div className="date-text">
-          {selectedDate.getDate()}.{selectedDate.getMonth() + 1}.{selectedDate.getFullYear()}
-        </div>
-      </div>
-      <DatePicker
-        selected={selectedDate}
-        onChange={handleDateChange}
-        maxDate={today}
-        customInput={
-                        
-            <div className="calendar-input">
-            <img src={CalendarIcon} alt="calendar icon" />
-           
-          </div>
-        }
+    <div>
+      <DatePicker 
+        selected={selectedDate} 
+        onChange={(date) => handleChange(date)} 
+        dateFormat="dd.MM.yyyy"
+        customInput={<ExampleCustomInput />}
+        maxDate={new Date()}
       />
     </div>
-  );
-};
-
-export default DiaryDateCalendar;
-
-
+  )
+}

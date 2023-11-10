@@ -33,6 +33,7 @@ export const getAllProduct = async () => {
 export const getDairy = async () => {
   try {
     const { data } = await axios.get(`${base}/days/info`);
+    console.log(data);
     return data;
   } catch (error) {
     toast.error(

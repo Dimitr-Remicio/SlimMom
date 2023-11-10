@@ -39,8 +39,8 @@ const Routers = () => {
               <Calculator />
             ) 
             : (
-              <Navigate to="/home" />
-              // : <Calculator />
+              // <Navigate to="/home" />
+              <Calculator />
             )
           }
         />
@@ -50,8 +50,8 @@ const Routers = () => {
             isLoggedIn ? (
               <Diary />
             ) : (
-              // :  <Diary /> }
-              <Navigate to="/home" />
+              <Diary /> 
+              // <Navigate to="/home" />
             )
           }
         />

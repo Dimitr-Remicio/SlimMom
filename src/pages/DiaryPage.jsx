@@ -2,7 +2,7 @@ import { Wrapper, WrapperAll } from "../components/DiaryPage/DiaryPage.styled";
 import { DiaryAddProductForm } from "../components/DiaryAddProductForm/DiaryAddProductForm";
 import { DiaryDateCalendar } from "../components/DiaryDateCalendar/DiaryDateCalendar";
 import { DiaryProductsList } from "../components/DiaryProductsList/DiaryProductsList";
-// import RightSideBar from "../components/RightSideBar/RightSideBar";
+import RightSideBar from "../components/RightSideBar/RightSideBar";
 import React from "react";
 import { useState } from "react";
 import { DiaryModal } from "../components/DiaryModal/DiaryModal";
@@ -33,11 +33,11 @@ const DiaryPage = () => {
         {!mobile && <DiaryAddProductForm />}
 
         <DiaryProductsList />
-        {mobile && <Button onClick={() => onModalOpen()}>+</Button>}
+        {/* {mobile && <Button onClick={() => onModalOpen()}>click</Button>} */}
 
         {isModalOpened && <DiaryModal onClose={onModalClose} />}
       </Wrapper>
-      {/* <RightSideBar /> */}
+      <RightSideBar />
     </WrapperAll>
   );
 };

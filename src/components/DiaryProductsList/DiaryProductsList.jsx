@@ -12,21 +12,21 @@ export const DiaryProductsList = () => {
   const date = useSelector(getDate);
   const dispatch = useDispatch();
   const products = useSelector(getProducts);
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const result = await getDairy(date, token)
-        if (result.length > 0) {
-          dispatch(fetchProducts(result[0].productInfo));
-        } else {
-          dispatch(fetchProducts([]));
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getProducts();
-  }, [date, dispatch, token]);
+  // useEffect(() => {
+  //   const getProducts = async () => {
+  //     try {
+  //       const result = await getDairy(date, token)
+  //       if (result.length > 0) {
+  //         dispatch(fetchProducts(result[0].productInfo));
+  //       } else {
+  //         dispatch(fetchProducts([]));
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getProducts();
+  // }, [date, dispatch, token]);
 
   return (
     <List className={products.length > 4 ? null : "hidden"}>
@@ -40,7 +40,7 @@ export const DiaryProductsList = () => {
             calories={product.productCalories}
           />
         ))
-      ) : null}
+      ) : (<h3>error try again</h3>)}
     </List>
   );
 }

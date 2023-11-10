@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import sprite from "../assets/sprite.svg";
-// import RightSidebar from "../components/RightSidebar/RightSidebar";
+import RightSidebar from "../components/RightSidebar/RightSidebar";
 import DiaryDateCalendar from "../components/DiaryDateCalendar/DiaryDateCalendar";
 
 import '../styles/diary.css';
@@ -103,8 +103,8 @@ function DiaryPage() {
         </div>
       </div>
 
+      {/* <RightSidebar /> */}
     </section>
-      <RightSidebar />
     </>
 
   );

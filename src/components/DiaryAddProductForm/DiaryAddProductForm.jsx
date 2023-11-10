@@ -16,34 +16,52 @@ import {
 // import AddIcon from "../../images/svg/add.svg"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDate } from "../../redux/dairy/dairySelector";
-import { fetchProducts } from "../../redux/dairy/dairyOperations";
+import {
+  getProducts,
+  getDate,
+  getToggle,
+  getError,
+} from "../../redux/dairy/dairySelector";
+import { addProduct } from "../../redux/dairy/dairyOperations";
 import {
   addProductForUser,
   searchProduct,
 } from "../../redux/services/api-reguest";
 import authSelectors from "../../redux/auth/selectors";
+import Notiflix from "notiflix";
+import { result } from "lodash";
 
 const schema = yup.object().shape({
   productName: yup.string().required("Name is required field"),
-  productWeight: yup
+  weight: yup
     .number("Grams must be a number")
     .typeError("Grams must be a number")
     .required("Grams is required field"),
 });
 
 export const DiaryAddProductForm = ({ onClose }) => {
-  const token = useSelector(authSelectors.getToken);
+  const [value, setValue] = useState(null);
+
+  const [productIdd, setProductIdd] = useState("");
+  const [Pweight, setPWeight] = useState("");
   const dispatch = useDispatch();
+
+  const weight = Math.floor(Pweight);
+  const products = useSelector(getProducts);
   const date = useSelector(getDate);
+  const toggle = useSelector(getToggle);
+  let error = useSelector(getError);
+
   const mobile = useMediaQuery({ query: "(max-width: 426px)" });
+
   const initialValues = {
+    productId: "",
     productName: "",
-    productWeight: "",
+    weight: "",
   };
   const [searchProducts, setSearchProducts] = useState([]);
   const [visible, setVisible] = useState(false);
-  const userInfo = useSelector(authSelectors.getFullUser);
+  // const userInfo = useSelector(authSelectors.getFullUser);
 
   const search = async (value) => {
     try {
@@ -56,21 +74,54 @@ export const DiaryAddProductForm = ({ onClose }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     schema.validate(values);
-    const { productName, productWeight } = values;
-    const body = { productName, productWeight: parseInt(productWeight), date };
+    const { productName, weight } = values;
+    const body = {
+      productName,
+      productWeight: parseInt(weight),
+      date,
+    };
+    console.log(body);
     try {
-      const result = await addProductForUser(body, token, date);
+      const result = await addProductForUser(body, date);
+      console.log(result);
+
+      console.log(body);
+
       if (result.length > 0) {
-        dispatch(fetchProducts(result));
+        setProductId("");
+        dispatch(addProduct(result));
+        console.log(body);
       } else {
-        dispatch(fetchProducts([]));
+        dispatch(addProduct([]));
+        console.log(body);
       }
     } catch (error) {
+      console.log(body);
       alert("Oops.. Product not found!");
     }
     mobile && onClose();
     resetForm();
+    console.log(body);
   };
+  // function onSubmit() {
+  //   if (productId === "") {
+  //     return console.log("Choose a product!");
+  //   }
+  //   if (productWeight <= 0) {
+  //     return console.log("Specify the weight of the product!");
+  //   }
+
+  //   if (productId !== "" && productWeight >= 1) {
+  //     dispatch(addProduct({ date, productId, productWeight: weight }));
+  //     if (error) {
+  //       return;
+  //     }
+
+  //     setProductId("");
+  //     setWeight("");
+  //     setValue("");
+  //   }
+  // }
 
   const handleChange = (e) => {
     const productName = e.target.value;
@@ -85,8 +136,9 @@ export const DiaryAddProductForm = ({ onClose }) => {
     }
   };
 
-  const handleClick = (setFieldValue, title) => {
+  const handleClick = (setFieldValue, title, setProductIdd,  _id) => {
     setVisible(false);
+    setProductIdd(_id);
     setFieldValue("productName", title);
   };
 
@@ -95,7 +147,13 @@ export const DiaryAddProductForm = ({ onClose }) => {
       <Formik
         enableReinitialize={true}
         initialValues={initialValues}
-        onSubmit={handleSubmit}
+        onSubmit={(values, { resetForm, setSubmitting }) => {
+          handleSubmit();
+          console.log(values);
+          setSubmitting(false);
+          resetForm();
+        }}
+        onChange={(e) => console.log(e)}
         validationSchema={schema}
       >
         {({ setFieldValue }) => (
@@ -109,16 +167,17 @@ export const DiaryAddProductForm = ({ onClose }) => {
               />
               <ErrorMessage name="productName" component={NameError} />
               <GramsInput
-                type="productWeight"
+                type="weight"
                 placeholder="Gramskilos"
-                name="productWeight"
+                name="weight"
                 autoComplete="off"
               />
-              <ErrorMessage name="productWeight" component={GramsError} />
+              <ErrorMessage name="weight" component={GramsError} />
               {mobile ? (
                 <Button type="submit">Add</Button>
               ) : (
                 <Button type="submit">
+                  add
                   {/* <img src={AddIcon} alt="add product" /> NO OLIVDAR SVG*/}
                 </Button>
               )}
@@ -127,30 +186,30 @@ export const DiaryAddProductForm = ({ onClose }) => {
               {searchProducts !== "" &&
                 searchProducts.length !== 0 &&
                 searchProducts.map((product) => {
-                  if (
+                  {
+                    /* if (
                     userInfo.notAllowedProductsAll.find(
-                      (el) => el === product.title.ua
+                      (el) => el === product.title
                     )
                   ) {
                     return (
                       <SearchItemNotRecommended
                         key={product._id}
                         onClick={() =>
-                          handleClick(setFieldValue, product.title.ua)
+                          handleClick(setFieldValue, product.title)
                         }
                       >
                         {product.title.ua}
                       </SearchItemNotRecommended>
                     );
+                  } */
                   }
                   return (
                     <SearchItem
                       key={product._id}
-                      onClick={() =>
-                        handleClick(setFieldValue, product.title.ua)
-                      }
+                      onClick={() => handleClick(setFieldValue, product.title, setProductIdd, product._id)}
                     >
-                      {product.title.ua}
+                      {product.title}
                     </SearchItem>
                   );
                 })}

@@ -51,6 +51,7 @@ const addProduct = createAsyncThunk(
   async function (newObject, { rejectWithValue }) {
     try {
       const products = await addProductForUser(newObject);
+      console.log(products)
       return products;
     } catch (error) {
       console.error(error.message);

@@ -9,30 +9,31 @@ import moment from "moment/moment";
 
 export const DiaryDateCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const handleChange = (date) => {
-    const formattedDate = moment(date).format("DD.MM.YYYY")
+    const formattedDate = moment(date).format("DD.MM.YYYY");
     setSelectedDate(date);
-    dispatch(addDate(formattedDate)) 
-  }
-  
+    dispatch(addDate(formattedDate));
+    console.log(date);
+    console.log(formattedDate);
+  };
+
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
-    <div>
-      <DatePickerWrapper onClick={onClick} ref={ref}>
-        {value}
-        {/* <Icon src={CalendarIcon} alt="calendar icon" /> COLOCAR EL SVG DEL CALENDARIO*/}
-      </DatePickerWrapper>
-    </div>
+    <DatePickerWrapper onClick={onClick} ref={ref}>
+      {value}
+      ICon
+    </DatePickerWrapper>
   ));
+
   return (
     <div>
-      <DatePicker 
-        selected={selectedDate} 
-        onChange={(date) => handleChange(date)} 
+      <DatePicker
+        selected={selectedDate}
+        onChange={(date) => handleChange(date)}
         dateFormat="dd.MM.yyyy"
         customInput={<ExampleCustomInput />}
         maxDate={new Date()}
       />
     </div>
-  )
-}
+  );
+};

@@ -2,10 +2,11 @@ import { Field, Form } from 'formik';
 import styled from 'styled-components';
 
 export const NameInput = styled(Field)`
-  border: none;
+  border: 2px solid #000;
   width: 280px;
   margin-bottom: 32px;
   padding-bottom: 8px;
+  padding-left: 8px;
   border-bottom: 1px;
   font-size: 15px;
   color: blue;
@@ -33,7 +34,9 @@ export const NameInput = styled(Field)`
 
 export const GramsInput = styled(Field)`
   text-align: left;
-  border: none;
+  border: 2px solid #000;
+  padding-right: 18px;
+
   width: 280px;
   margin-bottom: 60px;
   padding-bottom: 8px;

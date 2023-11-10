@@ -21,12 +21,16 @@ import {
   getDate,
   getToggle,
   getError,
+  getSummary,
 } from "../../redux/dairy/dairySelector";
-import { addProduct } from "../../redux/dairy/dairyOperations";
+import { addProduct, fetchDairy } from "../../redux/dairy/dairyOperations";
 import {
   addProductForUser,
   searchProduct,
 } from "../../redux/services/api-reguest";
+
+
+
 import authSelectors from "../../redux/auth/selectors";
 import Notiflix from "notiflix";
 import { result } from "lodash";
@@ -49,13 +53,15 @@ export const DiaryAddProductForm = ({ onClose }) => {
   const weight = Math.floor(Pweight);
   const products = useSelector(getProducts);
   const date = useSelector(getDate);
+  const summary = useSelector(getSummary);
   const toggle = useSelector(getToggle);
   let error = useSelector(getError);
+  
 
   const mobile = useMediaQuery({ query: "(max-width: 426px)" });
 
   const initialValues = {
-    productId: "",
+    _id: "",
     productName: "",
     weight: "",
   };
@@ -74,8 +80,9 @@ export const DiaryAddProductForm = ({ onClose }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     schema.validate(values);
-    const { productName, weight } = values;
+    const { productName, weight, _id } = values;
     const body = {
+      _id,
       productName,
       productWeight: parseInt(weight),
       date,
@@ -84,24 +91,19 @@ export const DiaryAddProductForm = ({ onClose }) => {
     try {
       const result = await addProductForUser(body, date);
       console.log(result);
-
-      console.log(body);
-
       if (result.length > 0) {
-        setProductId("");
         dispatch(addProduct(result));
-        console.log(body);
+        console.log(result);
       } else {
         dispatch(addProduct([]));
-        console.log(body);
+        console.log(result);
       }
     } catch (error) {
-      console.log(body);
+      console.log(result);
       alert("Oops.. Product not found!");
     }
     mobile && onClose();
     resetForm();
-    console.log(body);
   };
   // function onSubmit() {
   //   if (productId === "") {
@@ -136,9 +138,9 @@ export const DiaryAddProductForm = ({ onClose }) => {
     }
   };
 
-  const handleClick = (setFieldValue, title, setProductIdd,  _id) => {
+  const handleClick = (setFieldValue, title, _id) => {
     setVisible(false);
-    setProductIdd(_id);
+    setFieldValue("_id", _id);
     setFieldValue("productName", title);
   };
 
@@ -149,7 +151,9 @@ export const DiaryAddProductForm = ({ onClose }) => {
         initialValues={initialValues}
         onSubmit={(values, { resetForm, setSubmitting }) => {
           handleSubmit();
+          console.log(date);
           console.log(values);
+          console.log(summary);
           setSubmitting(false);
           resetForm();
         }}
@@ -207,7 +211,9 @@ export const DiaryAddProductForm = ({ onClose }) => {
                   return (
                     <SearchItem
                       key={product._id}
-                      onClick={() => handleClick(setFieldValue, product.title, setProductIdd, product._id)}
+                      onClick={() =>
+                        handleClick(setFieldValue, product.title, product._id)
+                      }
                     >
                       {product.title}
                     </SearchItem>

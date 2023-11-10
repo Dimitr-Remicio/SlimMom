@@ -36,7 +36,7 @@ export default function SummaryForDay() {
     <>
       <div className="right-sidebar">
         <div className="box-sidebar">
-          <div className="summary-sidebar">
+          {/* <div className="summary-sidebar">
             <h4 className="title-sidebar">
               Summary{" "}
               {reduxDate === ""
@@ -59,7 +59,7 @@ export default function SummaryForDay() {
                 {summary.percentOfDailyRate ? Math.round(summary.percentOfDailyRate) : "0"} %
               </li>
             </ul>
-          </div>
+          </div> */}
           <div className="food-sidebar">
             <h4 className="title-sidebar">Food not recommended</h4>
             <ul>

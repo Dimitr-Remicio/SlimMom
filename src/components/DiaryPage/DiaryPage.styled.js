@@ -8,7 +8,7 @@ export const WrapperAll = styled.div`
     background-size: auto;
   }
   @media (min-width: 1024px) and (max-width: 1120px) {
-    padding: 300px 16px 55px 16px;
+    padding: 30px 16px 55px 16px;
     display: flex;
     height: 100vh;
     justify-content: space-between;
@@ -19,7 +19,7 @@ export const WrapperAll = styled.div`
   @media (min-width: 1121px) and (max-width: 1280px) {
     margin: 0 auto;
     /* height: 100vh; */
-    padding: 300px 16px 55px 16px;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     background-repeat: no-repeat, no-repeat;
@@ -28,7 +28,7 @@ export const WrapperAll = styled.div`
   }
   @media (min-width: 1280px) {
     margin: 0 auto;
-    padding: 300px 16px 55px 16px;
+    padding: 0;
     display: flex;
     /* height: 100vh; */
     justify-content: space-between;
@@ -44,7 +44,7 @@ export const Wrapper = styled.div`
   max-width: 610px; /* @media (max-width: 425px) { max-width: 610px; } */
   @media (min-width: 768px) and (max-width: 1023px) {
     margin: 0;
-    padding: 100px 0px 55px 32px;
+    padding: 0;
   }
   @media (min-width: 1024px) {
     padding: 0px;

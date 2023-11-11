@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 import {
   fetchAll,
@@ -6,29 +6,37 @@ import {
   fetchDairy,
   addProduct,
   removeProduct,
-} from './dairyOperations';
+} from "./dairyOperations";
 
 const initialState = {
-  date: '',
-  products: [],
+  date: "",
+  products: [
+    {
+    _id:"",
+    title: "prueba de alimento",
+    weight: 0,
+    calories: 0,
+    groupBloodNotAllowed: [],
+  }
+],
   summary: {
+    date: "",
+    userId: {},
     dailyRate: 0,
     consumed: 0,
     left: 0,
-    nOfNorm: 0,
+    percentOfDailyRate: 0,
   },
   notRecFood: [],
-  dateFind: '',
+  dateFind: "",
   toggle: false,
   error: null,
   productList: [],
   productsAll: [],
 };
 
-
-
 const summaryForDaySlice = createSlice({
-  name: 'daySummary',
+  name: "daySummary",
   initialState,
   reducers: {
     addDate(state, action) {
@@ -37,6 +45,9 @@ const summaryForDaySlice = createSlice({
     changeToggle(state, action) {
       state.toggle = action.payload;
     },
+    setProduct(state, action) {
+      state.products = action.payload;
+    }
   },
   extraReducers: {
     [fetchDairy.fulfilled]: (state, { payload }) => {
@@ -47,11 +58,11 @@ const summaryForDaySlice = createSlice({
       state.summary.left = payload.result.summary.left;
       state.summary.nOfNorm = payload.result.summary.nOfNorm;
       state.notRecFood = payload.notRecFood;
-      state.error = null
+      state.error = null;
     },
-    [fetchAll.fulfilled]: (state,action) => {
+    [fetchAll.fulfilled]: (state, action) => {
       state.data = action.payload;
-      state.error = null
+      state.error = null;
     },
 
     // [fetchProducts.fulfilled]: (state, { payload }) => {
@@ -60,12 +71,12 @@ const summaryForDaySlice = createSlice({
     // },
 
     [addProduct.fulfilled]: (state, { payload }) => {
-      state.products = payload.result.products;
-      state.summary.dailyRate = payload.result.summary.dailyRate;
-      state.summary.consumed = payload.result.summary.consumed;
-      state.summary.left = payload.result.summary.left;
-      state.summary.nOfNorm = payload.result.summary.nOfNorm;
-      state.error = null
+      state.products = payload.result;
+      // state.summary.dailyRate = payload.result.summary.dailyRate;
+      // state.summary.consumed = payload.result.summary.consumed;
+      // state.summary.left = payload.result.summary.left;
+      // state.summary.nOfNorm = payload.result.summary.nOfNorm;
+      state.error = null;
     },
     [removeProduct.fulfilled]: (state, { payload }) => {
       state.products = payload.result.products;
@@ -73,7 +84,7 @@ const summaryForDaySlice = createSlice({
       state.summary.consumed = payload.result.summary.consumed;
       state.summary.left = payload.result.summary.left;
       state.summary.nOfNorm = payload.result.summary.nOfNorm;
-      state.error = null
+      state.error = null;
     },
     // [fetchProducts.rejected]: (state, { payload }) => {
     //   state.error = payload;
@@ -82,7 +93,7 @@ const summaryForDaySlice = createSlice({
       state.error = payload;
     },
 
-    [fetchAll.pending]: (state, ) => {
+    [fetchAll.pending]: (state) => {
       state.error = null;
     },
     // [fetchProducts.pending]: (state, ) => {
@@ -91,26 +102,23 @@ const summaryForDaySlice = createSlice({
     [addProduct.rejected]: (state, { payload }) => {
       state.error = payload;
     },
-    [addProduct.pending]: (state, ) => {
+    [addProduct.pending]: (state) => {
       state.error = null;
     },
     [fetchDairy.rejected]: (state, { payload }) => {
       state.error = payload;
     },
-    [fetchDairy.pending]: (state, ) => {
+    [fetchDairy.pending]: (state) => {
       state.error = null;
     },
     [removeProduct.rejected]: (state, { payload }) => {
       state.error = payload;
     },
-    [removeProduct.pending]: (state, ) => {
+    [removeProduct.pending]: (state) => {
       state.error = null;
     },
   },
 });
 
-
-export const { addDate, changeToggle } = summaryForDaySlice.actions;
+export const { addDate, changeToggle, setProduct } = summaryForDaySlice.actions;
 export default summaryForDaySlice.reducer;
-
-

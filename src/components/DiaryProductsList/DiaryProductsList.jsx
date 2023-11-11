@@ -30,15 +30,15 @@ export const DiaryProductsList = () => {
   }, [date, dispatch, token]);
 
   return (
-    <List className={products.length > 4 ? null : "hidden"}>
-      {products.length !== 0 ? (
+    <List>
+      {products ? (
         products.map(product => (
           <DiaryProductsListItem
             key={product._id}
             id={product._id}
-            name={product.productName}
-            grams={product.productWeight}
-            calories={product.productCalories}
+            name={product.title}
+            grams={product.weight}
+            calories={product.calories}
           />
         ))
       ) : null}

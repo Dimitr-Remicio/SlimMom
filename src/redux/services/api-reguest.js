@@ -7,6 +7,10 @@ import { toastStyles } from '../../styles/toastStyled.js';
 // const base = "https://slimmomapi-dev-xdce.2.us-1.fl0.io/api";
 // dairodev
 const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
+// localhost
+// const base = "http://localhost:3000/api";
+
+
 axios.defaults.baseURL = `${base}`;
 
 export const searchProduct = async (search) => {

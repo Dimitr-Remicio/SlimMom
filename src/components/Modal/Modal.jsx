@@ -132,7 +132,6 @@ const Modal = ({ isOpen }) => {
               style={close}
               onClick={() => {
                 dispatch(setIsModalOpen(false));
-                dispatch(wipeUser());
               }}
             >
               X
@@ -159,7 +158,6 @@ const Modal = ({ isOpen }) => {
                 style={buttonStar}
                 onClick={() => {
                   dispatch(setIsModalOpen(false));
-                  dispatch(wipeUser());
                 }}
               >
                 {" "}

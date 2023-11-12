@@ -60,7 +60,7 @@ export default function LoginForm() {
 
   function userLogin() {
     setTimeout(() => {
-      nav("/home");
+      nav("/calculator");
     }, 500);
   }
 

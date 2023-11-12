@@ -36,7 +36,7 @@ export default function SummaryForDay() {
     <>
       <div className="right-sidebar">
         <div className="box-sidebar">
-          {/* <div className="summary-sidebar">
+          <div className="summary-sidebar">
             <h4 className="title-sidebar">
               Summary{" "}
               {reduxDate === ""
@@ -45,21 +45,21 @@ export default function SummaryForDay() {
             </h4>
             <ul>
               <li>
-                Remain {summary.left ? Math.round(summary.left) : "000"} kcal
+                Remain {summary ? Math.round(summary.left) : "000"} kcal
               </li>
               <li>
                 Consumed{" "}
-                {summary.consumed ? Math.round(summary.consumed) : "000"} kcal
+                {summary ? Math.round(summary.consumed) : "000"} kcal
               </li>
               <li>
                 Dialy rate {dailyRate? Math.round(dailyRate) : "000"} kcal
               </li>
               <li>
                 n% than normal{" "}
-                {summary.percentOfDailyRate ? Math.round(summary.percentOfDailyRate) : "0"} %
+                {summary ? Math.round(summary.percentOfDailyRate) : "0"} %
               </li>
             </ul>
-          </div> */}
+          </div>
           <div className="food-sidebar">
             <h4 className="title-sidebar">Food not recommended</h4>
             <ul>

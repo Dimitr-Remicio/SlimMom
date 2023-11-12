@@ -62,7 +62,7 @@ const Routers = () => {
               <Calculator />
             ) : (
               <Navigate to="/home" />
-              // : <Calculator />
+              // {/* <Calculator /> */}
             )
           }
         />
@@ -73,7 +73,7 @@ const Routers = () => {
               <Diary />
             ) : (
               // <Diary />
-              // :  <Diary /> }
+              // :  <Diary /> 
               <Navigate to="/home" />
             )
           }

@@ -159,7 +159,6 @@ const Modal = ({ isOpen }) => {
                 style={buttonStar}
                 onClick={() => {
                   dispatch(setIsModalOpen(false));
-                  dispatch(wipeUser());
                 }}
               >
                 {" "}

@@ -66,7 +66,6 @@ export default function SummaryForDay() {
               </li>
               <li>
                 Dialy rate {SSummary ? Math.round(SSummary.dailyRate) : "000"}{" "}
-                kcal
               </li>
               <li>
                 n% than normal{" "}

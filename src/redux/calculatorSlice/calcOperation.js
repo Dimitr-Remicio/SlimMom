@@ -2,11 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 
-// raiz
-// const base = "http://localhost:3000/api";
-// dairodev
-const base = "https://slimmom-7ckv.onrender.com/api";
-
+// dairodev finall server
+const base = "https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api";
 
 
 const calc = createAsyncThunk('/calculator', async (credential, thunkAPI) => {

@@ -49,18 +49,18 @@ export default function SummaryForDay() {
             </h4>
             <ul>
               <li>
-                Remain {Sumarry.left ? Math.round(Sumarry.left) : "000"} kcal
+                Remain {summary ? Math.round(summary.left) : "000"} kcal
               </li>
               <li>
                 Consumed{" "}
-                {Sumarry.consumed ? Math.round(Sumarry.consumed) : "000"} kcal
+                {summary ? Math.round(summary.consumed) : "000"} kcal
               </li>
               <li>
-                Dialy rate {Sumarry.dailyRate? Math.round(Sumarry.dailyRate) : "000"} kcal
+                Dialy rate {Sumarry? Math.round(Sumarry.dailyRate) : "000"} kcal
               </li>
               <li>
                 n% than normal{" "}
-                {Sumarry.percentOfDailyRate ? Math.round(Sumarry.percentOfDailyRate) : "0"} %
+                {summary ? Math.round(summary.percentOfDailyRate) : "0"} %
               </li>
             </ul>
           </div>

@@ -3,10 +3,10 @@ import { toast } from 'react-toastify';
 import { toastStyles } from '../../styles/toastStyled.js';
 
 
-// raiz
-// const base = "https://slimmomapi-dev-xdce.2.us-1.fl0.io/api";
-// dairodev
-const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
+// dairodev finall server
+const base = "https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api";
+
+
 axios.defaults.baseURL = `${base}`;
 
 export const searchProduct = async (search) => {
@@ -33,6 +33,7 @@ export const getAllProduct = async () => {
 export const getDairy = async () => {
   try {
     const { data } = await axios.get(`${base}/days/info`);
+    console.log(data);
     return data;
   } catch (error) {
     toast.error(

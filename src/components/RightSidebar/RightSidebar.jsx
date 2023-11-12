@@ -22,12 +22,16 @@ export default function SummaryForDay() {
   // const summary = useSelector(getSummary);
 
   const [Healthy, setNotHealthy] = useState([]);
+  const [Sumarry, setSumarry] = useState([]);
 
   useEffect(() => {
     if (notHealthy && notHealthy.products) {
       setNotHealthy(notHealthy.products);
     }
-  }, [notHealthy]);
+    if (summary && summary) {
+      setSumarry(summary);
+    }
+  }, [notHealthy, summary]);
 
   console.log(user)
   console.log(summary)
@@ -52,7 +56,7 @@ export default function SummaryForDay() {
                 {summary ? Math.round(summary.consumed) : "000"} kcal
               </li>
               <li>
-                Dialy rate {dailyRate? Math.round(dailyRate) : "000"} kcal
+                Dialy rate {Sumarry? Math.round(Sumarry.dailyRate) : "000"} kcal
               </li>
               <li>
                 n% than normal{" "}

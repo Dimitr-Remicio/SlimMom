@@ -6,10 +6,10 @@ const calcSlice = createSlice({
   initialState: {
     userData: { dailyRate: '000', notHealthy: [] },
     userInfo: {
-      height: null,
-      age: null,
-      weightCurrent: null,
-      weightDesired: null,
+      height: '0',
+      age:'0',
+      weightCurrent:'0',
+      weightDesired: '0',
       blood: '1',
     },
     loaderShow: false,
@@ -55,11 +55,11 @@ const calcSlice = createSlice({
     },
     wipeUser: (state) => {
       state.userInfo.height = null;
-      state.userInfo.age = null;
-      state.userInfo.weightDesired = null;
-      state.userInfo.blood = '1';
-      state.userInfo.weightCurrent = null;
-      state.userData.dailyRate = '000';
+      state.userInfo.age = '0';
+      state.userInfo.weightDesired = '0';
+      state.userInfo.blood = '0';
+      state.userInfo.weightCurrent = '0';
+      state.userData.dailyRate = '0';
       state.userData.notHealthy = [];
     },
   },

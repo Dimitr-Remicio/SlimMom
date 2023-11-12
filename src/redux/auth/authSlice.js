@@ -51,11 +51,11 @@ const authSlice = createSlice({
       state.user = {
         name: '',
         email: '',
-        height: null,
-        age: null,
-        weightCurrent: null,
-        weightDesired: null,
-        blood: null,
+        height: 0,
+        age: 0,
+        weightCurrent: 0,
+        weightDesired: 0,
+        blood: 0,
       };
       state.token = null;
       state.isLoggedIn = false;

@@ -14,6 +14,7 @@ import { fetchProducts } from "../redux/dairy/dairyOperations";
 import Button from "@mui/material/Button";
 import Modal from "../components/Modal/Modal";
 import calcSelectors from "../redux/calculatorSlice/calculatorSelectors";
+import Calculator from "./Calculator";
 
 const Home = () => {
   const userIsLoggedIn = useSelector(authSelector.getIsLoggedIn);
@@ -32,7 +33,7 @@ const Home = () => {
           } */}
 
         {userIsLoggedIn ? (
-          <Diary />
+          <Calculator />
         ) : (
           <div className="Home">
             <FormHome title="Calculate your daily calorie intake right now" />

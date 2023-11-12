@@ -27,9 +27,32 @@ const Routers = () => {
       {/* )} */}
 
       <Routes>
-        <Route path="*" element={<Navigate to="/home" />} />
-        <Route path="SlimMom" element={<Navigate to="home" />} />
-        <Route path="/home" element={<Home />} />
+        <Route
+          path="*"
+          element={
+            isLoggedIn ? (
+              <Calculator />
+            ) : (
+              <Home />
+            )
+          }
+        />
+        isLoggedIn ? (
+         <Route path="SlimMom" element={<Calculator />} />
+        ) : (
+         <Route path="SlimMom" element={<Home />} />
+        ) 
+        <Route
+          path="/home"
+          element={
+            isLoggedIn ? (
+              <Calculator />
+            ) : (
+              <Home />
+              // {/* <Calculator /> */}
+            )
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route
@@ -37,8 +60,7 @@ const Routers = () => {
           element={
             isLoggedIn ? (
               <Calculator />
-            ) 
-            : (
+            ) : (
               <Navigate to="/home" />
               // : <Calculator />
             )
@@ -50,6 +72,7 @@ const Routers = () => {
             isLoggedIn ? (
               <Diary />
             ) : (
+              // <Diary />
               // :  <Diary /> }
               <Navigate to="/home" />
             )

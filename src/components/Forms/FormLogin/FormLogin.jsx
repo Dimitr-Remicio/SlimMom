@@ -60,8 +60,8 @@ export default function LoginForm() {
 
   function userLogin() {
     setTimeout(() => {
-      nav("/home");
-    }, 500);
+      nav("/calculator");
+    }, 600);
   }
 
   return (
@@ -78,6 +78,7 @@ export default function LoginForm() {
           resetForm();
           userLogin();
         }}
+        
       >
         {({
           values,

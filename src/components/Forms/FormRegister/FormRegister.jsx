@@ -52,12 +52,12 @@ export default function RegisterForm() {
       .string()
       .min(
         8,
-        "Minimum 8 characters: lowercase/uppercase Latin letters and numbers"
+        "Minimum of 8 characters: lower/upper case, numbers and symbols(@#$%^&+=!)"
       )
       .max(50, "¡Must be 50 characters or less!")
       .matches(
         passwordRules,
-        "Minimum 8 characters: lowercase/uppercase Latin letters and numbers"
+        "Minimum of 8 characters: lower/upper case, numbers and symbols(@#$%^&+=!)"
       )
       .required("Required field"),
   });

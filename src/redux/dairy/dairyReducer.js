@@ -10,15 +10,7 @@ import {
 
 const initialState = {
   date: "",
-  products: [
-    {
-    _id:"",
-    title: "prueba de alimento",
-    weight: 0,
-    calories: 0,
-    groupBloodNotAllowed: [],
-  }
-],
+ 
   summary: {
     date: "",
     userId: {},
@@ -32,7 +24,6 @@ const initialState = {
   toggle: false,
   error: null,
   productList: [],
-  productsAll: [],
 };
 
 const summaryForDaySlice = createSlice({

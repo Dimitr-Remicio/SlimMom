@@ -144,8 +144,14 @@ section {
   /* -webkit-backdrop-filter: blur(13vmax); */
 }
 
+.diaryBlock{
+  height: 300px ;
+  width: 80vw;
+}
 @media screen and (min-width: 768px) {
-
+  .diaryBlock{
+    height: 100px;
+  }
   .backdrop{
     position: fixed;
     background-color: rgba(0, 0, 0, 0.186);
@@ -207,8 +213,9 @@ section {
     overflow-y: scroll;
     height: 100vh;
   }
-
-
+  .diaryBlock{
+    height: 100px;
+  }
   .backdrop{
     position: fixed;
     background-color: rgba(0, 0, 0, 0.186);

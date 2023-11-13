@@ -11,17 +11,16 @@ export const DiaryDateCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const dispatch = useDispatch();
   const handleChange = (date) => {
-    const formattedDate = moment(date).format("DD.MM.YYYY");
+    const formattedDate = moment(date).format("yyyy-MM-DD");
     setSelectedDate(date);
     dispatch(addDate(formattedDate));
     console.log(date);
-    console.log(formattedDate);
+    console.log(JSON.stringify(formattedDate));
   };
 
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
     <DatePickerWrapper onClick={onClick} ref={ref}>
-      {value}
-      ICon
+      {value} 📅
     </DatePickerWrapper>
   ));
 

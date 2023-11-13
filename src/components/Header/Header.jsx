@@ -54,15 +54,7 @@ const Header = () => {
           },
         ])
         : (nav__links = [
-          
-          {
-            path: "/diary",
-            display: "Diary",
-          },
-          {
-            path: "/calculator",
-            display: "Calculator",
-          },
+         
           {
             path: "/login",
             display: "Login",

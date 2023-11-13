@@ -84,12 +84,12 @@ export const DiaryAddProductForm = ({ onClose, isModalOpened }) => {
   //     console.log(apiRes);
   //   }
   // }
-  const cambiarFormatoFecha = (fechaOriginal) => {
-    //change date format
-    const fechaParseada = parse(fechaOriginal, 'dd.MM.yyyy', new Date());
-    const nuevaFecha = format(fechaParseada, 'yyyy-MM-dd');
-    return nuevaFecha;
-  };
+  // const cambiarFormatoFecha = (fechaOriginal) => {
+  //   //change date format
+  //   const fechaParseada = parse(fechaOriginal, 'dd.MM.yyyy', new Date());
+  //   const nuevaFecha = format(fechaParseada, 'yyyy-MM-dd');
+  //   return nuevaFecha;
+  // };
   
   const handleSubmit = async (values, { resetForm }) => {
     schema.validate(values);
@@ -97,7 +97,7 @@ export const DiaryAddProductForm = ({ onClose, isModalOpened }) => {
     const { productName, productWeight } = values;
     const idForAdd = await searchProduct(productName);
      const id=idForAdd[0]._id
-     const nDate = cambiarFormatoFecha(date);
+     const nDate = date;
     
     console.log(nDate)
     
@@ -149,7 +149,7 @@ export const DiaryAddProductForm = ({ onClose, isModalOpened }) => {
   };
 
   return (
-    <div >
+    <div className="diaryBlock">
       <Formik
         enableReinitialize={true}
         initialValues={initialValues}

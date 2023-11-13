@@ -4,12 +4,21 @@
     padding-bottom: 7rem;
 
 }
+.diaryPage{
+    position: relative;
+    top: -5rem;
+}
 
 @media screen and (min-width:760px) {
     .diary{
 
         width: 100%;
         max-width: 600px;
+    }
+    .diaryPage{
+        position: relative;
+        top: 5rem;
+        height: 700px;
     }
 }
 @media screen and (min-width: 1020px) {
@@ -18,5 +27,9 @@
         width: 100%;
         max-width: 600px;
         /* margin-top: 20rem; */
+    }
+    .diaryPage{
+        position: relative;
+        top: -5rem;
     }
 }

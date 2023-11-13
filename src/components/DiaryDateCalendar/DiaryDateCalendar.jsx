@@ -30,7 +30,8 @@ export const DiaryDateCalendar = () => {
       <DatePicker
         selected={selectedDate}
         onChange={(date) => handleChange(date)}
-        dateFormat="dd.MM.yyyy"
+        // dateFormat="dd.MM.yyyy"
+        dateFormat="yyyy-MM-dd"
         customInput={<ExampleCustomInput />}
         maxDate={new Date()}
       />

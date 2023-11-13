@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { toastStyles } from '../../styles/toastStyled.js';
+import Notiflix from 'notiflix';
 
 
 // raiz
@@ -30,23 +31,20 @@ export const getAllProduct = async () => {
     const data = await axios.get(`${base}/products/getAll`);
     return data;
   } catch (error) {
-    toast.error(
-      `Помилка отримання даних на вибрану дату! ${error.message}`,
-      toastStyles
-    );
+    console.log(
+      `¡Error al obtener datos para el producto seleccionado! ${error.message}`);
     throw error;
   }
 };
-export const getDairy = async () => {
+export const getDairy = async body => {
   try {
-    const { data } = await axios.get(`${base}/days/info`);
+    const { data } = await axios.post(`${base}/days/info`,body);
+    Notiflix.Notify.success("visto")
     console.log(data);
     return data;
   } catch (error) {
-    toast.error(
-      `Помилка отримання даних на вибрану дату! ${error.message}`,
-      toastStyles
-    );
+    console.log(
+      `get dayry ¡Error al obtener datos para la fecha seleccionada! ${error.message}`);
     throw error;
   }
 };
@@ -54,10 +52,10 @@ export const getDairy = async () => {
 export const addProductForUser = async newProduct => {
   try {
     const { data } = await axios.patch(`${base}/days`, newProduct);
-    toast.success(`З'їдено!`, toastStyles);
+    // console.log(`agregado!`);
     return data;
   } catch (error) {
-    toast.error(`Виникла помилка! ${error.message}`, toastStyles);
+    console.log(`Ocurrió un error! ${error.message}`);
     throw error;
   }
 };
@@ -65,10 +63,10 @@ export const addProductForUser = async newProduct => {
 export const deleteProductRequest = async () => {
   try {
     const { data } = await axios.delete(`${base}/days`);
-    toast.success(`Видалено!`, toastStyles);
+    // Notiflix.success(`Eliminado`);
     return data;
   } catch (error) {
-    toast.error(`Виникла помилка! ${error.message}`, toastStyles);
+    // console.log(`Ocurrió un error! ${error.message}`);
     throw error;
   }
 };

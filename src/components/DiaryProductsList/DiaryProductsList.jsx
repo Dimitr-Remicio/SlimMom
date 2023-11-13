@@ -15,16 +15,16 @@ export const DiaryProductsList = () => {
   console.log('listproduct', products);
   useEffect(() => {
     const getProducts = async () => {
-      try {
-        const result = await getDairy(date, token)
-        if (result.length > 0) {
-          dispatch(fetchProducts(result[0].productInfo));
-        } else {
-          dispatch(fetchProducts([]));
-        }
-      } catch (error) {
-        console.log(error);
-      }
+      // try {
+      //   // const result = await getDairy(date, token)
+      //   if (result.length > 0) {
+      //     dispatch(fetchProducts(result[0].productInfo));
+      //   } else {
+      //     dispatch(fetchProducts([]));
+      //   }
+      // } catch (error) {
+      //   console.log(error);
+      // }
     };
     getProducts();
   }, [date, dispatch, token]);

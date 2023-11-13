@@ -19,7 +19,7 @@ const DarkMode = () => {
       <ReactSwitch
        onChange={handleDarkMode}
        checked={darkMode}
-       onColor="#FFFFFF "
+       onColor="#FFFFFF"
        onHandleColor="#000000"
        handleDiameter={30}
        uncheckedIcon={false}

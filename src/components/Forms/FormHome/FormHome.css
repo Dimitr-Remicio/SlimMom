@@ -7,14 +7,14 @@
   font-size: 14px;
   line-height: 17px;
   letter-spacing: 0.2px;
-  color: #7c7c7c;
+  color: var(--texthome) !important;
   margin-top: 25px;
   padding-bottom: 7px;
   padding-left: 0.1em;
   width: 100%;
 
   @media screen and (min-device-width: 768px) {
-    border-bottom: 1px solid #a7a7a7;
+    border-bottom: 1px solid var(--texthome);
   width: 181px;
   }
 }

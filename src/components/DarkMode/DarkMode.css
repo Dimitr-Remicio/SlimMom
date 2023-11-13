@@ -1,19 +1,22 @@
-body {
+
+/* body {
     background-color: white;
     color: black;
     transition: background-color 0.3s ease;
+} */
+@import url('../../colors.css');
+
+
+body{
+    background-color: var(--backgroundcolor);
+    color:var(--textcolor);
 }
 
-body.dark-mode {
-    background-color: #5587A3 ;
-    color: white;
-}
-
-.dark-mode{
+/* .dark-mode{
     --card2-color:#ffffff;
     --h3-color: #ffffff;
 }
 
 h3.dark-mode{
     color:#ffffff;
-}
+}    */

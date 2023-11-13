@@ -1,0 +1,14 @@
+:root {
+  --backgroundcolor: #ffffff5f;
+  --backgroundblur: #ffffff50;
+  --texthome: #7c7c7c;
+  --textcolor: black;
+  --error: red;
+}
+.dark-mode {
+  --backgroundblur: #17314767;
+  --backgroundcolor: #173147;
+  --texthome: rgb(245, 245, 245);
+  --textcolor: white;
+  --error: rgb(229, 255, 0);
+}

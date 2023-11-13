@@ -1,3 +1,4 @@
+@import url('src/colors.css');
 
 .menubtn{
   display: block;
@@ -43,7 +44,7 @@
 
   align-items: center;
 
-  color: white;
+  color: var(--textcolor);
 
   justify-content: center;
   z-index: 10000;

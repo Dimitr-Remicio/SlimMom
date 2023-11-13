@@ -1,0 +1,19 @@
+body {
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: #5587A3 ;
+    color: white;
+}
+
+.dark-mode{
+    --card2-color:#ffffff;
+    --h3-color: #ffffff;
+}
+
+h3.dark-mode{
+    color:#ffffff;
+}

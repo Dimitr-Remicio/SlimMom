@@ -17,10 +17,13 @@
         font-family: "Verdana bold", sans-serif;
         font-size: 1.5em;
         letter-spacing: 0;
+        color: var(--card2-color);
     }
 
 
 }
+
+
 
 @media screen and (min-width: 708px) {
     .calculator{

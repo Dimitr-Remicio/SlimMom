@@ -9,6 +9,9 @@ import authSelector from "../../redux/auth/selectors";
 import UserBar from "../UserMenu/UserMenu";
 import "./HeaderMobile.css";
 
+import DarkMode from "../DarkMode/DarkMode"
+
+
 const Header = () => {
   const userIsLoggedIn = useSelector(authSelector.getIsLoggedIn);
   let nav__links = [];
@@ -151,6 +154,7 @@ const Header = () => {
                 </div>
               </div>
               <UserBar />
+              <DarkMode />
             </div>
           </div>
         </Container>

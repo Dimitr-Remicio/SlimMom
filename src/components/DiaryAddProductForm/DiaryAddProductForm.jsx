@@ -34,7 +34,7 @@ import {
 import authSelectors from "../../redux/auth/selectors";
 import Notiflix from "notiflix";
 import { result } from "lodash";
-
+import { format, parse } from 'date-fns';
 // const schema = yup.object().shape({
 //   title: yup.string().required("Name is required field"),
 //   weight: yup
@@ -241,6 +241,7 @@ export const DiaryAddProductForm = ({ onClose, isModalOpened }) => {
   const initialValues = {
     productName: "",
     productWeight: "",
+    
   };
   const [searchProducts, setSearchProducts] = useState([]);
   const [visible, setVisible] = useState(false);
@@ -256,13 +257,28 @@ export const DiaryAddProductForm = ({ onClose, isModalOpened }) => {
     }
   };
 
+  const cambiarFormatoFecha = (fechaOriginal) => {
+    //change date format
+    const fechaParseada = parse(fechaOriginal, 'dd.MM.yyyy', new Date());
+    const nuevaFecha = format(fechaParseada, 'yyyy-MM-dd');
+    return nuevaFecha;
+  };
+  
   const handleSubmit = async (values, { resetForm }) => {
     schema.validate(values);
+
     const { productName, productWeight } = values;
-    const body = { productName, productWeight: parseInt(productWeight), date };
+    const idForAdd = await searchProduct(productName);
+     const id=idForAdd[0]._id
+     const nDate = cambiarFormatoFecha(date);
+
+    const body = { productId: `${id}`, weight: parseInt(productWeight), date:`${nDate}`};
+    console.log(body)
     try {
-      const result = await addProductForUser(body, token, date);
+      const result = await addProductForUser(body);
+      console.log(result)
       if (result.length > 0) {
+        console.log("me ejecute en add")
         dispatch(setProduct(result));
         
       } else {
@@ -291,6 +307,7 @@ export const DiaryAddProductForm = ({ onClose, isModalOpened }) => {
   const handleClick = (setFieldValue, title) => {
     setVisible(false);
     setFieldValue("productName", title);
+
   };
 
   return (

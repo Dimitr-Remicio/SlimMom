@@ -6,8 +6,11 @@ import { toastStyles } from '../../styles/toastStyled.js';
 // raiz
 // const base = "https://slimmomapi-dev-xdce.2.us-1.fl0.io/api";
 // dairodev
-const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
+// const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
 // localhost
+//nuervo servidor
+const base ="https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api"
+
 // const base = "http://localhost:3000/api";
 
 

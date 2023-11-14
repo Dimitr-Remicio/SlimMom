@@ -83,7 +83,6 @@ const CalcPublic = (props) => {
     setTimeout(() => {
       if (isLoggedIn) {
         dispatch(updateUser(FullUser));
-        console.log(FullUser);
         dispatch(calcOperation.calcUserUpdate(FullUser));
       }
     }, 500);

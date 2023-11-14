@@ -22,8 +22,6 @@ const Header = () => {
       ? burgerBtn.classList.add("active")
       : burgerBtn.classList.remove("normal");
 
-    // burgerBtn.classList.replace("active", "normal");
-    // }
   }
 
   function openMod() {
@@ -53,8 +51,8 @@ const Header = () => {
             display: "Calculator",
           },
         ])
-        : (nav__links = [
          
+      : (nav__links = [
           {
             path: "/login",
             display: "Login",
@@ -78,10 +76,6 @@ const Header = () => {
           },
         ])
       : (nav__links2 = [
-          // {
-          //   path: "/SlimMom/diary",
-          //   display: "Diary",
-          // },
           {
             path: "/home",
             display: "Home",

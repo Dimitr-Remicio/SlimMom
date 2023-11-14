@@ -1,34 +1,49 @@
 import React, { useEffect } from "react";
 import { format } from "date-fns";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getSummary,
   getDate,
   getNotRecFood,
-  getDaily
+  getDaily,
 } from "../../redux/dairy/dairySelector";
 // import { getDaily } from "../../redux/dairy/dairySelector";
 import "./RightSidebar.css"; // Asegúrate de importar tus estilos CSS
 import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
 import { useState } from "react";
+import authSelector from "../../redux/auth/selectors";
 
 export default function SummaryForDay() {
   const date = new Date();
-  const { notHealthy} = useSelector(calcSelectors.getUserData);
-  const { user} = useSelector(calcSelectors.getUserData);
+  const { notHealthy } = useSelector(calcSelectors.getUserData);
+  const { user } = useSelector(calcSelectors.getUserData);
   const { summary } = useSelector(calcSelectors.getUserData);
   const reduxDate = useSelector(getDate);
   const dailyRate = useSelector(getDaily);
+  const dispatch = useDispatch();
   // const summary = useSelector(getSummary);
 
   const [Healthy, setNotHealthy] = useState([]);
+  const [SSummary, setSummary] = useState([]);
+  const isLoggedIn = useSelector(authSelector.getIsLoggedIn);
 
   useEffect(() => {
-    if (notHealthy && notHealthy.products) {
-      setNotHealthy(notHealthy.products);
-    }
-  }, [notHealthy]);
+    setTimeout(() => {
+      if (isLoggedIn && summary) {
+        setSummary(summary);
+      }
+    }, 50);
+  }, [summary, isLoggedIn]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (isLoggedIn && user.notAllowedProducts) {
+        setNotHealthy(user.notAllowedProducts);
+      }
+    }, 50);
+  }, [user, isLoggedIn]);
+
+  console.log(user);
 
   return (
     <>
@@ -41,18 +56,18 @@ export default function SummaryForDay() {
             </h4>
             <ul>
               <li>
-                Remain {summary ? Math.round(summary.left) : "000"} kcal
+                Remain {SSummary ? Math.round(SSummary.left) : "000"} kcal
               </li>
               <li>
+                Consumed {SSummary ? Math.round(SSummary.consumed) : "000"} kcal
                 Consumed{" "}
-                {summary ? Math.round(summary.consumed) : "000"} kcal
               </li>
               <li>
-                Dialy rate {dailyRate? Math.round(dailyRate) : "000"} kcal
+                Dialy rate {SSummary ? Math.round(SSummary.dailyRate) : "000"}{" "}
               </li>
               <li>
                 n% than normal{" "}
-                {summary ? Math.round(summary.percentOfDailyRate) : "0"} %
+                {SSummary ? Math.round(SSummary.percentOfDailyRate) : "0"} %
               </li>
             </ul>
           </div>
@@ -61,7 +76,7 @@ export default function SummaryForDay() {
             <ul>
               {Healthy.map((products, key) => (
                 <li key={key} className="itemModal">
-                  • {products.title}
+                  • {products}
                 </li>
               ))}
             </ul>

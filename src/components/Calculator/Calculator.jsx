@@ -13,11 +13,11 @@ import { Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
 import authSelector from "../../redux/auth/selectors";
-import { setIsModalOpen, updateUser } from "../../redux/calculatorSlice/calcSlice";
+import {
+  setIsModalOpen,
+  updateUser,
+} from "../../redux/calculatorSlice/calcSlice";
 import calcOperation from "../../redux/calculatorSlice/calcOperation";
-
-
-
 
 import { useEffect, useState } from "react";
 import Modal from "../Modal/Modal";
@@ -58,6 +58,7 @@ const CalcPublic = (props) => {
   const authUserParams = useSelector(calcSelectors.getUserInfo);
   //   const LoaderStatus = useSelector(calcSelectors.getLoaderStatus);
   const isLoggedIn = useSelector(authSelector.getIsLoggedIn);
+  const { user } = useSelector(calcSelectors.getUserData);
 
   const FullUser = useSelector(authSelector.getFullUser);
   const dispatch = useDispatch();
@@ -71,27 +72,34 @@ const CalcPublic = (props) => {
   };
 
   const LoginFormState = {
-    height: authUserParams.height,
-    age: authUserParams.age,
-    weightCurrent: authUserParams.weightCurrent,
-    weightDesired: authUserParams.weightDesired,
-    blood: String(authUserParams.blood),
+    height: FullUser.height,
+    age: FullUser.age,
+    weightCurrent: FullUser.weightCurrent,
+    weightDesired: FullUser.weightDesired,
+    blood: String(FullUser.blood),
   };
 
   useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(updateUser(FullUser));
-    }
+    setTimeout(() => {
+      if (isLoggedIn) {
+        dispatch(updateUser(FullUser));
+        console.log(FullUser);
+        dispatch(calcOperation.calcUserUpdate(FullUser));
+      }
+    }, 500);
   }, [FullUser, dispatch, isLoggedIn]);
 
-  const formState = isLoggedIn ? LoginFormState : initFormState;
+  // const formState = isLoggedIn ? LoginFormState : initFormState;
+  const handleChangeitm = (e) => {
+    console.log(e.target.value);
+  };
 
   return (
     <>
       <h1>{title}</h1>
       <Formik
         validateOnChange="true"
-        initialValues={formState}
+        initialValues={isLoggedIn ? LoginFormState : initFormState}
         validationSchema={CalculatorSchema}
         onSubmit={(values, actions) => {
           if (isLoggedIn) {
@@ -110,10 +118,8 @@ const CalcPublic = (props) => {
           return;
         }}
       >
-        {({ values, handleSubmit, handleChange, handleBlur }) => {
-          {
-            /* const { values, handleSubmit, handleChange, handleBlur } = props; */
-          }
+        {(props) => {
+          const { values, handleSubmit, handleChange, handleBlur } = props;
           const { height, age, weightCurrent, weightDesired } = values;
 
           const settings = [
@@ -207,7 +213,7 @@ const CalcPublic = (props) => {
                           wordSpacing: "0px",
                           paddingLeft: "0",
                           color: "#828282",
-                          borderBottom:"1px solid #828282"
+                          borderBottom: "1px solid #828282",
                         }}
                       >
                         Blood type <b>(select)</b>
@@ -220,10 +226,15 @@ const CalcPublic = (props) => {
                         helperText=""
                         className="BloodSelector"
                         defaultValue="1"
+                        onChange={handleChangeitm}
                         sx={{ width: "18ch" }}
                       >
                         {bloodSettings.map((option) => (
-                          <MenuItem key={option.value} value={option.value}>
+                          <MenuItem
+                            key={option.value}
+                            // value={values.blood === option.value}
+                            value={option.value}
+                          >
                             {option.label}
                           </MenuItem>
                         ))}
@@ -238,7 +249,6 @@ const CalcPublic = (props) => {
                   form="calculatorForm"
                   type="submit"
                   className="calc__btn"
-
                   style={{
                     backgroundColor: "#FC842D",
                     padding: "20px 20px",
@@ -274,7 +284,6 @@ const CalcPublic = (props) => {
           );
         }}
       </Formik>
-
     </>
   );
 };

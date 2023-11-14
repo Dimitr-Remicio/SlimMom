@@ -131,6 +131,7 @@ const Modal = ({ isOpen }) => {
               style={close}
               onClick={() => {
                 dispatch(setIsModalOpen(false));
+                dispatch(wipeUser());
               }}
             >
               X

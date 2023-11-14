@@ -35,8 +35,14 @@ const authSlice = createSlice({
     },
 
     [authOperations.logIn.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+      const { user, token } = action.payload;
+
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", token);
+      localStorage.setItem('isLoggedIn', 'true');
+
+      state.user = user;
+      state.token = token;
       state.isLoggedIn = true;
       state.loaderShow = false;
     },
@@ -51,12 +57,18 @@ const authSlice = createSlice({
       state.user = {
         name: '',
         email: '',
-        height: null,
-        age: null,
-        weightCurrent: null,
-        weightDesired: null,
-        blood: null,
+        height: 0,
+        age: 0,
+        weightCurrent: 0,
+        weightDesired: 0,
+        blood: 0,
       };
+
+      // localStorage.removeItem("user");
+      // localStorage.removeItem("token");
+      // localStorage.removeItem("isLoggedIn");
+
+      // // state.user = null;
       state.token = null;
       state.isLoggedIn = false;
       state.loaderShow = false;

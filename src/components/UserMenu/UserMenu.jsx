@@ -19,7 +19,8 @@ const UserMenu = () => {
           type="button"
           onClick={() => {
             dispatch(authOperations.logOut());
-            dispatch(wipeUser());
+            // dispatch(wipeUser());
+            localStorage.clear();
           }}
         >
           logout

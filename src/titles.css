@@ -1,6 +1,6 @@
 
 h3{
-    color: #FC842D;
+    color:var(--h3color)!important;
     font-size: 1.5em;
     font-family: "Verdana bold";
     letter-spacing: 0;
@@ -9,7 +9,7 @@ h3{
 @media screen and (min-width:768px) {
 
     h3{
-        color: #FC842D;
+        color: var(--h3color)!important;
         font-size: 1.3em;
         font-family: "Verdana bold";
         letter-spacing: 0;

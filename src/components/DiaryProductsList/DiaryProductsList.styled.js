@@ -5,6 +5,7 @@ export const List = styled.ul`
     overflow-y: scroll;
     height: 244px;
     max-width: 610px;
+    color: blue;
   }
   @media (min-width: 1024px) {
     width: 610px;

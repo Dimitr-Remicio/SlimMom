@@ -1,3 +1,6 @@
+
+@import url('src/colors.css');
+
 .wrapperForm {
   padding-top: 3rem;
   width: auto;
@@ -31,13 +34,16 @@
 
   & label {
     font-family: "Verdana" !important;
-
+    color: var(--textform) !important;
     font-size: 1.2em;
   }
   & input {
     font-family: "Verdana" !important;
     height: 35px;
     font-size: 1.2em;
+  }
+  & button {
+    color: var(--btnlogin);
   }
 }
 
@@ -62,7 +68,8 @@
 }
 .errorLabel {
   margin-top: 1rem;
-  color: red;
+  color: var(--error) !important;
+
   font-size: 0.9em;
 }
 

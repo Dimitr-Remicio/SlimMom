@@ -227,13 +227,14 @@ const CalcPublic = (props) => {
                         className="BloodSelector"
                         defaultValue="1"
                         onChange={handleChangeitm}
-                        sx={{ width: "18ch" }}
+                        sx={{ width: "18ch"}}
                       >
                         {bloodSettings.map((option) => (
                           <MenuItem
                             key={option.value}
                             // value={values.blood === option.value}
                             value={option.value}
+                            className="blooditems"
                           >
                             {option.label}
                           </MenuItem>

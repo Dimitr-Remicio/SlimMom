@@ -86,7 +86,8 @@
 @media screen and (min-width: 760px) {
   .right-sidebar {
     width: 100vw; /* Ancho de la barra lateral */
-    height: auto;
+    height: 345px;
+    
     /* Altura de la barra lateral */
     background-color: var(--backgroundsidebar) !important;
     background-image: url("../../assets/images/bgPatternLeaf.png");
@@ -120,6 +121,7 @@
 }
 @media screen and (min-width: 1020px) {
   .right-sidebar {
+    
     width: 35%; /* Ancho de la barra lateral */
     height: 100%;
     /* Altura de la barra lateral */

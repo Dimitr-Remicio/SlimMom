@@ -3,7 +3,10 @@ import '../DarkMode/DarkMode.css';
 import ReactSwitch from 'react-switch';
 
 const DarkMode = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    const localDarkMode = window.localStorage.getItem('darkMode');
+    return localDarkMode ? JSON.parse(localDarkMode) : false;
+  });
 
   const handleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -12,6 +15,8 @@ const DarkMode = () => {
   useEffect(() => {
     const body = document.body;
     body.classList.toggle('dark-mode', darkMode);
+
+    window.localStorage.setItem('darkMode', JSON.stringify(darkMode));
   }, [darkMode]);
 
   return (
@@ -30,10 +35,8 @@ const DarkMode = () => {
        width={48}
        className="buttonMode"
       />
-       
-     
     </div>
   );
 };
 
-export default DarkMode;
+export default DarkMode;

@@ -17,7 +17,7 @@
         font-family: "Verdana bold", sans-serif;
         font-size: 1.5em;
         letter-spacing: 0;
-        color: var(--card2-color);
+        color: var(--h1color)!important;
     }
 
 

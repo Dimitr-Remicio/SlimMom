@@ -5,6 +5,10 @@
   --texthome: #7c7c7c;
   --textcolor: black;
   --error: red;
+  --h3color:#FC842D;
+  --h1color:#FC842D;
+  --textform:#888888;
+  --btnlogin:#17314767;
 }
 .dark-mode {
   --backgroundblur: #17314767;
@@ -13,4 +17,8 @@
   --texthome: rgb(245, 245, 245);
   --textcolor: white;
   --error: rgb(229, 255, 0);
+  --h3color:#ffffff;
+  --h1color:#ffffff;
+  --textform:#DBEFFF;
+  --btnlogin:#ffffff;
 }

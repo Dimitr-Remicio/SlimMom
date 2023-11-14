@@ -1,5 +1,6 @@
 .FormHome{
     padding-bottom: 80px;
+    
 }
 
 .BloodTypeLabel{
@@ -7,14 +8,14 @@
   font-size: 14px;
   line-height: 17px;
   letter-spacing: 0.2px;
-  color: var(--texthome) !important;
+  color: var(--h3color) !important;
   margin-top: 25px;
   padding-bottom: 7px;
   padding-left: 0.1em;
   width: 100%;
 
   @media screen and (min-device-width: 768px) {
-    border-bottom: 1px solid var(--texthome);
+    border-bottom: 1px solid var(--h3color);
   width: 181px;
   }
 }

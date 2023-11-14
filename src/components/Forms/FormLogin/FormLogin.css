@@ -34,13 +34,16 @@
 
   & label {
     font-family: "Verdana" !important;
-    color: var(--textcolor) !important;
+    color: var(--textform) !important;
     font-size: 1.2em;
   }
   & input {
     font-family: "Verdana" !important;
     height: 35px;
     font-size: 1.2em;
+  }
+  & button {
+    color: var(--btnlogin);
   }
 }
 

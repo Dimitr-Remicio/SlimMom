@@ -1,17 +1,22 @@
-@import url('src/colors.css');
+@import url('/src/colors.css');
+.headerright{
+  height: 50px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
 
+}
 .menubtn{
   display: block;
   width: 45px;
-  padding: 0 15px 0 2px;
-  margin: 0 0 0 50px ; 
+  padding: 0 10px 0 8px;
+  margin: 0 0 0 10px ; 
   height: 50px;
   
   /* margin: 0 auto ; */
   border: none;
-  background-color: #ffffff00;
   cursor: pointer;
-
+  background-color: #00000000 !important;
   -webkit-appearance: none;
 }
 .header {
@@ -44,10 +49,14 @@
 
   align-items: center;
 
-  color: var(--textcolor);
-
+  
   justify-content: center;
   z-index: 10000;
+  
+  & li > a{
+
+    color: var(--textcolorC) !important; 
+  }
 }
 .btn {
   position: absolute;
@@ -62,7 +71,9 @@
   display: block;
 }
 .logo__cont {
+  position: relative;
   width: 160px;
+  top: -0.4rem;
   display: none;
 }
 .logo__cont2 {
@@ -83,13 +94,13 @@
   
 }
 .navigation {
-  margin-left: 50px;
-  padding-left: 10px;
-  padding-bottom: 5px;
+  height: 11px;
+  margin-left: 10px;
   position: relative;
 }
 
 .menu {
+  margin-left: 15px;
   display: none;
   
 }

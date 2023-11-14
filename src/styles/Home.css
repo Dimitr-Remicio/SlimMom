@@ -52,7 +52,7 @@
 
 @media screen and (min-width: 1020px) {
     .calculator{
-        margin-top: 10rem;
+        margin-top: 10vh;
     padding-bottom: 0rem;
 
     }

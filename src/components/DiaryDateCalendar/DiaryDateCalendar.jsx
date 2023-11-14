@@ -23,7 +23,6 @@ export const DiaryDateCalendar = () => {
   ));
 
   return (
-    <div>
       <DatePicker
         selected={selectedDate}
         onChange={(date) => handleChange(date)}
@@ -32,6 +31,5 @@ export const DiaryDateCalendar = () => {
         customInput={<ExampleCustomInput />}
         maxDate={new Date()}
       />
-    </div>
   );
 };

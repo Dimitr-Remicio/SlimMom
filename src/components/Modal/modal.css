@@ -1,3 +1,6 @@
+@import url('/src/colors.css');
+
+
 .contModal {
   z-index: 500 !important;
   display: flex;
@@ -30,7 +33,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid #ffffff;
-  background: white;
+  background: var(--modalcolor);
   border-radius: 1em;
 
 }

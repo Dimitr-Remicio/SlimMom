@@ -17,22 +17,23 @@ export const DiaryProductsList = () => {
   const [products, setProducts] = useState([]);
   const [Sumary, setSumary] = useState([]);
   
-  const cambiarFormatoFecha = (fechaOriginal) => {
-    //change date format
-    const fechaParseada = parse(fechaOriginal, "yyyy-MM-dd", new Date());
-    const nuevaFecha = format(fechaParseada, "yyyy-MM-dd");
-    return nuevaFecha;
-  };
+  // const cambiarFormatoFecha = (fechaOriginal) => {
+  //   //change date format
+  //   const fechaParseada = parse(fechaOriginal, "yyyy-MM-dd", new Date());
+  //   const nuevaFecha = format(fechaParseada, "yyyy-MM-dd");
+  //   return nuevaFecha;
+  // };
   
   const date = useSelector(getDate);
 
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const nDate = cambiarFormatoFecha(date);
+        const nDate = date;
         const body = { date: `${nDate}` };
         const findDay = await getDairy(body);
         setSumary(findDay)
+        console.log(findDay.eatenProducts)
         setProducts(findDay.eatenProducts);
       } catch (error) {
         console.log(error);
@@ -43,6 +44,7 @@ export const DiaryProductsList = () => {
   }, [date, dispatch]);
 
   return (
+    <div className="scrollWrapper" id="style-3">
     <List>
       {products
         ? products.map(({_id, title, weight, calories}) => (
@@ -56,5 +58,6 @@ export const DiaryProductsList = () => {
           ))
         : null}
     </List>
+    </div>
   );
 };

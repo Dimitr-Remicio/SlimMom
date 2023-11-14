@@ -57,6 +57,7 @@ export const DiaryProductsListItem = ({ id, name, grams, calories }) => {
         {calories} <span>kcal</span>
       </p>
       <button
+      className="btndelete"
         alt="delete product"
         onClick={() => {
             deleteProduct(dayId, productId, sumId);

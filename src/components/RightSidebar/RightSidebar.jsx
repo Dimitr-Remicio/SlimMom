@@ -43,6 +43,7 @@ export default function SummaryForDay() {
     }, 50);
   }, [user, isLoggedIn]);
 
+  // console.log(user)
 
   return (
     <>

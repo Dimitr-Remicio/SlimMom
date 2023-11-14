@@ -5,20 +5,86 @@
 
 }
 .diaryPage{
+    display: flex;
     position: relative;
     top: -5rem;
+    height: 700px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.inpustadd{
+    width: 100vw !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 20px;
+}
+.btndelete{
+    margin-top: 1.2rem;
+    margin-left: 1.4rem;
+    width: 40px;
+    height: 30px;
+    margin 0 auto;
+
+    border-radius: 90px;
+
+    cursor: pointer;
+    background-color: var(--backgroundsidebar);
+    
+    &:hover{
+        background-color: var(--accentcolor);
+        color: var(--textcolorC) !important;
+
+    }
+}
+.react-datepicker__header{
+    background-color: var(--backgroundsidebar);
+
+}
+.react-datepicker__month-container{
+    background-color: var(--backgroundcolor);
 }
 
 @media screen and (min-width:760px) {
+    .inpustadd{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 0px;
+    }
     .diary{
 
         width: 100%;
         max-width: 600px;
     }
     .diaryPage{
-        position: relative;
-        top: 5rem;
-        height: 700px;
+        display: flex;
+    position: relative;
+    top: 5rem;
+    height: 700px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    }
+    .btndelete{
+        margin-top: 0.8rem;
+        margin-left: 1rem;
+        width: 40px;
+        height: 40px;
+        margin 0 auto;
+    
+        border-radius: 50px;
+    
+        cursor: pointer;
+        background-color: var(--backgroundsidebar);
+        
+        &:hover{
+            background-color: var(--accentcolor);
+            color: var(--textcolorC) !important;
+    
+        }
     }
 }
 @media screen and (min-width: 1020px) {
@@ -29,7 +95,13 @@
         /* margin-top: 20rem; */
     }
     .diaryPage{
+        display: flex;
         position: relative;
-        top: -5rem;
+        top: 0rem;
+        width: 700px;
+        height: 700px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
     }
 }

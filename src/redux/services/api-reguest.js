@@ -10,11 +10,14 @@ import Notiflix from 'notiflix';
 // localhost
 //nuervo servidor
 const base = "https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api";
+// const base = "http://localhost:3000/api";
+
 
 axios.defaults.baseURL = `${base}`;
 
 export const searchProduct = async (search) => {
     const { data } = await axios.get(`${base}/products?search=${search}`);
+    console.log(data);
     return data;
 };
 

@@ -2,20 +2,24 @@ import { Field, Form } from "formik";
 import styled from "styled-components";
 
 export const NameInput = styled(Field)`
-  border: 1px solid #000;
   width: 280px;
+  height:40px;
   margin-bottom: 32px;
   padding-bottom: 8px;
   padding-left: 8px;
   border-bottom: 1px;
   font-size: 15px;
-  color: black;
+  color: var(--textcolor) !important;
   background-color: transparent;
   letter-spacing: 0.04em;
   border-radius: 15px;
+  padding-left: 10px;
+  border: 1px solid var(--border);
+    padding-top:8px;
   &::placeholder {
-    color: gray;
+    color: var(--textcolor) !important;
     opacity: 1;
+
   }
   &:focus-visible {
     outline: none;
@@ -24,12 +28,16 @@ export const NameInput = styled(Field)`
   @media (min-width: 426px) and (max-width: 1023px) {
     margin-right: 12px;
     width: 240px;
+  height:40px;
+
     border-radius: 15px;
     margin-bottom: 0px;
   }
   @media (min-width: 1024px) {
     width: 240px;
-    margin-right: 48px;
+  height:40px;
+
+    margin-right: 10px;
     margin-bottom: 0px;
     border-radius: 15px;
   }
@@ -40,18 +48,22 @@ export const GramsInput = styled(Field)`
   border: 2px solid #000;
   border-bottom: 2px solid #000;
   padding-right: 18px;
+  height:40px;
 
   width: 280px;
   margin-bottom: 60px;
   border-bottom: 1px;
-  color: black;
 
   background-color: transparent;
   border-radius: 15px;
+  color: var(--textcolor) !important;
 
   letter-spacing: 0.04em;
+  border: 1px solid var(--border);
+
   &::placeholder {
-    color: gray;
+    padding-right: 30px;
+    color: var(--textcolor) !important;
     opacity: 1;
   }
   &:focus-visible {
@@ -64,24 +76,31 @@ export const GramsInput = styled(Field)`
     margin-bottom: 0px;
     margin-right: 8px;
     border-radius: 15px;
+  height:40px;
+
   }
   @media (min-width: 1024px) {
     text-align: right;
     width: 107px;
     margin-bottom: 0px;
-    margin-right: 60px;
+    margin-right: 10px;
     border-radius: 15px;
+  height:40px;
+  padding-left: 10px;
+
   }
 `;
 
 export const NameError = styled.div`
+    background-color:red;
+  
   display: inline;
   text-align: center;
-  top: 80px;
-  right: 40px;
+  top: 0;
+  left:0;
   position: absolute;
   font-size: 10px;
-  color: red;
+  color: white !important;
   padding: 5px;
   border-radius: 5px;
   width: 240px;
@@ -92,10 +111,18 @@ export const NameError = styled.div`
     text-align: left;
   }
   @media (min-width: 1024px) {
-    left: 0;
-    top: 8rem;
-    text-align: left;
+    background-color:red;
+    top: 8.5rem;
+    left: 0rem;
+    width: 200px;
   }
+  @media (min-width: 1270px) {
+    background-color:red;
+    top: 11.5rem;
+    left: 0rem;
+    width: 150px;
+  }
+
 `;
 
 export const GramsError = styled.div`
@@ -104,38 +131,50 @@ export const GramsError = styled.div`
   top: 90px;
   right: 65px;
   font-size: 10px;
-  color: white;
+  color: var(--textcolor);
   background-color: red;
   padding: 5px;
+  color: white !important;
+
   border-radius: 5px;
   @media (min-width: 426px) and (max-width: 1023px) {
-    top: 55px;
-    right: 200px;
+    top: 5rem;
+    right: 15rem;
     width: 107px;
   }
   @media (min-width: 1024px) {
-    top: 55px;
-    right: 207px;
+    color: white !important;
+    top: 8.5rem;
+    left: 17.5rem;
+    width: 107px;
+  }
+  @media (min-width: 1270px) {
+    color: white !important;
+    top: 11.5rem;
+    left: 17.5rem;
     width: 107px;
   }
 `;
 
 export const Button = styled.button`
-  border-radius: 10px;
-  padding: 50px 76px;
+  border-radius: 15px;
+  padding:10px 10px;
   border: 3px;
   font-size: 10px;
   letter-spacing: 0.04em;
   cursor: pointer;
+  height:40px;
+  margin-left: 25px;
 
-  color: black;
-  background: orange;
+  background: var(--accentcolor);
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  & p{
+    position: relative;
+    top:-0.5rem;
+  color: var(--textcolorC) !important;
 
-  @media (min-width: 426px) and (max-width: 1023px) {
-    padding: 12px 13px 11px;
-    border-radius: 50%;
   }
+ 
   @media (min-width: 1024px) {
     padding: 20px;
     border-radius: 10px;
@@ -163,8 +202,14 @@ export const FormWrapper = styled(Form)`
 export const SearchBox = styled.ul`
   display: none;
   position: absolute;
-  background-color: white;
+  background-color: var(--backgroundSearch);
   width: 450px;
+  margin-top: 10px;
+  padding-top: 50px !important;
+  overflow: hidden;
+  overflow-y:hidden;
+  padding:20px;
+  border-radius:20px;
   box-shadow: 5px 4px 9px -3px rgba(0, 0, 0, 0.53);
   &.visible {
     display: block;
@@ -177,9 +222,13 @@ export const SearchBox = styled.ul`
 export const SearchItem = styled.li`
   cursor: pointer;
   padding: 5px 10px;
+  margin:5px 0;
   border-bottom: 1px;
+  border-radius:10px;
+
   &:hover {
-    background-color: green;
+    color: var(--textcolorC) !important;
+    background-color: var(--Focus);
   }
 `;
 

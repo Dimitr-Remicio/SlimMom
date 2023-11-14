@@ -11,6 +11,7 @@ import axios from 'axios';
 //nuervo servidor
 const base ="https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api"
 // localhost
+// const base = "http://localhost:3000/api";
 
 
 

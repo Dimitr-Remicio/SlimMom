@@ -1,24 +1,48 @@
 :root {
   --backgroundcolor: #ffffff5f;
+  --backgrounditem: #e7e7e7ce;
   --backgroundblur: #ffffff50;
+  --backgroundSearch: #e7e7e7ea ;
+  --popbg: #fffffff3;
   --backgroundsidebar: #e0e0e086;
-  --texthome: #7c7c7c;
+  --texthome: #d6d6d6;
   --textcolor: black;
+  --textcolorC: white;
   --error: red;
   --h3color:#FC842D;
   --h1color:#FC842D;
   --textform:#888888;
-  --btnlogin:#17314767;
+  --btnlogin:: #17314767;
+  --modalcolor:#e7e4e4f6;
+  --accentcolor:#FC842D;
+  --border:#2b2b2b56;
+  --borderFocus:#FC842D;
+  --Focus:#fd954b;
+  --buttonother: #ffffffad;
+  --hoverpop: #cfcece;
+  --barhead: #cfcece;
 }
 .dark-mode {
   --backgroundblur: #17314767;
-  --backgroundsidebar: #ffffff50;
+  --backgroundsidebar: #4f5c69;
   --backgroundcolor: #173147;
-  --texthome: rgb(245, 245, 245);
+  --backgroundSearch: #173147;
+  --backgrounditem: #4f5c69;
+  --popbg: #173147;
+  --texthome: #f5f5f5;
   --textcolor: white;
-  --error: rgb(229, 255, 0);
+  --textcolorC:#000000;
+  --error: #e5ff00;
   --h3color:#ffffff;
   --h1color:#ffffff;
   --textform:#DBEFFF;
   --btnlogin:#ffffff;
+  --modalcolor:#1d2e3b;
+  --accentcolor:#ffd51cfa;
+  --border:#ffffff85;
+  --borderFocus: #ffd51cfa;
+  --Focus: #ffe46dfa;
+  --buttonother: #ffffff14;
+  --hoverpop: #cfcece85;
+  --barhead: #74726cfa;
 }

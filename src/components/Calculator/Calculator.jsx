@@ -250,7 +250,7 @@ const CalcPublic = (props) => {
                   type="submit"
                   className="calc__btn"
                   style={{
-                    backgroundColor: "#FC842D",
+                    backgroundColor: "var(--accentcolor)",
                     padding: "20px 20px",
                     borderRadius: "20em",
                     fontFamily: "Verdana bold",
@@ -269,7 +269,7 @@ const CalcPublic = (props) => {
                   type="submit"
                   className="calc__btn"
                   style={{
-                    backgroundColor: "#fc842d",
+                    backgroundColor: "var(--accentcolor)",
                     padding: "15px 20px",
                     borderRadius: "20em",
                     position: "absolute",

@@ -37,6 +37,7 @@ import authSelectors from "../../redux/auth/selectors";
 import Notiflix from "notiflix";
 import { result } from "lodash";
 import { format, parse } from 'date-fns';
+import { setSummaryId } from "../../redux/dairy/dairyReducer";
 
 
 const schema = yup.object().shape({
@@ -117,6 +118,8 @@ export const DiaryAddProductForm = ({ onClose, isModalOpened }) => {
         console.log("me ejecute en add")
         console.log("me ejecute en add")
         dispatch(setProduct(result));
+        dispatch(setSummaryId(findDay.daySummary._id));
+
         
       } else {
         console.log("array vacio")

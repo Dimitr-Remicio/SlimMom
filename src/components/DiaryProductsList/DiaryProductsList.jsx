@@ -8,11 +8,14 @@ import { List } from "./DiaryProductsList.styled";
 import { format, parse } from "date-fns";
 import { getDairy } from "../../redux/services/api-reguest";
 
+
+
+
 export const DiaryProductsList = () => {
   const token = useSelector(authSelectors.getToken);
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
-  console.log("listproduct", products);
+  const [Sumary, setSumary] = useState([]);
   
   const cambiarFormatoFecha = (fechaOriginal) => {
     //change date format
@@ -29,19 +32,20 @@ export const DiaryProductsList = () => {
         const nDate = cambiarFormatoFecha(date);
         const body = { date: `${nDate}` };
         const findDay = await getDairy(body);
-        
+        setSumary(findDay)
         setProducts(findDay.eatenProducts);
-
+        // console.log(findDay.daySummary._id)
+        // dispatch(setSummaryId(findDay.daySummary._id));
       } catch (error) {
         console.log(error);
       }
     };
     getProducts();
     
-  }, [date]);
+  }, [date, dispatch]);
   
   // const item = findDay.eatenProducts;
-  console.log(products)
+  console.log(Sumary)
 
   return (
     <List>

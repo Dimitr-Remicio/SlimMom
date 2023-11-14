@@ -1,0 +1,22 @@
+
+/* body {
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s ease;
+} */
+@import url('../../colors.css');
+
+
+body{
+    background-color: var(--backgroundcolor);
+    color:var(--textcolor);
+}
+
+/* .dark-mode{
+    --card2-color:#ffffff;
+    --h3-color: #ffffff;
+}
+
+h3.dark-mode{
+    color:#ffffff;
+}    */

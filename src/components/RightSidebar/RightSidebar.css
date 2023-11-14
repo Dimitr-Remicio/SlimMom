@@ -1,10 +1,10 @@
 /* Estilos para la barra lateral derecha */
 .right-sidebar {
- 
   width: 100vw; /* Ancho de la barra lateral */
-    height: auto;/* Altura de la barra lateral */
-  background-color: #e6e6e6;
-  background-image: url('../../assets/images/bgPatternLeaf.png');
+  height: auto; /* Altura de la barra lateral */
+  background-color: var(--backgroundsidebar);
+
+  background-image: url("../../assets/images/bgPatternLeaf.png");
   color: rgb(117, 111, 111); /* Color del texto en la barra lateral */
   /* padding: 40px 20px 84px 20px; */
   position: absolute; /* Barra lateral fija en la página */
@@ -17,13 +17,11 @@
 
   display: flex;
   align-items: center;
- 
+
   z-index: 600;
-
-
 }
 
-.box-sidebar{
+.box-sidebar {
   margin-top: 5rem;
   margin-bottom: 5rem;
   display: flex;
@@ -51,12 +49,12 @@
   width: 280px;
   margin: 0 auto;
   margin-top: 40px;
-  
+
   & ul {
     display: flex;
     flex-direction: column;
     gap: 20px;
-  } 
+  }
 }
 
 .food-sidebar {
@@ -83,28 +81,26 @@
   line-height: 17px;
   letter-spacing: 0.04em;
   color: #9b9faa;
-
-  
 }
 
-@media screen and (min-width:760px) {
+@media screen and (min-width: 760px) {
   .right-sidebar {
     width: 100vw; /* Ancho de la barra lateral */
-    height: auto; 
-     /* Altura de la barra lateral */
-    background-color: #e6e6e6;
-    background-image: url('../../assets/images/bgPatternLeaf.png');
+    height: auto;
+    /* Altura de la barra lateral */
+    background-color: var(--backgroundsidebar) !important;
+    background-image: url("../../assets/images/bgPatternLeaf.png");
     color: rgb(117, 111, 111); /* Color del texto en la barra lateral */
     position: absolute; /* Barra lateral fija en la página */
-  bottom: -30vh;
-  right: -4rem;
-      
+    bottom: -30vh;
+    right: -4rem;
+
     display: flex;
     align-items: center;
 
     transition: none !important;
   }
-  .box-sidebar{
+  .box-sidebar {
     padding: 5rem;
     display: flex;
     align-items: center;
@@ -113,25 +109,22 @@
     margin: 0 auto;
     align-items: flex-end;
   }
-  
+
   .summary-sidebar {
     flex: 1;
-    
   }
-  
+
   .food-sidebar {
-    flex:1;
+    flex: 1;
   }
-
-
 }
-@media screen and (min-width:1020px) {
+@media screen and (min-width: 1020px) {
   .right-sidebar {
     width: 35%; /* Ancho de la barra lateral */
-    height: 100%; 
-     /* Altura de la barra lateral */
+    height: 100%;
+    /* Altura de la barra lateral */
     background-color: #e6e6e6;
-    background-image: url('../../assets/images/bgPatternLeaf.png');
+    background-image: url("../../assets/images/bgPatternLeaf.png");
     color: rgb(117, 111, 111); /* Color del texto en la barra lateral */
     padding: 40px 20px 84px 20px;
     position: fixed; /* Barra lateral fija en la página */
@@ -139,9 +132,8 @@
     right: 0;
     display: flex;
     align-items: center;
-
   }
-  .box-sidebar{
+  .box-sidebar {
     margin-top: 5rem;
     margin-bottom: 5rem;
     display: flex;
@@ -149,6 +141,4 @@
     flex-direction: column;
     gap: 2em;
   }
-
-
 }

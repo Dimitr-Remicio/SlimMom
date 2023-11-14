@@ -7,3 +7,4 @@ export const getNotRecFood = (state) => state.dairy.notRecFood;
 export const getDaily = (state) => state.dairy.summary.dailyRate;
 export const getEatProducts = (state) => state.dairy.products;
 export const getError = (state) => state.dairy.error
+// export const getSummaryId = (state) => state.summary.sumId

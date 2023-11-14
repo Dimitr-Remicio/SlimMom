@@ -12,7 +12,6 @@ const fetchAll = createAsyncThunk(
   async function (data) {
     try {
       const user = await getAllProduct(data);
-      console.log(user.data);
       return user;
     } catch (error) {
       console.error(error.message);
@@ -51,7 +50,6 @@ const addProduct = createAsyncThunk(
   async function (newObject, { rejectWithValue }) {
     try {
       const products = await addProductForUser(newObject);
-      console.log(products)
       return products;
     } catch (error) {
       console.error(error.message);
@@ -62,9 +60,9 @@ const addProduct = createAsyncThunk(
 
 const removeProduct = createAsyncThunk(
   "product/delete",
-  async function ({ dataFormat, id }, { rejectWithValue }) {
+  async function ({dayId, productId, sumId}, { rejectWithValue }) {
     try {
-      const result = await deleteProductRequest({ dataFormat, id });
+      const result = await deleteProductRequest({dayId, productId, sumId});
       return result;
     } catch (error) {
       console.error(error.message);

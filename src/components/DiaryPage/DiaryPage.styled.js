@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 
 export const WrapperAll = styled.div`
-
   @media (min-width: 768px) and (max-width: 1023px) {
+    width:90vw;
+    
     background-repeat: no-repeat;
     background-position: bottom 0px left 0px;
     background-size: auto;
   }
   @media (min-width: 1024px) and (max-width: 1120px) {
-    padding: 30px 16px 55px 16px;
+    padding: 150px 16px 55px 16px;
     display: flex;
     height: 100vh;
     justify-content: space-between;
     background-repeat: no-repeat, no-repeat;
-    background-size: auto, 50% 100%;
+    background-size: auto,30% 100%;
     background-position: top 0px right 0px, top 0px right -110px;
   }
   @media (min-width: 1121px) and (max-width: 1280px) {
@@ -28,23 +29,26 @@ export const WrapperAll = styled.div`
   }
   @media (min-width: 1280px) {
     margin: 0 auto;
+  margin-top:30px;
     padding: 0;
     display: flex;
     /* height: 100vh; */
     justify-content: space-between;
     background-repeat: no-repeat, no-repeat;
-    background-size: auto, 40% 100%;
+    background-size: auto,50% 100%;
     background-position: top 0px right 0px, top 0px right 0px;
   }
 `;
 
 export const Wrapper = styled.div`
+
   margin: 0px auto;
   padding: 100px 20px 60px 20px;
-  max-width: 610px; /* @media (max-width: 425px) { max-width: 610px; } */
+  max-width: 800px; /* @media (max-width: 425px) { max-width: 610px; } */
   @media (min-width: 768px) and (max-width: 1023px) {
     margin: 0;
     padding: 0;
+    
   }
   @media (min-width: 1024px) {
     padding: 0px;
@@ -53,7 +57,7 @@ export const Wrapper = styled.div`
   &::before {
     @media (min-width: 768px) and (max-width: 1279px) {
       object-fit: fill;
-      width: 302px;
+      width: 502px;
       bottom: 40px;
       right: 10%;
       position: absolute;
@@ -64,8 +68,8 @@ export const Wrapper = styled.div`
       background-size: auto;
     }
     @media (min-width: 1024px) {
-      width: 358px;
-      top: 170px;
+      width: 808px;
+      top: 80px;
       left: 69%;
       position: absolute;
       content: '';

@@ -1,20 +1,20 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { toastStyles } from '../../styles/toastStyled.js';
+import Notiflix from 'notiflix';
 
 
 // raiz
 // const base = "https://slimmomapi-dev-xdce.2.us-1.fl0.io/api";
-// dairodev
+// const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
+// localhost
+//nuervo servidor
 const base = "https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api";
-// dairodev finall server
-
 
 axios.defaults.baseURL = `${base}`;
 
 export const searchProduct = async (search) => {
     const { data } = await axios.get(`${base}/products?search=${search}`);
-    console.log(data)
     return data;
 };
 
@@ -26,23 +26,18 @@ export const getAllProduct = async () => {
     const data = await axios.get(`${base}/products/getAll`);
     return data;
   } catch (error) {
-    toast.error(
-      `Помилка отримання даних на вибрану дату! ${error.message}`,
-      toastStyles
-    );
+    console.log(
+      `¡Error al obtener datos para el producto seleccionado! ${error.message}`);
     throw error;
   }
 };
-export const getDairy = async () => {
+export const getDairy = async body => {
   try {
-    const { data } = await axios.post(`${base}/days/info`);
-    console.log(data);
+    const { data } = await axios.post(`${base}/days/info`,body);
     return data;
   } catch (error) {
-    toast.error(
-      `Помилка отримання даних на вибрану дату! ${error.message}`,
-      toastStyles
-    );
+    console.log(
+      `get dayry ¡Error al obtener datos para la fecha seleccionada! ${error.message}`);
     throw error;
   }
 };
@@ -50,21 +45,23 @@ export const getDairy = async () => {
 export const addProductForUser = async newProduct => {
   try {
     const { data } = await axios.patch(`${base}/days`, newProduct);
-    toast.success(`З'їдено!`, toastStyles);
     return data;
   } catch (error) {
-    toast.error(`Виникла помилка! ${error.message}`, toastStyles);
+    console.log(`Ocurrió un error! ${error.message}`);
     throw error;
   }
 };
 
-export const deleteProductRequest = async () => {
+export const deleteProductRequest = async ({dayId, productId, sumId}) => {
+  // console.log(body);
   try {
-    const { data } = await axios.delete(`${base}/days`);
-    toast.success(`Видалено!`, toastStyles);
+    const { data } = await axios.delete(`${base}/days`, {dayId,productId,sumId});
+    Notiflix.Notify.success(`Eliminado`, {
+      timeout: 6000,
+    });
     return data;
   } catch (error) {
-    toast.error(`Виникла помилка! ${error.message}`, toastStyles);
+    console.log('pase bonito')
     throw error;
   }
-};
+}

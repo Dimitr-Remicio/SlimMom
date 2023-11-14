@@ -1,17 +1,18 @@
-import { Field, Form } from 'formik';
-import styled from 'styled-components';
+import { Field, Form } from "formik";
+import styled from "styled-components";
 
 export const NameInput = styled(Field)`
-  border: 2px solid #000;
+  border: 1px solid #000;
   width: 280px;
   margin-bottom: 32px;
   padding-bottom: 8px;
   padding-left: 8px;
   border-bottom: 1px;
   font-size: 15px;
-  color: blue;
+  color: black;
   background-color: transparent;
   letter-spacing: 0.04em;
+  border-radius: 15px;
   &::placeholder {
     color: gray;
     opacity: 1;
@@ -23,26 +24,30 @@ export const NameInput = styled(Field)`
   @media (min-width: 426px) and (max-width: 1023px) {
     margin-right: 12px;
     width: 240px;
+    border-radius: 15px;
     margin-bottom: 0px;
   }
   @media (min-width: 1024px) {
     width: 240px;
     margin-right: 48px;
     margin-bottom: 0px;
+    border-radius: 15px;
   }
 `;
 
 export const GramsInput = styled(Field)`
   text-align: left;
   border: 2px solid #000;
+  border-bottom: 2px solid #000;
   padding-right: 18px;
 
   width: 280px;
   margin-bottom: 60px;
-  padding-bottom: 8px;
   border-bottom: 1px;
-  color: blue;
+  color: black;
+
   background-color: transparent;
+  border-radius: 15px;
 
   letter-spacing: 0.04em;
   &::placeholder {
@@ -58,24 +63,25 @@ export const GramsInput = styled(Field)`
     width: 107px;
     margin-bottom: 0px;
     margin-right: 8px;
+    border-radius: 15px;
   }
   @media (min-width: 1024px) {
     text-align: right;
     width: 107px;
     margin-bottom: 0px;
     margin-right: 60px;
+    border-radius: 15px;
   }
 `;
 
 export const NameError = styled.div`
   display: inline;
   text-align: center;
-  top: 30px;
+  top: 80px;
   right: 40px;
   position: absolute;
   font-size: 10px;
-  color: white;
-  background-color: red;
+  color: red;
   padding: 5px;
   border-radius: 5px;
   width: 240px;
@@ -87,7 +93,7 @@ export const NameError = styled.div`
   }
   @media (min-width: 1024px) {
     left: 0;
-    top: 55px;
+    top: 8rem;
     text-align: left;
   }
 `;
@@ -115,15 +121,15 @@ export const GramsError = styled.div`
 `;
 
 export const Button = styled.button`
-  border-radius: 30px;
-  padding: 13px 76px;
+  border-radius: 10px;
+  padding: 50px 76px;
   border: 3px;
   font-size: 10px;
   letter-spacing: 0.04em;
   cursor: pointer;
 
-  color: white;
-  background: gray;
+  color: black;
+  background: orange;
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
 
   @media (min-width: 426px) and (max-width: 1023px) {
@@ -131,8 +137,8 @@ export const Button = styled.button`
     border-radius: 50%;
   }
   @media (min-width: 1024px) {
-    padding: 12px 13px 11px;
-    border-radius: 50%;
+    padding: 20px;
+    border-radius: 10px;
   }
 `;
 
@@ -159,11 +165,11 @@ export const SearchBox = styled.ul`
   position: absolute;
   background-color: white;
   width: 450px;
-  box-shadow: 5px 4px 9px -3px rgba(0,0,0,0.53);
+  box-shadow: 5px 4px 9px -3px rgba(0, 0, 0, 0.53);
   &.visible {
     display: block;
   }
-  @media(max-width: 425px) {
+  @media (max-width: 425px) {
     top: 40px;
   }
 `;
@@ -178,19 +184,19 @@ export const SearchItem = styled.li`
 `;
 
 export const SearchItemNotRecommended = styled.li`
-cursor: pointer;
-padding: 5px 10px;
-border-bottom: 2px;
-background-color: #f5503b;
-color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-bottom: 2px;
+  background-color: #f5503b;
+  color: white;
 
-&:hover {
-  background-color: #bf3e2e;
-}
+  &:hover {
+    background-color: #bf3e2e;
+  }
 
-&::after {
-  content: 'Not recommended';
-  font-size: 10px;
-  margin-left: 10px;
-}
-`
+  &::after {
+    content: "Not recommended";
+    font-size: 10px;
+    margin-left: 10px;
+  }
+`;

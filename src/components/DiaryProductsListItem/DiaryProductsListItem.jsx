@@ -1,28 +1,69 @@
-import { Item, Icon } from "./DiaryProductsListItem.styled"
+import { Item, Icon } from "./DiaryProductsListItem.styled";
 // import CrossIcon from "../../images/svg/cross.svg"
 import authSelectors from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { getDate } from "../../redux/dairy/dairySelector";
 import { removeProduct } from "../../redux/dairy/dairyOperations";
+import { useEffect, useState } from "react";
+import {
+  deleteProductRequest,
+  getDairy,
+} from "../../redux/services/api-reguest";
 
-export const DiaryProductsListItem = ({id, name, grams, calories}) => {
-  const date = useSelector(getDate)
-  const dispatch = useDispatch()
-  // const token = useSelector(authSelectors.getToken)
-  const handleDelete = async (date, id) => {
-    try {
-        dispatch(removeProduct({ dataFormat: date, _id: id }));
-    } catch (err) {
-      console.log(err);
-    }
-  }
+export const DiaryProductsListItem = ({ id, name, grams, calories }) => {
+  const date = useSelector(getDate);
+  const dispatch = useDispatch();
+  const [infoDelete, setInfoDelete] = useState([]);
+  const [sumId, setSumId] = useState([]);
+
+  useEffect(() => {
+    const deleteProd = async () => {
+      try {
+        const nDate = date;
+        const body2 = { date: `${nDate}` };
+        const infoitem = await getDairy(body2);
+        setInfoDelete(infoitem);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    deleteProd();
+  }, [date]);
+
+  const daycomplete = async () => {
+    const nDate = date;
+    const info = await getDairy({ date: `${nDate}` });
+    setSumId(info.daySummary._id);
+  };
+
+  daycomplete();
+  
+  const deleteProduct = (dayId, productId, sumId) => {
+    dispatch(removeProduct({
+      dayId: dayId,
+      productId: productId,
+      sumId: sumId,
+    }));
+  };
+  
+  const dayId = infoDelete.idDay;
+  const productId = id;
 
   return (
     <Item>
       <p className="products-item-name">{name}</p>
-      <p className="products-item-grams">{grams} g</p>
-      <p className="products-item-calories">{calories} <span>kcal</span></p>
-      <Icon alt="delete product" onClick={() => {handleDelete(date, id)}}/>
+      <p className="products-item-grams">{grams}g</p>
+      <p className="products-item-calories">
+        {calories} <span>kcal</span>
+      </p>
+      <button
+        alt="delete product"
+        onClick={() => {
+            deleteProduct(dayId, productId, sumId);
+          }}
+      >
+        ✖
+      </button>
     </Item>
-  )
-}
+  );
+};

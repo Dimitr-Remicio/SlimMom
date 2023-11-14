@@ -10,6 +10,8 @@ import { useMediaQuery } from "react-responsive";
 import { Button } from "../components/DiaryPage/DiaryPage.styled";
 // import AddIcon from '../images/svg/add.svg';
 
+import '../styles/diary.css';
+
 const body = document.querySelector("body");
 
 const DiaryPage = () => {
@@ -27,6 +29,8 @@ const DiaryPage = () => {
   };
 
   return (
+    <div className="diaryPage">
+
     <WrapperAll>
       <Wrapper>
         <DiaryDateCalendar />
@@ -39,6 +43,7 @@ const DiaryPage = () => {
       </Wrapper>
       <RightSideBar />
     </WrapperAll>
+    </div>
   );
 };
 export default DiaryPage;

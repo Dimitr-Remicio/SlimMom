@@ -10,16 +10,8 @@ import {
 
 const initialState = {
   date: "",
-  products: [
-    {
-    _id:"",
-    title: "prueba de alimento",
-    weight: 0,
-    calories: 0,
-    groupBloodNotAllowed: [],
-  }
-],
   summary: {
+    sumId:"",
     date: "",
     userId: {},
     dailyRate: 0,
@@ -32,7 +24,6 @@ const initialState = {
   toggle: false,
   error: null,
   productList: [],
-  productsAll: [],
 };
 
 const summaryForDaySlice = createSlice({
@@ -47,7 +38,10 @@ const summaryForDaySlice = createSlice({
     },
     setProduct(state, action) {
       state.products = action.payload;
-    }
+    },
+    setSummaryId: (state, action) => {
+      state.sumId = action.payload;
+    },
   },
   extraReducers: {
     [fetchDairy.fulfilled]: (state, { payload }) => {
@@ -120,5 +114,5 @@ const summaryForDaySlice = createSlice({
   },
 });
 
-export const { addDate, changeToggle, setProduct } = summaryForDaySlice.actions;
+export const { addDate, changeToggle, setProduct, setSummaryId } = summaryForDaySlice.actions;
 export default summaryForDaySlice.reducer;

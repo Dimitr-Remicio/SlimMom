@@ -52,9 +52,7 @@ export default function SummaryForDay() {
           <div className="summary-sidebar">
             <h4 className="title-sidebar">
               Summary{" "}
-              {reduxDate === ""
-                ? format(date, "dd/MM/yyyy")
-                : format(new Date(reduxDate), "dd/MM/yyyy")}
+              {reduxDate}
             </h4>
             <ul>
               <li>

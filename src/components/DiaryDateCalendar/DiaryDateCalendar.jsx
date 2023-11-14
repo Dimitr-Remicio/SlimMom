@@ -14,8 +14,6 @@ export const DiaryDateCalendar = () => {
     const formattedDate = moment(date).format("yyyy-MM-DD");
     setSelectedDate(date);
     dispatch(addDate(formattedDate));
-    console.log(date);
-    console.log(JSON.stringify(formattedDate));
   };
 
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (

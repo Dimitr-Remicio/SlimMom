@@ -72,25 +72,7 @@ export const DiaryAddProductForm = ({ onClose, isModalOpened }) => {
       setSearchProducts([]);
     }
   };
-  // const day()=>{
-  //   try {
-  //     apiRes = axios.post('https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api/days/info');
-
-  //   } catch (err) {
-  //     console.error("Error response:");
-  //     console.error(err.response.data);    // ***
-  //     console.error(err.response.status);  // ***
-  //     console.error(err.response.headers); // ***
-  //   } finally {
-  //     console.log(apiRes);
-  //   }
-  // }
-  // const cambiarFormatoFecha = (fechaOriginal) => {
-  //   //change date format
-  //   const fechaParseada = parse(fechaOriginal, 'dd.MM.yyyy', new Date());
-  //   const nuevaFecha = format(fechaParseada, 'yyyy-MM-dd');
-  //   return nuevaFecha;
-  // };
+  
   
   const handleSubmit = async (values, { resetForm }) => {
     schema.validate(values);
@@ -100,29 +82,20 @@ export const DiaryAddProductForm = ({ onClose, isModalOpened }) => {
      const id=idForAdd[0]._id
      const nDate = date;
     
-    console.log(nDate)
     
     const body = { productId: `${id}`, weight: parseInt(productWeight), date:`${nDate}`};
-    // console.log(body)
+  
     try {
       const result = await addProductForUser(body);
       const body2={date:`${nDate}`}
-      // console.log(body)
 
-      // console.log(body2)
       
       const findDay= await getDairy(body2);
-      console.log(findDay)
-      // console.log(result)
       if (result.length > 0) {
-        console.log("me ejecute en add")
-        console.log("me ejecute en add")
         dispatch(setProduct(result));
         dispatch(setSummaryId(findDay.daySummary._id));
-
         
       } else {
-        console.log("array vacio")
         dispatch(setProduct([]));
       }
     } catch (error) {

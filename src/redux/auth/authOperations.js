@@ -8,6 +8,8 @@ import Notiflix from "notiflix";
 // dairodev
 // const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
 // const base ="https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
+// const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
+
 //nuervo servidor
 const base ="https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api";
 // localhost

@@ -29,8 +29,6 @@ export default function SummaryForDay() {
     }
   }, [notHealthy]);
 
-  console.log(user)
-  console.log(summary)
 
   return (
     <>

@@ -19,7 +19,6 @@ const Modal = ({ isOpen }) => {
 
   let productsModal = Products;
   dispatch(calcOperation.calc);
-  console.log(productsModal);
 
   useEffect(() => {
     if (notHealthy && notHealthy) {

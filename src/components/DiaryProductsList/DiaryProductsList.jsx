@@ -34,8 +34,6 @@ export const DiaryProductsList = () => {
         const findDay = await getDairy(body);
         setSumary(findDay)
         setProducts(findDay.eatenProducts);
-        // console.log(findDay.daySummary._id)
-        // dispatch(setSummaryId(findDay.daySummary._id));
       } catch (error) {
         console.log(error);
       }
@@ -43,9 +41,6 @@ export const DiaryProductsList = () => {
     getProducts();
     
   }, [date, dispatch]);
-  
-  // const item = findDay.eatenProducts;
-  console.log(Sumary)
 
   return (
     <List>

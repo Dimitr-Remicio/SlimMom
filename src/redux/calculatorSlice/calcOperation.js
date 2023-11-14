@@ -7,6 +7,7 @@ import axios from 'axios';
 // const base = "https://slimmomapi-dev-xdce.2.us-1.fl0.io/api";
 // dairodev -actualizada
 // const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
+
 //nuervo servidor
 const base ="https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api"
 // localhost
@@ -16,8 +17,6 @@ const base ="https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api"
 const calc = createAsyncThunk('/calculator', async (credential, thunkAPI) => {
   try {
     const { data } = await axios.post(`${base}/calculator`, credential);
-    console.log(data);
-    // console.log(credential);
     return {usData: data, usInfo:credential };
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -29,7 +28,6 @@ const calcUserUpdate = createAsyncThunk(
   async (credential, thunkAPI) => {
     try {
       const { data } = await axios.patch(`${base}/users/calculator`, credential);
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

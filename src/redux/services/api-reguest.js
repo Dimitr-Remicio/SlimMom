@@ -19,7 +19,6 @@ axios.defaults.baseURL = `${base}`;
 
 export const searchProduct = async (search) => {
     const { data } = await axios.get(`${base}/products?search=${search}`);
-    console.log(data)
     return data;
 };
 
@@ -39,8 +38,6 @@ export const getAllProduct = async () => {
 export const getDairy = async body => {
   try {
     const { data } = await axios.post(`${base}/days/info`,body);
-    Notiflix.Notify.success("visto")
-    console.log(data);
     return data;
   } catch (error) {
     console.log(
@@ -52,7 +49,6 @@ export const getDairy = async body => {
 export const addProductForUser = async newProduct => {
   try {
     const { data } = await axios.patch(`${base}/days`, newProduct);
-    // console.log(`agregado!`);
     return data;
   } catch (error) {
     console.log(`Ocurrió un error! ${error.message}`);
@@ -60,13 +56,16 @@ export const addProductForUser = async newProduct => {
   }
 };
 
-export const deleteProductRequest = async () => {
+export const deleteProductRequest = async ({dayId, productId, sumId}) => {
+  // console.log(body);
   try {
-    const { data } = await axios.delete(`${base}/days`);
-    // Notiflix.success(`Eliminado`);
+    const { data } = await axios.delete(`${base}/days`, {dayId,productId,sumId});
+    Notiflix.Notify.success(`Eliminado`, {
+      timeout: 6000,
+    });
     return data;
   } catch (error) {
-    // console.log(`Ocurrió un error! ${error.message}`);
+    console.log('pase bonito')
     throw error;
   }
-};
+}

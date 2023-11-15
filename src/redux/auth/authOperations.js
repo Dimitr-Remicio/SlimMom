@@ -2,8 +2,8 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import Notiflix from "notiflix";
 
-// const base = "https://slimmomapi-dev-qjnz.4.us-1.fl0.io/api";
-const base = "http://localhost:3000/api";
+const base = "https://slimmomapi-dev-qjnz.4.us-1.fl0.io/api";
+// const base = "http://localhost:3000/api";
 
 
 const token = {

@@ -1,63 +1,63 @@
 import { DiaryProductsListItem } from "../DiaryProductsListItem/DiaryProductsListItem";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import authSelectors from "../../redux/auth/selectors";
-import { getEatProducts, getDate } from "../../redux/dairy/dairySelector";
+import { getDate } from "../../redux/dairy/dairySelector";
 
 import { List } from "./DiaryProductsList.styled";
-import { format, parse } from "date-fns";
 import { getDairy } from "../../redux/services/api-reguest";
 
-
-
-
 export const DiaryProductsList = () => {
-  const token = useSelector(authSelectors.getToken);
-  const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
-  const [Sumary, setSumary] = useState([]);
-  
-  // const cambiarFormatoFecha = (fechaOriginal) => {
-  //   //change date format
-  //   const fechaParseada = parse(fechaOriginal, "yyyy-MM-dd", new Date());
-  //   const nuevaFecha = format(fechaParseada, "yyyy-MM-dd");
-  //   return nuevaFecha;
-  // };
-  
+
   const date = useSelector(getDate);
 
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const nDate = date;
-        const body = { date: `${nDate}` };
-        const findDay = await getDairy(body);
-        setSumary(findDay)
-        console.log(findDay.eatenProducts)
-        setProducts(findDay.eatenProducts);
-      } catch (error) {
-        console.log(error);
+  // useEffect(() => {
+  const getProducts = async () => {
+    try {
+      const nDate = date;
+      const body = { date: nDate };
+      console.log(body);
+      const findDay = await getDairy(body);
+      if (!findDay.addedProducts) {
+        console.log("no ñero");
+      } else {
+        setProducts(findDay.addedProducts);
       }
-    };
-    getProducts();
-    
-  }, [date, dispatch]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // getProducts();
+  // }, [date]);
 
   return (
-    <div className="scrollWrapper" id="style-3">
-    <List>
-      {products
-        ? products.map(({_id, title, weight, calories}) => (
-            <DiaryProductsListItem
-              key={_id}
-              id={_id}
-              name={title}
-              grams={weight}
-              calories={calories}
-            />
-          ))
-        : null}
-    </List>
-    </div>
+    <>
+      <div className="refrshCont">
+        <button className="buttonRefresh" onClick={() => getProducts()}>
+          ⟳
+        </button>
+      </div>
+      <div className="scrollWrapper" id="style-3">
+        <List>
+          {products.length > 0 ? (
+            products.map(
+              ({ _id, foodId, title, amount, caloriesPerAmount }) => (
+                <DiaryProductsListItem
+                  key={_id}
+                  id={foodId}
+                  title={title}
+                  amount={amount}
+                  calories={caloriesPerAmount}
+                />
+              )
+            )
+          ) : (
+            <div className="contErrorItm">
+              <p>Please refresh, click button on the top ▲</p>
+            </div>
+          )}
+        </List>
+      </div>
+    </>
   );
 };

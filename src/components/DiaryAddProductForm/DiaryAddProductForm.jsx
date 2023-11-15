@@ -11,33 +11,17 @@ import {
   SearchItem,
   NameError,
   GramsError,
-  // SearchItemNotRecommended,
 } from "./DiaryAddProductForm.styled";
-// import AddIcon from "../../images/svg/add.svg"
+
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  // getProducts,
-  getDate,
-  // getSummary,
-  // getToggle,
-  // getError,
-} from "../../redux/dairy/dairySelector";
+import { getDate } from "../../redux/dairy/dairySelector";
 import { setProduct } from "../../redux/dairy/dairyReducer";
-//
-// import { addProduct, fetchDairy } from "../../redux/dairy/dairyOperations";
+
 import {
   addProductForUser,
   searchProduct,
-  // getDairy,
 } from "../../redux/services/api-reguest";
-// import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
-
-// import authSelectors from "../../redux/auth/selectors";
-// import Notiflix from "notiflix";
-// import { result } from "lodash";
-// import { format, parse } from "date-fns";
-// import { setSummaryId } from "../../redux/dairy/dairyReducer";
 
 const schema = yup.object().shape({
   productName: yup.string().required("Name is required field"),
@@ -47,8 +31,7 @@ const schema = yup.object().shape({
     .required("Grams is required field"),
 });
 
-export const DiaryAddProductForm = ({ onClose }) => {
-  // const token = useSelector(authSelectors.getToken);
+export const DiaryAddProductForm = () => {
   const dispatch = useDispatch();
   const date = useSelector(getDate);
   const mobile = useMediaQuery({ query: "(max-width: 426px)" });
@@ -57,10 +40,10 @@ export const DiaryAddProductForm = ({ onClose }) => {
     productName: "",
     productWeight: "",
   };
-  // const { user } = useSelector(calcSelectors.getUserData);
+
   const [searchProducts, setSearchProducts] = useState([]);
   const [visible, setVisible] = useState(false);
-  // const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const search = async (value) => {
     try {
@@ -75,10 +58,9 @@ export const DiaryAddProductForm = ({ onClose }) => {
   const handleSubmit = async (values, { resetForm }) => {
     schema.validate(values);
 
-    const { productName, productWeight, idItem } = values;
-    const idForAdd = await searchProduct(idItem);
-    console.log(idItem);
-    // const id = idForAdd[0]._id;
+    const { productName, productWeight } = values;
+    const idForAdd = await searchProduct(productName);
+    const id = idForAdd[0]._id;
     const nDate = date;
     // console.log(idForAdd);
 
@@ -98,7 +80,7 @@ export const DiaryAddProductForm = ({ onClose }) => {
     } catch (error) {
       alert("Oops.. Product not found!");
     }
-    mobile && onClose();
+
     resetForm();
   };
 
@@ -145,7 +127,9 @@ export const DiaryAddProductForm = ({ onClose }) => {
                 name="productName"
                 autoComplete="off"
               />
-              <button className="showSearch" onClick={() => showItem()} >▼</button>
+              <button className="showSearch" onClick={() => showItem()}>
+                ▼
+              </button>
               <ErrorMessage name="productName" component={NameError} />
               <GramsInput
                 type="productWeight"

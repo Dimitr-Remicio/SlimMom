@@ -8,6 +8,7 @@
   --texthome: #d6d6d6;
   --textcolor: black;
   --textcolorC: white;
+  --textcolorMuted: #00000049;
   --error: red;
   --h3color:#FC842D;
   --h1color:#FC842D;
@@ -32,6 +33,7 @@
   --texthome: #f5f5f5;
   --textcolor: white;
   --textcolorC:#000000;
+  --textcolorMuted: #ffffff6b;
   --error: #e5ff00;
   --h3color:#ffffff;
   --h1color:#ffffff;

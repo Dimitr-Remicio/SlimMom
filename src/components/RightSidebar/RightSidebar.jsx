@@ -12,14 +12,13 @@ import "./RightSidebar.css"; // Asegúrate de importar tus estilos CSS
 import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
 import { useState } from "react";
 import authSelector from "../../redux/auth/selectors";
+import { getDairy } from "../../redux/services/api-reguest";
 
 export default function SummaryForDay() {
   const date = new Date();
   const { notHealthy } = useSelector(calcSelectors.getUserData);
   const { user } = useSelector(calcSelectors.getUserData);
-  const { summary } = useSelector(calcSelectors.getUserData);
   const reduxDate = useSelector(getDate);
-  const dailyRate = useSelector(getDaily);
   const dispatch = useDispatch();
   // const summary = useSelector(getSummary);
 
@@ -27,13 +26,28 @@ export default function SummaryForDay() {
   const [SSummary, setSummary] = useState([]);
   const isLoggedIn = useSelector(authSelector.getIsLoggedIn);
 
+
   useEffect(() => {
     setTimeout(() => {
-      if (isLoggedIn && summary) {
-        setSummary(summary);
-      }
+      const getSummaryInfo = async () => {
+        if (isLoggedIn) {
+          try {
+            const nDate = reduxDate;
+            const body = { date: `${nDate}` };
+            const findDay = await getDairy(body);
+            if (!findDay.addedProducts) {
+              console.log("no ñero");
+            } else {
+              setSummary(findDay.daySummary);
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      };
+      getSummaryInfo();
     }, 50);
-  }, [summary, isLoggedIn]);
+  }, [reduxDate, isLoggedIn]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -43,24 +57,21 @@ export default function SummaryForDay() {
     }, 50);
   }, [user, isLoggedIn]);
 
-  // console.log(user)
+  console.log(SSummary)
 
   return (
     <>
       <div className="right-sidebar">
         <div className="box-sidebar">
           <div className="summary-sidebar">
-            <h4 className="title-sidebar">
-              Summary{" "}
-              {reduxDate}
-            </h4>
+            <h4 className="title-sidebar">Summary {reduxDate}</h4>
             <ul>
               <li>
                 Remain {SSummary ? Math.round(SSummary.left) : "000"} kcal
               </li>
               <li>
                 Consumed {SSummary ? Math.round(SSummary.consumed) : "000"} kcal
-                Consumed{" "}
+                
               </li>
               <li>
                 Dialy rate {SSummary ? Math.round(SSummary.dailyRate) : "000"}{" "}

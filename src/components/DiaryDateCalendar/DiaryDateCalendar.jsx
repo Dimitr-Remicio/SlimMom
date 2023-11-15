@@ -13,8 +13,14 @@ export const DiaryDateCalendar = () => {
   const handleChange = (date) => {
     const formattedDate = moment(date).format("yyyy-MM-DD");
     setSelectedDate(date);
+    console.log(formattedDate)
     dispatch(addDate(formattedDate));
   };
+  // const refreshDate = (date) => {
+  //   const formattedDate = moment(date).format("YYYY-MM-DD");
+  //   setSelectedDate(formattedDate);
+  //   dispatch(addDate(formattedDate));
+  // }
 
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
     <DatePickerWrapper onClick={onClick} ref={ref}>
@@ -23,6 +29,7 @@ export const DiaryDateCalendar = () => {
   ));
 
   return (
+    <>
       <DatePicker
         selected={selectedDate}
         onChange={(date) => handleChange(date)}
@@ -31,5 +38,6 @@ export const DiaryDateCalendar = () => {
         customInput={<ExampleCustomInput />}
         maxDate={new Date()}
       />
+    </>
   );
 };

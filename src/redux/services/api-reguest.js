@@ -9,8 +9,8 @@ import Notiflix from 'notiflix';
 // const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
 // localhost
 //nuervo servidor
-const base = "https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api";
-// const base = "http://localhost:3000/api";
+// const base = "https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api";
+const base = "http://localhost:3000/api";
 
 
 axios.defaults.baseURL = `${base}`;

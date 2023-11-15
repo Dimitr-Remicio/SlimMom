@@ -278,7 +278,7 @@ section {
   }
   .diaryBlock{
     width: auto;
-    height: 100px;
+    height: auto;
   }
   .backdrop{
     position: fixed;
@@ -459,4 +459,41 @@ section {
   color: var(--textcolor) !important;
   cursor: pointer;
 }
+.refrshCont{
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 0.8rem;
 
+  width: 100%;
+  max-width: 700px;
+}
+.buttonRefresh{
+  position: relative;
+  top: -2.7rem;
+  right: 2.6rem;
+  background-color: var(--barhead);
+  border: none;
+  width: auto;
+  height: auto;
+  padding: 5px 10px;
+  border-radius: 1em;
+  font-size: 30px;
+  font-family: "Verdana";
+  cursor: pointer;
+
+}
+.contErrorItm{
+  width: 100%;
+  height: auto;
+  padding: 30px;
+  margin: 0 auto;
+  & p{
+
+    font-family: "Verdana";
+    font-size: 27px;
+    color: var(--textcolorMuted) !important;
+
+  }
+
+}

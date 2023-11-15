@@ -79,14 +79,14 @@ const CalcPublic = (props) => {
     blood: String(FullUser.blood),
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (isLoggedIn) {
-        dispatch(updateUser(FullUser));
-        dispatch(calcOperation.calcUserUpdate(FullUser));
-      }
-    }, 500);
-  }, [FullUser, dispatch, isLoggedIn]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (isLoggedIn) {
+  //       dispatch(updateUser(FullUser));
+  //       dispatch(calcOperation.calcUserUpdate(FullUser));
+  //     }
+  //   }, 500);
+  // }, [FullUser, dispatch, isLoggedIn]);
 
   // const formState = isLoggedIn ? LoginFormState : initFormState;
   const handleChangeitm = (e) => {

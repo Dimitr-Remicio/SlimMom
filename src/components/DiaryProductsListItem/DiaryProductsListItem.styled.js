@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Item = styled.li`
   display: flex;
   justify-content: space-between;
-  margin:10px;
+  margin: 15px 15px 15px 0px;
   border-radius:20px;
   background-color: var(--backgrounditem);
       width:auto;

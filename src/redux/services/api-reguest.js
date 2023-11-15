@@ -1,16 +1,7 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import { toastStyles } from '../../styles/toastStyled.js';
 import Notiflix from 'notiflix';
 
-
-// raiz
-// const base = "https://slimmomapi-dev-xdce.2.us-1.fl0.io/api";
-// const base = "https://slimmomsapi-dev-bbqt.3.us-1.fl0.io/api";
-// localhost
-//nuervo servidor
-// const base = "https://slimmomapi-dev-zdmt.2.us-1.fl0.io/api";
-const base = "http://localhost:3000/api";
+const base = "https://slimmom-vrme.onrender.com/api";
 
 
 axios.defaults.baseURL = `${base}`;

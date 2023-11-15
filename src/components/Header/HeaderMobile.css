@@ -40,7 +40,7 @@
   transition: all 300ms ease-in-out;
 
   z-index: 9999;
-  background-color: #f8823c;
+  background-color: var(--accentcolor);
   & .menuMobile {
     margin-top: 5rem;
     transform: translate(0%, 0%);

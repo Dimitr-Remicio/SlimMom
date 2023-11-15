@@ -21,6 +21,7 @@ const UserMenu = () => {
             dispatch(authOperations.logOut());
             // dispatch(wipeUser());
             // localStorage.clear();
+            // location.reload();
           }}
         >
           logout

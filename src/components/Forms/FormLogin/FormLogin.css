@@ -1,5 +1,5 @@
 
-@import url('src/colors.css');
+@import url('/src/colors.css');
 
 .wrapperForm {
   padding-top: 3rem;
@@ -52,7 +52,13 @@
   margin-bottom: 35px !important;
 }
 
+.FormButtonCONT {
+  color: var(--textcolorC) !important;
+  width: 100%;
+  padding: 15px 25px !important;
+}
 .FormButton {
+  color: var(--textcolor) ;
   width: 100%;
   padding: 15px 25px !important;
 }

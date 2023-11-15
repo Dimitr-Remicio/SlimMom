@@ -9,8 +9,7 @@ import authSelector from "../../redux/auth/selectors";
 import UserBar from "../UserMenu/UserMenu";
 import "./HeaderMobile.css";
 
-import DarkMode from "../DarkMode/DarkMode"
-
+import DarkMode from "../DarkMode/DarkMode";
 
 const Header = () => {
   const userIsLoggedIn = useSelector(authSelector.getIsLoggedIn);
@@ -24,7 +23,6 @@ const Header = () => {
     burgerBtn.classList.contains("normal")
       ? burgerBtn.classList.add("active")
       : burgerBtn.classList.remove("normal");
-
   }
 
   function openMod() {
@@ -54,7 +52,6 @@ const Header = () => {
             display: "Calculator",
           },
         ])
-         
       : (nav__links = [
           {
             path: "/login",
@@ -130,6 +127,8 @@ const Header = () => {
                     </svg>
                   </NavLink>
                 </div>
+                <div className="headerright">
+
                 <div className="navigation">
                   <button className="menubtn" onClick={openMod}>
                     {/* hello */}
@@ -146,16 +145,18 @@ const Header = () => {
                     ))}
                   </ul>
                 </div>
+                <DarkMode />
+                </div>
+
               </div>
               <UserBar />
-              <DarkMode />
             </div>
           </div>
         </Container>
       </header>
       <div className="HeaderMenu hidde" id="statedetail">
         <div id="contMenu">
-          <button onClick={HiddeItem} className="menubtn btn" >
+          <button onClick={HiddeItem} className="menubtn btn">
             {/* hello */}
             <svg className="" viewBox="3 2 24 24">
               <use href={sprite + "#icon-x"}></use>

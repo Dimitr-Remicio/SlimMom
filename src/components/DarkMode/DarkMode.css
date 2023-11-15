@@ -6,7 +6,18 @@
 } */
 @import url('../../colors.css');
 
-
+.react-switch-handle{
+    width: 15px !important;
+    height: 15px !important;
+    position: relative;
+    margin-top: 0.15rem;
+    margin-left: 0.15rem;
+    /* left: 0.5rem; */
+    /* transform: translateY(0.2rem) !important; */
+}
+.buttonMode{
+    height: 8px;
+}
 body{
     background-color: var(--backgroundcolor);
     color:var(--textcolor);
@@ -20,3 +31,11 @@ body{
 h3.dark-mode{
     color:#ffffff;
 }    */
+
+
+@media screen and (min-width: 768px ) {
+    .buttonMode{
+        position: relative;
+        left: 17rem;
+    }
+}

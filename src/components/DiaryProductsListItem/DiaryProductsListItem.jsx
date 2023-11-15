@@ -10,7 +10,7 @@ import {
   getDairy,
 } from "../../redux/services/api-reguest";
 
-export const DiaryProductsListItem = ({ id, name, grams, calories }) => {
+export const DiaryProductsListItem = ({ id, title, amount, calories }) => {
   const date = useSelector(getDate);
   const dispatch = useDispatch();
   const [infoDelete, setInfoDelete] = useState([]);
@@ -30,37 +30,38 @@ export const DiaryProductsListItem = ({ id, name, grams, calories }) => {
     deleteProd();
   }, [date]);
 
-  const daycomplete = async () => {
-    const nDate = date;
-    const info = await getDairy({ date: `${nDate}` });
-    setSumId(info.daySummary._id);
-  };
+  // const daycomplete = async () => {
+  //   const nDate = date;
+  //   const info = await getDairy({ date: `${nDate}` });
+  //   setSumId(info.daySummary.id);
+  // };
 
-  daycomplete();
+  // daycomplete();
   
-  const deleteProduct = (dayId, productId, sumId) => {
-    dispatch(removeProduct({
-      dayId: dayId,
-      productId: productId,
-      sumId: sumId,
-    }));
-  };
+  // const deleteProduct = (dayId, productId, sumId) => {
+  //   dispatch(removeProduct({
+  //     dayId: dayId,
+  //     productId: productId,
+  //     sumId: sumId,
+  //   }));
+  // };
   
-  const dayId = infoDelete.idDay;
-  const productId = id;
+  // const dayId = infoDelete.idDay;
+  // const productId = id;
 
   return (
     <Item>
-      <p className="products-item-name">{name}</p>
-      <p className="products-item-grams">{grams}g</p>
+      <p className="products-item-name">{title}</p>
+      <p className="products-item-grams">{amount}g</p>
       <p className="products-item-calories">
         {calories} <span>kcal</span>
       </p>
       <button
+      className="btndelete"
         alt="delete product"
-        onClick={() => {
-            deleteProduct(dayId, productId, sumId);
-          }}
+        // onClick={() => {
+        //     deleteProduct(dayId, productId, sumId);
+        //   }}
       >
         ✖
       </button>

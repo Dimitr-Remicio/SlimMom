@@ -18,6 +18,7 @@ const Modal = ({ isOpen }) => {
   const dispatch = useDispatch();
 
   let productsModal = Products;
+  // console.log(productsModal);
   dispatch(calcOperation.calc);
 
   useEffect(() => {
@@ -73,7 +74,7 @@ const Modal = ({ isOpen }) => {
     width: "100%",
     maxWidth: "330px",
     height: "1px", // Altura de 1 píxel para que parezca una línea
-    border: "1px solid #E0E0E0", // Border de 1 píxel sólido de color negro
+    border: "1px solid var(--textcolor)", // Border de 1 píxel sólido de color negro
   };
 
   const notfoot = {
@@ -131,7 +132,7 @@ const Modal = ({ isOpen }) => {
               style={close}
               onClick={() => {
                 dispatch(setIsModalOpen(false));
-                dispatch(wipeUser());
+                // dispatch(wipeUser());
               }}
             >
               X
@@ -147,8 +148,8 @@ const Modal = ({ isOpen }) => {
             <p style={vectorStyles}></p>
             <p style={notfoot}>Foods you shouldnt eat</p>
             <ul style={listnotfoot}>
-              {productsModal.map((product, key) => (
-                <li key={key} className="itemModal">
+              {productsModal.map(product => (
+                <li key={product} className="itemModal">
                   • {product}
                 </li>
               ))}

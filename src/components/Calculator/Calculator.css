@@ -36,7 +36,7 @@
   
 }
 .calc__btn {
-  color: white;
+  color: var(--textcolorC) !important;
   width: 18rem;
   font-family: "Verdana bold";
   text-transform: none;

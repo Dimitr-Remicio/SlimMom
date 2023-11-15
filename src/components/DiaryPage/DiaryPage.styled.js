@@ -9,7 +9,7 @@ export const WrapperAll = styled.div`
     background-size: auto;
   }
   @media (min-width: 1024px) and (max-width: 1120px) {
-    padding: 150px 16px 55px 16px;
+    padding: 20px 16px 55px 16px;
     display: flex;
     height: 100vh;
     justify-content: space-between;
@@ -18,7 +18,7 @@ export const WrapperAll = styled.div`
     background-position: top 0px right 0px, top 0px right -110px;
   }
   @media (min-width: 1121px) and (max-width: 1280px) {
-    margin: 0 auto;
+    margin: 0;
     /* height: 100vh; */
     padding: 0;
     display: flex;
@@ -29,7 +29,8 @@ export const WrapperAll = styled.div`
   }
   @media (min-width: 1280px) {
     margin: 0 auto;
-  margin-top:30px;
+    padding: 50px 0px 0px 0px ;
+    margin-top:50px;
     padding: 0;
     display: flex;
     /* height: 100vh; */
@@ -42,15 +43,21 @@ export const WrapperAll = styled.div`
 
 export const Wrapper = styled.div`
 
-  margin: 0px auto;
-  padding: 100px 20px 60px 20px;
-  max-width: 800px; /* @media (max-width: 425px) { max-width: 610px; } */
+width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:40px;/* @media (max-width: 425px) { max-width: 610px; } */
   @media (min-width: 768px) and (max-width: 1023px) {
     margin: 0;
     padding: 0;
     
   }
   @media (min-width: 1024px) {
+    width: 100%;
+    max-width: 800px;
+    align-items: flex-start;
+    
     padding: 0px;
     margin: 0;
   }

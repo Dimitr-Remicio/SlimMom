@@ -36,15 +36,13 @@ const authSlice = createSlice({
 
     [authOperations.logIn.fulfilled](state, action) {
       const { user, token } = action.payload;
-
-      localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("token", token);
-      localStorage.setItem('isLoggedIn', 'true');
-
       state.user = user;
       state.token = token;
       state.isLoggedIn = true;
       state.loaderShow = false;
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", JSON.stringify(token));
+      localStorage.setItem('isLoggedIn', 'true');
     },
     [authOperations.logIn.pending](state) {
       state.loaderShow = true;
@@ -73,6 +71,8 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.loaderShow = false;
       state.isCurrentUserRefresh = false;
+      localStorage.clear();
+
     },
 
     [authOperations.logOut.pending](state) {

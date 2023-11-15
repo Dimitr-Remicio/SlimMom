@@ -150,9 +150,9 @@ export default function LoginForm() {
             <Stack className="contButton" spacing={0}>
               <Button
                 id="loginButtonListener"
-                className="FormButton login"
+                className="FormButton FormButtonCONT login"
                 style={{
-                  backgroundColor: "#FC842D",
+                  backgroundColor: "var(--accentcolor)",
                   // padding: "15px 25px",
                   // width: "10rem",
                   borderRadius: "20em",
@@ -168,16 +168,16 @@ export default function LoginForm() {
 
               <NavLink to="/signup">
                 <Button
-                  className="FormButton signup"
+                  className="FormButton  signup"
                   style={{
-                    border: "3px solid #FC842D",
-                    color: "#FC842D",
+                    border: "3px solid var(--accentcolor)",
+                    
                     // padding: "15px 25px",
                     borderRadius: "20em",
                     fontFamily: "Verdana bold",
                     textTransform: "none",
                     textAlign: "center",
-                    backgroundColor: "rgba(255, 255, 255, 0.58)",
+                    backgroundColor: "var(--buttonother)",
                     
                   }}
                   variant="outlined"

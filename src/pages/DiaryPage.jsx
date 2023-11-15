@@ -36,10 +36,9 @@ const DiaryPage = () => {
         <DiaryDateCalendar />
         {!mobile && <DiaryAddProductForm />}
 
-        <DiaryProductsList />
+        <DiaryProductsList  />
         {/* {mobile && <Button onClick={() => onModalOpen()}>click</Button>} */}
 
-        {isModalOpened && <DiaryModal onClose={onModalClose} />}
       </Wrapper>
       <RightSideBar />
     </WrapperAll>

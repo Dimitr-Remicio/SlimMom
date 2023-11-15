@@ -232,9 +232,10 @@ export default function RegisterForm() {
             <Stack className="contButton" >
               <Button
                 id="signup"
-                className="signupInvert"
+                className="signupInvert FormButtonCONT"
                 style={{
-                  backgroundColor: "#FC842D",
+                  backgroundColor: "var(--accentcolor)",
+
                   padding: "15px 25px",
                   width: "10rem",
                   borderRadius: "20em",
@@ -251,7 +252,7 @@ export default function RegisterForm() {
                 <Button
                   className="loginInvert"
                   style={{
-                    border: "3px solid #FC842D",
+                    border: "3px solid var(--accentcolor)",
                     color: "#FC842D",
                     padding: "15px 25px",
                     width: "15rem",
@@ -259,7 +260,8 @@ export default function RegisterForm() {
                     fontFamily: "Verdana bold",
                     textTransform: "none",
                     textAlign: "center",
-                    backgroundColor: "rgba(255, 255, 255, 0.88)",
+                    backgroundColor: "var(--buttonother)",
+
 
                   }}
                   variant="outlined"

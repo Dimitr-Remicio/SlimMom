@@ -79,14 +79,14 @@ const CalcPublic = (props) => {
     blood: String(FullUser.blood),
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (isLoggedIn) {
-        dispatch(updateUser(FullUser));
-        dispatch(calcOperation.calcUserUpdate(FullUser));
-      }
-    }, 500);
-  }, [FullUser, dispatch, isLoggedIn]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (isLoggedIn) {
+  //       dispatch(updateUser(FullUser));
+  //       dispatch(calcOperation.calcUserUpdate(FullUser));
+  //     }
+  //   }, 500);
+  // }, [FullUser, dispatch, isLoggedIn]);
 
   // const formState = isLoggedIn ? LoginFormState : initFormState;
   const handleChangeitm = (e) => {
@@ -250,7 +250,7 @@ const CalcPublic = (props) => {
                   type="submit"
                   className="calc__btn"
                   style={{
-                    backgroundColor: "#FC842D",
+                    backgroundColor: "var(--accentcolor)",
                     padding: "20px 20px",
                     borderRadius: "20em",
                     fontFamily: "Verdana bold",
@@ -269,7 +269,7 @@ const CalcPublic = (props) => {
                   type="submit"
                   className="calc__btn"
                   style={{
-                    backgroundColor: "#fc842d",
+                    backgroundColor: "var(--accentcolor)",
                     padding: "15px 20px",
                     borderRadius: "20em",
                     position: "absolute",

@@ -68,17 +68,17 @@ import authOperations from './redux/auth/authOperations.js';
 import authSelector from './redux/auth/selectors.js';
 // import Menu from './components/HeaderMobile/HeaderMobile.jsx';
 
-const storedUser = localStorage.getItem('user');
-const storedToken = localStorage.getItem('token');
-const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+// const storedUser = localStorage.getItem('user');
+// const storedToken = localStorage.getItem('token');
+// const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
 
 
-if (storedUser && storedToken && storedIsLoggedIn === 'true'){
-  store.dispatch(authOperations.logIn.fulfilled({
-    user: JSON.parse(storedUser),
-    token: storedToken,
-  }));
-}
+// if (storedUser && storedToken && storedIsLoggedIn === 'true'){
+//   store.dispatch(authOperations.logIn.fulfilled({
+//     user: JSON.parse(storedUser),
+//     token: storedToken,
+//   }));
+// }
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -86,7 +86,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="SlimMom/">
+        <BrowserRouter basename="/SlimMom/">
           {/* <Menu/> */}
           <App />
         </BrowserRouter>

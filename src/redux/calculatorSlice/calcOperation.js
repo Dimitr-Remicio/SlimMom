@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const base = "https://slimmomapi-dev-qjnz.4.us-1.fl0.io/api";
-// const base = "http://localhost:3000/api";
+// const base = "https://slimmomapi-dev-qjnz.4.us-1.fl0.io/api";
+const base = "http://localhost:3000/api";
 
 
 

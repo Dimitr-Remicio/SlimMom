@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
-const base = "https://slimmomapi-dev-qjnz.4.us-1.fl0.io/api";
-// const base = "http://localhost:3000/api";
+// const base = "https://slimmomapi-dev-qjnz.4.us-1.fl0.io/api";
+const base = "http://localhost:3000/api";
 
 
 axios.defaults.baseURL = `${base}`;
@@ -31,8 +31,7 @@ export const getDairy = async body => {
     const { data } = await axios.post(`${base}/days/info`,body);
     return data;
   } catch (error) {
-    console.log(
-      `get dayry ¡Error al obtener datos para la fecha seleccionada! ${error.message}`);
+   
     throw error;
   }
 };
@@ -42,7 +41,9 @@ export const addProductForUser = async newProduct => {
     const { data } = await axios.patch(`${base}/days`, newProduct);
     return data;
   } catch (error) {
-    console.log(`Ocurrió un error! ${error.message}`);
+    Notiflix.Notify.error("Try with other product", {
+      timeout: 6000,
+    });
     throw error;
   }
 };
@@ -56,7 +57,9 @@ export const deleteProductRequest = async ({dayId, productId, sumId}) => {
     });
     return data;
   } catch (error) {
-    console.log('pase bonito')
+     Notiflix.Notify.error("Error deleting product", {
+      timeout: 6000,
+    });
     throw error;
   }
 }

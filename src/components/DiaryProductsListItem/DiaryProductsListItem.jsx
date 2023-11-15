@@ -39,6 +39,8 @@ export const DiaryProductsListItem = ({ id, title, amount, calories }) => {
   // daycomplete();
   
   // const deleteProduct = (dayId, productId, sumId) => {
+    // Notiflix.Notify.success('added Product succesfuly!')
+  
   //   dispatch(removeProduct({
   //     dayId: dayId,
   //     productId: productId,

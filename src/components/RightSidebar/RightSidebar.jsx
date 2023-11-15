@@ -16,7 +16,7 @@ import { getDairy } from "../../redux/services/api-reguest";
 
 export default function SummaryForDay() {
   const date = new Date();
-  const { notHealthy } = useSelector(calcSelectors.getUserData);
+  // const { notHealthy } = useSelector(calcSelectors.getUserData);
   const { user } = useSelector(calcSelectors.getUserData);
   const reduxDate = useSelector(getDate);
   const dispatch = useDispatch();
@@ -26,38 +26,41 @@ export default function SummaryForDay() {
   const [SSummary, setSummary] = useState([]);
   const isLoggedIn = useSelector(authSelector.getIsLoggedIn);
 
+  const getSummaryInfo = async (reduxDate) => {
+    try {
+      const nDate = reduxDate;
+      const body = { date: `${nDate}` };
+      const findDay = await getDairy(body);
+      if (!findDay.addedProducts) {
+        console.log("no ñero");
+      } else {
+        // setNotHealthy(findDay);
+        setSummary(findDay.daySummary);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     setTimeout(() => {
-      const getSummaryInfo = async () => {
-        if (isLoggedIn) {
-          try {
-            const nDate = reduxDate;
-            const body = { date: `${nDate}` };
-            const findDay = await getDairy(body);
-            if (!findDay.addedProducts) {
-              console.log("no ñero");
-            } else {
-              setSummary(findDay.daySummary);
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        }
-      };
-      getSummaryInfo();
-    }, 50);
-  }, [reduxDate, isLoggedIn]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (isLoggedIn && user.notAllowedProducts) {
-        setNotHealthy(user.notAllowedProducts);
+      if (isLoggedIn && reduxDate) {
+        getSummaryInfo(reduxDate);
       }
     }, 50);
-  }, [user, isLoggedIn]);
+  }, [reduxDate, isLoggedIn]);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      if (isLoggedIn && user.notAllowedProducts && reduxDate) {
+        setNotHealthy(user.notAllowedProducts);
+      }
+    }, 500);
+  }, [user, reduxDate, isLoggedIn]);
 
-  console.log(SSummary)
+  console.log(SSummary);
+
+  const noneNumb = "000";
 
   return (
     <>
@@ -67,29 +70,37 @@ export default function SummaryForDay() {
             <h4 className="title-sidebar">Summary {reduxDate}</h4>
             <ul>
               <li>
-                Remain {SSummary ? Math.round(SSummary.left) : "000"} kcal
+                Remain {SSummary > 1 ? Math.round(SSummary.left) : "000"} kcal
               </li>
               <li>
-                Consumed {SSummary ? Math.round(SSummary.consumed) : "000"} kcal
-                
+                Consumed {SSummary > 1? Math.round(SSummary.consumed) : "000"} kcal
               </li>
               <li>
-                Dialy rate {SSummary ? Math.round(SSummary.dailyRate) : "000"}{" "}
+                Dialy rate {SSummary > 1? Math.round(SSummary.dailyRate) : "000"}{" "}
               </li>
               <li>
                 n% than normal{" "}
-                {SSummary ? Math.round(SSummary.percentOfDailyRate) : "0"} %
+                {SSummary < 1 ? Math.round(SSummary.percentOfDailyRate) : "000"} %
               </li>
             </ul>
           </div>
           <div className="food-sidebar">
             <h4 className="title-sidebar">Food not recommended</h4>
             <ul>
-              {Healthy.map((products, key) => (
-                <li key={key} className="itemModal">
-                  • {products}
-                </li>
-              ))}
+              {Healthy.length > 1 ? (
+                Healthy.map((products, key) => (
+                  <li key={key} className="itemModal">
+                    • {products}
+                  </li>
+                ))
+              ) : (
+                <>
+                  <li className="itemModal">• 000</li>
+                  <li className="itemModal">• 000</li>
+                  <li className="itemModal">• 000</li>
+                  <li className="itemModal">• 000</li>
+                </>
+              )}
             </ul>
           </div>
         </div>

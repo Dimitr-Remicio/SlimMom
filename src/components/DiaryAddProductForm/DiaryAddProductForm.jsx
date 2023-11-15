@@ -17,6 +17,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDate } from "../../redux/dairy/dairySelector";
 import { setProduct } from "../../redux/dairy/dairyReducer";
+import Notiflix from 'notiflix';
 
 import {
   addProductForUser,
@@ -36,7 +37,6 @@ export const DiaryAddProductForm = () => {
   const date = useSelector(getDate);
   const mobile = useMediaQuery({ query: "(max-width: 426px)" });
   const initialValues = {
-    idItem: "",
     productName: "",
     productWeight: "",
   };
@@ -80,7 +80,8 @@ export const DiaryAddProductForm = () => {
     } catch (error) {
       alert("Oops.. Product not found!");
     }
-
+    Notiflix.Notify.success('added Product succesfuly!')
+    console.log('notify')
     resetForm();
   };
 
@@ -97,11 +98,9 @@ export const DiaryAddProductForm = () => {
     }
   };
 
-  const handleClick = (setFieldValue, title, _id) => {
+  const handleClick = (setFieldValue, title,) => {
     setVisible(false);
-    setFieldValue("idItem", _id);
     setFieldValue("productName", title);
-    console.log(_id);
   };
   const hideItem = () => {
     setVisible(false);
@@ -165,7 +164,6 @@ export const DiaryAddProductForm = () => {
                             handleClick(
                               setFieldValue,
                               product.title,
-                              product._id
                             )
                           }
                         >

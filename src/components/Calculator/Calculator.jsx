@@ -79,16 +79,16 @@ const CalcPublic = (props) => {
     blood: String(FullUser.blood),
   };
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (isLoggedIn) {
-  //       dispatch(updateUser(FullUser));
-  //       dispatch(calcOperation.calcUserUpdate(FullUser));
-  //     }
-  //   }, 500);
-  // }, [FullUser, dispatch, isLoggedIn]);
+  useEffect(() => {
+    setTimeout(() => {
+      if (isLoggedIn) {
+        dispatch(updateUser(FullUser));
+        dispatch(calcOperation.calcUserUpdate(FullUser));
+      }
+    }, 500);
+  }, [FullUser, dispatch, isLoggedIn]);
 
-  // const formState = isLoggedIn ? LoginFormState : initFormState;
+  const formState = isLoggedIn ? LoginFormState : initFormState;
   const handleChangeitm = (e) => {
     console.log(e.target.value);
   };
@@ -98,7 +98,7 @@ const CalcPublic = (props) => {
       <h1>{title}</h1>
       <Formik
         validateOnChange="true"
-        initialValues={isLoggedIn ? LoginFormState : initFormState}
+        initialValues={formState}
         validationSchema={CalculatorSchema}
         onSubmit={(values, actions) => {
           if (isLoggedIn) {

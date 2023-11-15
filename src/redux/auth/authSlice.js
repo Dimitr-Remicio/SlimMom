@@ -40,9 +40,9 @@ const authSlice = createSlice({
       state.token = token;
       state.isLoggedIn = true;
       state.loaderShow = false;
-      localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("token", JSON.stringify(token));
-      localStorage.setItem('isLoggedIn', 'true');
+      // localStorage.setItem("user", JSON.stringify(user));
+      // localStorage.setItem("token", JSON.stringify(token));
+      // localStorage.setItem('isLoggedIn', 'true');
     },
     [authOperations.logIn.pending](state) {
       state.loaderShow = true;
@@ -91,17 +91,21 @@ const authSlice = createSlice({
     [authOperations.refreshUser.pending](state) {
       state.isCurrentUserRefresh = true;
       state.loaderShow = true;
+      // state.isLoggedIn = true;
     },
-
+    
     [authOperations.refreshUser.fulfilled](state, action) {
+      const { token } = action.payload;
+      // state.user = user;
+      state.token = token;
       state.isCurrentUserRefresh = false;
-      state.user = action.payload;
       state.isLoggedIn = true;
       state.loaderShow = false;
     },
-
+    
     [authOperations.refreshUser.rejected](state) {
       state.isCurrentUserRefresh = false;
+      // state.isLoggedIn = false;
       state.loaderShow = false;
     },
   },

@@ -21,8 +21,8 @@ export const getAllProduct = async () => {
     const data = await axios.get(`${base}/products/getAll`);
     return data;
   } catch (error) {
-    console.log(
-      `¡Error al obtener datos para el producto seleccionado! ${error.message}`);
+    Notiflix.Notify.error('Lol, the server is broken')
+    console.log(error)
     throw error;
   }
 };
@@ -31,7 +31,8 @@ export const getDairy = async body => {
     const { data } = await axios.post(`${base}/days/info`,body);
     return data;
   } catch (error) {
-   
+    Notiflix.Notify.error('Lol, the server is broken')
+    console.log(error)
     throw error;
   }
 };
@@ -44,6 +45,7 @@ export const addProductForUser = async newProduct => {
     Notiflix.Notify.error("Try with other product", {
       timeout: 6000,
     });
+    console.log(error)
     throw error;
   }
 };
@@ -57,9 +59,10 @@ export const deleteProductRequest = async ({dayId, productId, sumId}) => {
     });
     return data;
   } catch (error) {
-     Notiflix.Notify.error("Error deleting product", {
+    Notiflix.Notify.error("Error deleting product", {
       timeout: 6000,
     });
+    console.log(error)
     throw error;
   }
 }

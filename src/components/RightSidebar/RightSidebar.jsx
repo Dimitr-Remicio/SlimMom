@@ -13,6 +13,9 @@ import calcSelectors from "../../redux/calculatorSlice/calculatorSelectors";
 import { useState } from "react";
 import authSelector from "../../redux/auth/selectors";
 import { getDairy } from "../../redux/services/api-reguest";
+import Notiflix from "notiflix";
+
+
 
 export default function SummaryForDay() {
   const date = new Date();
@@ -38,18 +41,22 @@ export default function SummaryForDay() {
         setSummary(findDay.daySummary);
       }
     } catch (error) {
-      console.log(error);
+      Notiflix.Notify.error('Lol, the server is broken')
+
     }
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    // setTimeout(() => {
+    // const interval = setInterval(() => {
       if (isLoggedIn && reduxDate) {
-        getSummaryInfo(reduxDate);
-      }
-    }, 50);
-  }, [reduxDate, isLoggedIn]);
-  
+      getSummaryInfo(reduxDate);
+    }
+    // }, 1000);
+    // return () => clearInterval(interval);
+    // }, 500);
+  }, []);
+
   useEffect(() => {
     setTimeout(() => {
       if (isLoggedIn && user.notAllowedProducts && reduxDate) {
@@ -58,7 +65,7 @@ export default function SummaryForDay() {
     }, 500);
   }, [user, reduxDate, isLoggedIn]);
 
-  console.log(SSummary);
+  console.log(reduxDate);
 
   const noneNumb = "000";
 
@@ -67,20 +74,22 @@ export default function SummaryForDay() {
       <div className="right-sidebar">
         <div className="box-sidebar">
           <div className="summary-sidebar">
-            <h4 className="title-sidebar">Summary {reduxDate}</h4>
+            <h4 className="title-sidebar">
+              Summary {reduxDate}
+            </h4>
             <ul>
               <li>
-                Remain {SSummary > 1 ? Math.round(SSummary.left) : "000"} kcal
+                Remain {SSummary > '' ? Math.round(SSummary.left) : "000"} kcal
               </li>
               <li>
-                Consumed {SSummary > 1? Math.round(SSummary.consumed) : "000"} kcal
+                Consumed {SSummary ? Math.round(SSummary.consumed) : "000"} kcal
               </li>
               <li>
-                Dialy rate {SSummary > 1? Math.round(SSummary.dailyRate) : "000"}{" "}
+                Dialy rate {SSummary ? Math.round(SSummary.dailyRate) : "000"}{" "}
               </li>
               <li>
                 n% than normal{" "}
-                {SSummary < 1 ? Math.round(SSummary.percentOfDailyRate) : "000"} %
+                {SSummary ? Math.round(SSummary.percentOfDailyRate) : "000"} %
               </li>
             </ul>
           </div>

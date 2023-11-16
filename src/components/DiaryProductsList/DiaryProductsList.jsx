@@ -6,6 +6,8 @@ import { getDate } from "../../redux/dairy/dairySelector";
 import { List } from "./DiaryProductsList.styled";
 import { getDairy } from "../../redux/services/api-reguest";
 import authSelector from "../../redux/auth/selectors";
+import Notiflix from "notiflix";
+
 
 export const DiaryProductsList = () => {
   const [products, setProducts] = useState([]);
@@ -17,22 +19,28 @@ export const DiaryProductsList = () => {
     try {
       const nDate = date;
       const body = { date: nDate };
-      console.log(body);
+      // console.log(body);
       const findDay = await getDairy(body);
       if (!findDay.addedProducts) {
-        console.log("no ñero");
+        Notiflix.Notify.error('sorry, try other product')
+        setProducts([]);
+
       } else {
-        console.log(findDay);
+        // console.log(findDay);
         setProducts(findDay.addedProducts);
       }
     } catch (error) {
-      console.log(error);
+      console.log('none')
     }
   };
   useEffect(() => {
-      if (isLoggedIn) {
+    if (isLoggedIn) {
+      const interval = setInterval(() => {
+        // if (isLoggedIn && user && reduxDate) {
         getProducts(date);
-      }
+      }, 1000);
+      return () => clearInterval(interval);
+    }
   }, [date, isLoggedIn]);
 
   return (
@@ -44,7 +52,7 @@ export const DiaryProductsList = () => {
       </div>
       <div className="scrollWrapper" id="style-3">
         <List>
-          {products.length >= 0 ? (
+          {products.length === '' ? (
             products.map(({ foodId, title, amount, caloriesPerAmount }) => (
               <DiaryProductsListItem
                 key={foodId}

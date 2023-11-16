@@ -81,7 +81,7 @@ export const DiaryAddProductForm = () => {
       alert("Oops.. Product not found!");
     }
     Notiflix.Notify.success('added Product succesfuly!')
-    console.log('notify')
+    // console.log('notify')
     resetForm();
   };
 
